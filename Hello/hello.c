@@ -30,12 +30,15 @@
  *---------------------------------------------------------------------------*/
 
 static int count = 0;
+extern int SystemCoreClock;
 
 static void app_main (void *argument) {
   (void)argument;
   
+	printf ("SysClock %d\n", SystemCoreClock);
   while (1)  {
     printf ("Hello World %d\r\n", count);
+		if (count > 100) printf ("\x04");
     count++;
     osDelay (1000);
   }

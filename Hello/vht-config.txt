@@ -25,7 +25,7 @@ ambapv2pvbusx8_vsi.ambapv2pvbus_6.base_addr=0         # (int   , init-time) defa
 ambapv2pvbusx8_vsi.ambapv2pvbus_6.shareable=1         # (bool  , init-time) default = '1'      : Shareable default
 ambapv2pvbusx8_vsi.ambapv2pvbus_7.base_addr=0         # (int   , init-time) default = '0x0'    : Base address
 ambapv2pvbusx8_vsi.ambapv2pvbus_7.shareable=1         # (bool  , init-time) default = '1'      : Shareable default
-core_clk.mul=25000000                                 # (int   , init-time) default = '0x17d7840' : Clock Rate Multiplier. This parameter is not exposed via CADI and can only be set in LISA
+core_clk.mul=32000000                                 # (int   , init-time) default = '0x17d7840' : Clock Rate Multiplier. This parameter is not exposed via CADI and can only be set in LISA
 cpu0.BEATS_PER_TICK=2                                 # (int   , init-time) default = '0x2'    : Number of beats from each in-flight vector instruction executed in 1 tick (1,2 or 4).
 cpu0.BF_is_nop=0                                      # (bool  , init-time) default = '0'      : BF instruction executes as NOP, even if we have LO_BRANCH_INFO.
 cpu0.CDEMAPPEDONCP=255                                # (int   , init-time) default = '0xff'   : Bit N specifies whether the instruction for coprocessor N (CP7:CP0) is redirected to the CDE module
@@ -1665,7 +1665,7 @@ mps3_board.uart0.clk_divider.mul=1                    # (int   , init-time) defa
 mps3_board.uart0.in_file=                             # (string, init-time) default = ''       : Input file for data to be read by the UART
 mps3_board.uart0.in_file_escape_sequence=##           # (string, init-time) default = '##'     : Input file escape sequence
 mps3_board.uart0.out_file=                            # (string, init-time) default = ''       : Output file to hold data written by the UART (use '-' to send all output to stdout)
-mps3_board.uart0.shutdown_on_eot=0                    # (bool  , init-time) default = '0'      : Shutdown simulation when a EOT (ASCII 4) char is transmitted (useful for regression tests when semihosting is not available)
+mps3_board.uart0.shutdown_on_eot=1                    # (bool  , init-time) default = '0'      : Shutdown simulation when a EOT (ASCII 4) char is transmitted (useful for regression tests when semihosting is not available)
 mps3_board.uart0.shutdown_tag=                        # (string, run-time ) default = ''       : Shutdown simulation when a string is transmitted
 mps3_board.uart0.unbuffered_output=0                  # (bool  , init-time) default = '0'      : Unbuffered output
 mps3_board.uart1.clk_divider.div=1                    # (int   , init-time) default = '0x1'    : Clock Rate Divider. This parameter is not exposed via CADI and can only be set in LISA
@@ -1673,7 +1673,7 @@ mps3_board.uart1.clk_divider.mul=1                    # (int   , init-time) defa
 mps3_board.uart1.in_file=                             # (string, init-time) default = ''       : Input file for data to be read by the UART
 mps3_board.uart1.in_file_escape_sequence=##           # (string, init-time) default = '##'     : Input file escape sequence
 mps3_board.uart1.out_file=                            # (string, init-time) default = ''       : Output file to hold data written by the UART (use '-' to send all output to stdout)
-mps3_board.uart1.shutdown_on_eot=0                    # (bool  , init-time) default = '0'      : Shutdown simulation when a EOT (ASCII 4) char is transmitted (useful for regression tests when semihosting is not available)
+mps3_board.uart1.shutdown_on_eot=1                    # (bool  , init-time) default = '0'      : Shutdown simulation when a EOT (ASCII 4) char is transmitted (useful for regression tests when semihosting is not available)
 mps3_board.uart1.shutdown_tag=                        # (string, run-time ) default = ''       : Shutdown simulation when a string is transmitted
 mps3_board.uart1.unbuffered_output=0                  # (bool  , init-time) default = '0'      : Unbuffered output
 mps3_board.uart2.clk_divider.div=1                    # (int   , init-time) default = '0x1'    : Clock Rate Divider. This parameter is not exposed via CADI and can only be set in LISA
@@ -1681,7 +1681,7 @@ mps3_board.uart2.clk_divider.mul=1                    # (int   , init-time) defa
 mps3_board.uart2.in_file=                             # (string, init-time) default = ''       : Input file for data to be read by the UART
 mps3_board.uart2.in_file_escape_sequence=##           # (string, init-time) default = '##'     : Input file escape sequence
 mps3_board.uart2.out_file=                            # (string, init-time) default = ''       : Output file to hold data written by the UART (use '-' to send all output to stdout)
-mps3_board.uart2.shutdown_on_eot=0                    # (bool  , init-time) default = '0'      : Shutdown simulation when a EOT (ASCII 4) char is transmitted (useful for regression tests when semihosting is not available)
+mps3_board.uart2.shutdown_on_eot=1                    # (bool  , init-time) default = '0'      : Shutdown simulation when a EOT (ASCII 4) char is transmitted (useful for regression tests when semihosting is not available)
 mps3_board.uart2.shutdown_tag=                        # (string, run-time ) default = ''       : Shutdown simulation when a string is transmitted
 mps3_board.uart2.unbuffered_output=0                  # (bool  , init-time) default = '0'      : Unbuffered output
 mps3_board.uart3_stub.enable_atomic_ops=0             # (bool  , init-time) default = '0'      : Supports Atomic Operations
@@ -1693,7 +1693,7 @@ mps3_board.uart5.clk_divider.mul=1                    # (int   , init-time) defa
 mps3_board.uart5.in_file=                             # (string, init-time) default = ''       : Input file for data to be read by the UART
 mps3_board.uart5.in_file_escape_sequence=##           # (string, init-time) default = '##'     : Input file escape sequence
 mps3_board.uart5.out_file=                            # (string, init-time) default = ''       : Output file to hold data written by the UART (use '-' to send all output to stdout)
-mps3_board.uart5.shutdown_on_eot=0                    # (bool  , init-time) default = '0'      : Shutdown simulation when a EOT (ASCII 4) char is transmitted (useful for regression tests when semihosting is not available)
+mps3_board.uart5.shutdown_on_eot=1                    # (bool  , init-time) default = '0'      : Shutdown simulation when a EOT (ASCII 4) char is transmitted (useful for regression tests when semihosting is not available)
 mps3_board.uart5.shutdown_tag=                        # (string, run-time ) default = ''       : Shutdown simulation when a string is transmitted
 mps3_board.uart5.unbuffered_output=0                  # (bool  , init-time) default = '0'      : Unbuffered output
 mps3_board.usb_stub.enable_atomic_ops=0               # (bool  , init-time) default = '0'      : Supports Atomic Operations
