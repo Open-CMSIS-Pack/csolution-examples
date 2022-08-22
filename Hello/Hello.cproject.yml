@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Open-CMSIS-Pack/devtools/schemas/projmgr/1.0.0/tools/projmgr/schemas/cproject.schema.json
+
+project:
+
+  groups:
+    - group: Documentation
+      files: 
+        - file: ./README.md
+    - group: Main
+      files:
+        - file: ./main.c
+    - group: App
+      files:
+        - file: ./hello.c
+    - group: Board IO
+      files:
+        - file: ./Board_IO/retarget_stdio.c
+
+  components:
+    - component: CMSIS:CORE                             # short form, vendor selected from available packs
+    - component: ARM::CMSIS:RTOS2:Keil RTX5&Source      # long form, vendor explicitly stated 
+    - component: CMSIS Driver:USART
+    - component: ARM::Device:Startup&Baremetal
+    - component: ARM::Native Driver:IO
+    - component: ARM::Native Driver:UART
+    - component: Compiler:I/O:STDERR&User
+    - component: Compiler:I/O:STDIN&User
+    - component: Compiler:I/O:STDOUT&User
+    - component: Device:Definition
+    - component: Device:Startup&Baremetal
