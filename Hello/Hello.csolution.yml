@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Open-CMSIS-Pack/devtools/schemas/projmgr/1.0.0/tools/projmgr/schemas/csolution.schema.json
+
+solution:
+
+# it's recommended to list the packs that are used by the solution, otherwise all installed packs are used to discover components
+  packs:
+    - pack: ARM::CMSIS
+    - pack: Keil::ARM_Compiler                # for retargeting stdout to UART
+    - pack: ARM::V2M_MPS3_SSE_300_BSP@1.2.0   # optional packs can specify a version
+
+
+  target-types:
+    - type: AVH                               # runs on Arm Virtual Hardware
+      device: ARM::SSE-300-MPS3
+                                              # add more hardware targets (don't forget to add the required packs)
+
+  build-types:                                # defines toolchain options for 'debug' and 'release'
+    - type: Debug
+      compiler: AC6
+      misc:
+        - C*:
+          - -O1
+          - -g
+          - -Wno-macro-redefined
+          - -Wno-pragma-pack
+          - -Wno-parentheses-equality
+        - C:
+          - -std=gnu11
+        - ASM:
+          - -masm=auto
+        - Link:
+          - --entry=Reset_Handler
+          - --info summarysizes
+
+    - type: Release
+      compiler: AC6
+      misc:
+        - C*:
+          - -O3
+          - -Wno-macro-redefined
+          - -Wno-pragma-pack
+          - -Wno-parentheses-equality
+        - C:
+          - -std=gnu11
+        - ASM:
+          - -masm=auto
+        - Link:
+          - --entry=Reset_Handler
+          - --info summarysizes
+
+
+  projects:                               # list related projects
+    - project: ./Hello.cproject.yml
