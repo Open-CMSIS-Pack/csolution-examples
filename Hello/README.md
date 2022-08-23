@@ -9,7 +9,7 @@ This project prints "Hello World" and a counter value via the UART output. It is
    - Arm Compiler 6.18 (part of MDK, Eval Version sufficient for compilation)
    - Arm Virtual Hardware for Corstone-300 v11.18.1 (requires MDK - Professional)
 
->**Note:** later versions will also compiler with GCC
+>**Note:** later versions will also compiler with GCC.
 
 ### Packs
  - Required paks are listed in the file [`Hello.csolution.yml`](./Hello.csolution.yml)
@@ -35,19 +35,29 @@ The project is generated using the [CMSIS-Toolbox](https://github.com/Open-CMSIS
    ```
    > cbuild Hello.Debug+AVH.cprj       
    info cbuild: Build Invocation 1.0.0 (C) 2022 ARM
-   :
+      :    // output of the build steps
    info cbuild: build finished successfully!
    ```
    
->**Note:** During the build process required packs may be downloaded
+>**Note:** During the build process required packs may be downloaded.
 
 ## Execute Project
 
-The project is configured for execution on Arm Virtual Hardware which removes the requirement for a physical hardware board.  You may execute it with the command:
+The project is configured for execution on Arm Virtual Hardware which removes the requirement for a physical hardware board.  
+ 
+- When using MDK-Professional, you may execute it with the command:
+  ```
+  > VHT_Corstone_SSE-300_Ethos-U55 -f vht-config.txt -a ./out/Hello/AVH/Debug/Hello.Debug+AVH.axf
+  ```
 
-    ```
-    > VHT_Corstone_SSE-300_Ethos-U55 -f vht-config.txt -a ./out/Hello/AVH/Debug/Hello.Debug+AVH.axf
-    ```
+- [Keil Studio Cloud](https://studio.keil.arm.com/) integrates also the Arm Virtual Hardware VHT_Corstone_SSE-300_Ethos-U55 model. The steps to use the example are:
+  - Start [Keil Studio Cloud](https://studio.keil.arm.com/) and login to the system using your account.
+  - Use **File - Clone** and enter the URL: (https://github.com/Open-CMSIS-Pack/csolution-examples).  Add
+  - Select from the drop-down *Target hardware*: **Corstone SSE-300 (Cortex-M55, Ethos-U55)**
+  - Click **Run project** which executes the project build step and then starts running on Arm Virtual Hardware.
+
+>**Note:** Arm Virtual Hardware models are also available on AWS Marketplace.
+
 
 
 
