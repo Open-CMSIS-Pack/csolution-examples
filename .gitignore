@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+.vscode
+build
+*.cbuild-idx.yml
+.clangd
+RTE/_**

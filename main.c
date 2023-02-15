@@ -25,11 +25,7 @@
 
 #include "main.h"
 
-extern int stdio_init (void);
-
 int main (void) {
-  stdio_init();                         // Initialize stdio
-
 
 #if defined(RTE_Compiler_EventRecorder) && \
     (defined(__MICROLIB) || \

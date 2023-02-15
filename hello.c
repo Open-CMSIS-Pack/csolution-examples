@@ -21,25 +21,24 @@
  *---------------------------------------------------------------------------*/
 
 #include "main.h"
-#include <stdio.h>
 #include "cmsis_os2.h"                  // ::CMSIS:RTOS2
 
+#include <stdio.h>
+#include <stdlib.h>
 
 /*---------------------------------------------------------------------------
  * Application main thread
  *---------------------------------------------------------------------------*/
 
-static int count = 0;
-
 static void app_main (void *argument) {
   (void)argument;
-  
-  while (1)  {
+
+  for(int count = 0; count<100; count++) {
     printf ("Hello World %d\r\n", count);
-    if (count > 100) printf ("\x04");  // EOT (0x04) stops simulation
-    count++;
     osDelay (1000);
   }
+
+  exit(0);
 }
 
 /*---------------------------------------------------------------------------
