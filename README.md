@@ -25,6 +25,7 @@ Before you start downloading new software packs, ensure that the pack index on y
 
 Most examples list in the `csolution.yml` file the software packs that are used. You may download these packs with the following commands:
 
+```
 > csolution list packs -s Demo.csolution.yml -m > packlist.txt
 > cpackget add -f packlist.txt
 ```
