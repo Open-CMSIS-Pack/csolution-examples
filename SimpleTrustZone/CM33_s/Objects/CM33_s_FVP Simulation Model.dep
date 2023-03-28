@@ -1,0 +1,41 @@
+Dependencies for Project 'CM33_s', Target 'FVP Simulation Model': (DO NOT MODIFY !)
+CompilerVersion: 6190000::V6.19::ARMCLANG
+F (.\main_s.c)(0x629F38FA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mcmse -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/ARMCM33_DSP_FP_TZ-I./RTE/_FVP_Simulation_Model-IC:/Users/reikei01/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/reikei01/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM33/Include-D__UVISION_VERSION="538" -D_RTE_ -DARMCM33_DSP_FP_TZ -D_RTE_-o ./objects/main_s.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_cmse.h)(0x6388AB78)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x6388AB78)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x6388AB78)
+I (RTE\_FVP_Simulation_Model\RTE_Components.h)(0x6419C2DD)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM33\Include\ARMCM33_DSP_FP_TZ.h)(0x629F38FB)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm33.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\mpu_armv8.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM33\Include\system_ARMCM33.h)(0x629F38FB)
+F (.\interface.c)(0x629F38FA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mcmse -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/ARMCM33_DSP_FP_TZ-I./RTE/_FVP_Simulation_Model-IC:/Users/reikei01/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/reikei01/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM33/Include-D__UVISION_VERSION="538" -D_RTE_ -DARMCM33_DSP_FP_TZ -D_RTE_-o ./objects/interface.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_cmse.h)(0x6388AB78)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x6388AB78)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x6388AB78)
+I (interface.h)(0x629F38FA)
+F (.\Abstract.txt)(0x629F38FA)()
+F (RTE/Device/ARMCM33_DSP_FP_TZ/ARMCM33_ac6_s.sct)(0x629F38FA)()
+F (RTE/Device/ARMCM33_DSP_FP_TZ/partition_ARMCM33.h)(0x629F38FA)()
+F (RTE/Device/ARMCM33_DSP_FP_TZ/startup_ARMCM33.c)(0x629F38FA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mcmse -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/ARMCM33_DSP_FP_TZ-I./RTE/_FVP_Simulation_Model-IC:/Users/reikei01/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/reikei01/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM33/Include-D__UVISION_VERSION="538" -D_RTE_ -DARMCM33_DSP_FP_TZ -D_RTE_-o ./objects/startup_armcm33.o -MD)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM33\Include\ARMCM33_DSP_FP_TZ.h)(0x629F38FB)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm33.h)(0x629F38DF)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x6388AB78)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\mpu_armv8.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM33\Include\system_ARMCM33.h)(0x629F38FB)
+F (RTE/Device/ARMCM33_DSP_FP_TZ/system_ARMCM33.c)(0x629F38FA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mcmse -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -mlittle-endian -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/ARMCM33_DSP_FP_TZ-I./RTE/_FVP_Simulation_Model-IC:/Users/reikei01/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/reikei01/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/Device/ARM/ARMCM33/Include-D__UVISION_VERSION="538" -D_RTE_ -DARMCM33_DSP_FP_TZ -D_RTE_-o ./objects/system_armcm33.o -MD)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM33\Include\ARMCM33_DSP_FP_TZ.h)(0x629F38FB)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm33.h)(0x629F38DF)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x6388AB78)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\mpu_armv8.h)(0x629F38DF)
+I (C:\Users\reikei01\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM33\Include\system_ARMCM33.h)(0x629F38FB)
+I (RTE\Device\ARMCM33_DSP_FP_TZ\partition_ARMCM33.h)(0x629F38FA)

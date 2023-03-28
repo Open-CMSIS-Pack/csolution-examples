@@ -1,0 +1,78 @@
+build:
+  solution: ../SimpleTZ.csolution.yml
+  project: CM33_ns.cproject.yml
+  context: CM33_ns.release+AVH
+  compiler: AC6
+  device: ARMCM33_DSP_FP_TZ
+  processor:
+    fpu: on
+    trustzone: non-secure
+  packs:
+    - pack: ARM::CMSIS@5.9.0
+      path: ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0
+  optimize: balanced
+  debug: off
+  misc:
+    ASM:
+      - -masm=auto
+    C:
+      - -std=gnu11
+      - -Wno-macro-redefined
+      - -Wno-pragma-pack
+      - -Wno-parentheses-equality
+    CPP:
+      - -Wno-macro-redefined
+      - -Wno-pragma-pack
+      - -Wno-parentheses-equality
+    Link:
+      - --entry=Reset_Handler
+      - --info summarysizes
+      - --map
+  define:
+    - ARMCM33_DSP_FP_TZ
+    - _RTE_
+  add-path:
+    - ..\CM33_s
+    - RTE/_release_AVH
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+    - ${CMSIS_PACK_ROOT}/ARM/CMSIS/5.9.0/Device/ARM/ARMCM33/Include
+  output-type: exe
+  output-dirs:
+    gendir: ..
+    intdir: ../tmp/CM33_ns/AVH/release
+    outdir: ../out/CM33_ns/AVH/release
+    rtedir: RTE
+  components:
+    - component: ARM::CMSIS:CORE@5.6.0
+      condition: ARMv6_7_8-M Device
+      from-pack: ARM::CMSIS@5.9.0
+      selected-by: CMSIS:CORE
+    - component: ARM::Device:Startup&C Startup@2.1.0
+      condition: ARMCM33 CMSIS
+      from-pack: ARM::CMSIS@5.9.0
+      selected-by: Device:Startup&C Startup
+      files:
+        - file: RTE/Device/ARMCM33_DSP_FP_TZ/ARMCM33_AC6.sct
+          category: linkerScript
+          attr: config
+          version: 1.1.0
+        - file: RTE/Device/ARMCM33_DSP_FP_TZ/startup_ARMCM33.c
+          category: sourceC
+          attr: config
+          version: 2.1.0
+        - file: RTE/Device/ARMCM33_DSP_FP_TZ/system_ARMCM33.c
+          category: sourceC
+          attr: config
+          version: 1.0.1
+  groups:
+    - group: Non-secure Code
+      files:
+        - file: main_ns.c
+          category: sourceC
+    - group: CMSE Library
+      files:
+        - file: ..\out\CM33_s\AVH\debug\debug+AVH_CMSE_Lib.o
+          category: object
+  constructed-files:
+    - file: RTE/_release_AVH/RTE_Components.h
+      category: header

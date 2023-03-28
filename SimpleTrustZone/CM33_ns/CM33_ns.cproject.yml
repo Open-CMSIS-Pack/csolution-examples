@@ -1,0 +1,22 @@
+project:
+  processor:
+    trustzone: non-secure
+
+  add-path:
+    - ..\CM33_s
+
+  packs:
+    - pack: ARM::CMSIS@5.9.0
+
+  groups:
+    - group: Non-secure Code
+      files:
+        - file: main_ns.c
+    - group: CMSE Library
+      files:
+        - file: ..\out\CM33_s\AVH\debug\debug+AVH_CMSE_Lib.o
+#       - file: $Output(CM33_s.debug+AVH)\CM33_s_CMSE_Lib.o
+
+  components:
+    - component: CMSIS:CORE
+    - component: Device:Startup&C Startup
