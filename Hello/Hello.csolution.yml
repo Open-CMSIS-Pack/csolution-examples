@@ -16,7 +16,7 @@ solution:
       optimize: none
 
     - type: Release
-      debug: "off"
+      debug: off
       optimize: balanced
 
   projects:                               # list related projects
