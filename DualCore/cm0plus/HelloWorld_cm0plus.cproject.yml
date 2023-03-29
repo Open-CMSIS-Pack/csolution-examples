@@ -43,7 +43,7 @@ project:
   groups:
     - group: Documentation
       files: 
-        - file: ../readme.txt
+        - file: ../README.md
     - group: Application
       files:
         - file: ./hello_world_core1.c

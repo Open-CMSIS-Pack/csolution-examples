@@ -2,9 +2,19 @@
 
 This is a collection of [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/devtools/blob/main/tools/README.md) project examples using the [`csolution` Project Manager](https://github.com/Open-CMSIS-Pack/devtools/blob/main/tools/projmgr/docs/Manual/Overview.md) utility.  The project files are provided in [`csolution.yml`](https://github.com/Open-CMSIS-Pack/devtools/blob/main/tools/projmgr/docs/Manual/Overview.md#yml-input-format) format for experimentation, exploration and education purposes.
 
--   [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools#download-and-install)
+- [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools#download-and-install)
 
-## Project Examples:
+## Project Examples
+
+Examples in this repository:
+
+Source                               | Description
+:------------------------------------|:----------------------------------
+[Hello](./Hello)                     | A simple project to get started
+[DualCore](./DualCore)               | Application with multiple processors
+[SimpleTrustZone](./SimpleTrustZone) | Simple TrustZone example
+
+Examples in other repositories:
 
 Source            | Description
 :-----------------|:----------------------------------
@@ -19,16 +29,13 @@ Source            | Description
 
 Before you start downloading new software packs, ensure that the pack index on your local computer is up-to-date with the command.
 
-```
+```txt
 > cpackget update-index        
 ```
 
 Most examples list in the `csolution.yml` file the software packs that are used. You may download these packs with the following commands:
 
-```
+```txt
 > csolution list packs -s Demo.csolution.yml -m > packlist.txt
 > cpackget add -f packlist.txt
 ```
-
-
-

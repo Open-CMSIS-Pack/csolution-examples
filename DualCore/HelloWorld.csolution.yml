@@ -10,6 +10,15 @@ solution:
       # board:FRDM-K32L3A6
       device: K32L3A60VPJ1A
 
+  build-types:                                # defines toolchain options for 'debug' and 'release'
+    - type: Debug
+      debug: on
+      optimize: none
+
+    - type: Release
+      debug: off
+      optimize: balanced
+      
   projects:
     - project: ./cm0plus/HelloWorld_cm0plus.cproject.yml
     - project: ./cm4/HelloWorld_cm4.cproject.yml
