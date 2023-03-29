@@ -1,6 +1,9 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/Open-CMSIS-Pack/devtools/schemas/projmgr/1.0.0/tools/projmgr/schemas/cproject.schema.json
-
 project:
+
+# it is recommended to list the packs that contain the components in the cproject.yml file.
+  packs:
+    - pack: ARM::V2M_MPS3_SSE_300_BSP@1.2.0   # optional packs can specify a version
+    - pack: Keil::ARM_Compiler                # for retargeting stdout to UART
 
   groups:
     - group: Documentation
@@ -20,7 +23,6 @@ project:
     - component: CMSIS:CORE                             # short form, vendor selected from available packs
     - component: ARM::CMSIS:RTOS2:Keil RTX5&Source      # long form, vendor explicitly stated 
     - component: CMSIS Driver:USART
-    - component: ARM::Device:Startup&Baremetal
     - component: ARM::Native Driver:IO
     - component: ARM::Native Driver:UART
     - component: Compiler:I/O:STDERR&User

@@ -1,0 +1,54 @@
+project:
+  device: :cm0plus
+
+  define:
+    - CPU_K32L3A60VPJ1A_cm0plus
+    - MCMGR_HANDLE_EXCEPTIONS=1
+    - __SEMIHOST_HARDFAULT_DISABLE=1
+    - MULTICORE_APP=1
+    - MCUXPRESSO_SDK
+
+  add-path:
+    - ../middleware/multicore/mcmgr/src
+
+  components:
+    - component: NXP::Device:Startup
+    - component: NXP::Device:CMSIS:K32L3A60_header
+    - component: NXP::Device:CMSIS:K32L3A60_system
+
+    - component: NXP::Device:SDK Drivers:clock
+    - component: NXP::Device:SDK Drivers:common
+    - component: NXP::Device:SDK Drivers:gpio
+    - component: NXP::Device:SDK Drivers:i2c
+    - component: NXP::Device:SDK Drivers:lists
+    - component: NXP::Device:SDK Drivers:lpuart
+    - component: NXP::Device:SDK Drivers:lpuart_adapter
+    - component: NXP::Device:SDK Drivers:msmc
+    - component: NXP::Device:SDK Drivers:mu
+    - component: NXP::Device:SDK Drivers:port
+
+    - component: NXP::Device:SDK Utilities:assert
+    - component: NXP::Device:SDK Utilities:debug_console
+    - component: NXP::Device:SDK Utilities:serial_manager
+    - component: NXP::Device:SDK Utilities:serial_manager_uart
+
+    - component: NXP::Board Support:SDK Project Template:project_template&K32L3A60
+
+    - component: ARM::CMSIS:CORE
+
+  groups:
+    - group: Documentation
+      files: 
+        - file: ../README.md
+    - group: Application
+      files:
+        - file: ./hello_world_core1.c
+        - file: ./RTE/Device/K32L3A60VPJ1A_cm0plus/K32L3A60xxx_cm0plus_flash.scf
+          for-compiler: AC6
+    - group: Middleware
+      files: 
+        - file: ../middleware/multicore/mcmgr/src/mcmgr.c
+        - file: ../middleware/multicore/mcmgr/src/mcmgr.h
+        - file: ../middleware/multicore/mcmgr/src/mcmgr_internal_core_api.h
+        - file: ../middleware/multicore/mcmgr/src/mcmgr_internal_core_api_k32l3a6.c
+        - file: ../middleware/multicore/mcmgr/src/mcmgr_mu_internal.c

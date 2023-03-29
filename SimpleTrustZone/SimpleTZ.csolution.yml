@@ -1,0 +1,21 @@
+solution:
+  compiler: AC6
+
+  packs:
+    - pack: ARM::CMSIS@5.9.0
+
+  target-types:
+    - device: ARMCM33_DSP_FP_TZ
+      type: AVH
+
+  build-types:
+    - type: Debug
+      debug: on
+      optimize: none
+    - type: Release
+      debug: off
+      optimize: balanced
+
+  projects:
+    - project: ./CM33_s/CM33_s.cproject.yml
+    - project: ./CM33_ns/CM33_ns.cproject.yml

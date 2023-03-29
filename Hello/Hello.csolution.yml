@@ -1,13 +1,9 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/Open-CMSIS-Pack/devtools/schemas/projmgr/1.0.0/tools/projmgr/schemas/csolution.schema.json
-
 solution:
+  compiler: AC6                               # currently required for components Compiler:I/O
 
-# it's recommended to list the packs that are used by the solution, otherwise all installed packs are used to discover components
+# it is recommended to list the pack or packs that define the device or board used in the csolution.yml file
   packs:
     - pack: ARM::CMSIS
-    - pack: Keil::ARM_Compiler                # for retargeting stdout to UART
-    - pack: ARM::V2M_MPS3_SSE_300_BSP@1.2.0   # optional packs can specify a version
-
 
   target-types:
     - type: AVH                               # runs on Arm Virtual Hardware
@@ -16,38 +12,12 @@ solution:
 
   build-types:                                # defines toolchain options for 'debug' and 'release'
     - type: Debug
-      compiler: AC6
-      misc:
-        - C*:
-          - -O1
-          - -g
-          - -Wno-macro-redefined
-          - -Wno-pragma-pack
-          - -Wno-parentheses-equality
-        - C:
-          - -std=gnu11
-        - ASM:
-          - -masm=auto
-        - Link:
-          - --entry=Reset_Handler
-          - --info summarysizes
+      debug: on
+      optimize: none
 
     - type: Release
-      compiler: AC6
-      misc:
-        - C*:
-          - -O3
-          - -Wno-macro-redefined
-          - -Wno-pragma-pack
-          - -Wno-parentheses-equality
-        - C:
-          - -std=gnu11
-        - ASM:
-          - -masm=auto
-        - Link:
-          - --entry=Reset_Handler
-          - --info summarysizes
-
+      debug: off
+      optimize: balanced
 
   projects:                               # list related projects
     - project: ./Hello.cproject.yml
