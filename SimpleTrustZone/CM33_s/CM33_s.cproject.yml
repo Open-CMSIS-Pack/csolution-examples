@@ -4,6 +4,7 @@ project:
 
   packs:
     - pack: ARM::CMSIS@5.9.0
+    - pack: Keil::ARM_Compiler
 
   groups:
     - group: Secure Code
