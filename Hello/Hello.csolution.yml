@@ -19,5 +19,8 @@ solution:
       debug: off
       optimize: balanced
 
+  output-dirs:
+    outdir: ./out/$TargetType$/
+
   projects:                               # list related projects
     - project: ./Hello.cproject.yml
