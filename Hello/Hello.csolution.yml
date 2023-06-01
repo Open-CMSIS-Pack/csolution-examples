@@ -1,4 +1,5 @@
 solution:
+  cdefault:
   compiler: AC6                               # currently required for components Compiler:I/O
 
 # it is recommended to list the pack or packs that define the device or board used in the csolution.yml file

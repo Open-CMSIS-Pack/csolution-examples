@@ -1,11 +1,14 @@
 project:
   device: :cm4
 
+  packs:
+    - pack: ARM::CMSIS
+
   define:
     - CPU_K32L3A60VPJ1A_cm4
-    - MCMGR_HANDLE_EXCEPTIONS=1
-    - __SEMIHOST_HARDFAULT_DISABLE=1
-    - MULTICORE_APP=1
+    - MCMGR_HANDLE_EXCEPTIONS: 1
+    - __SEMIHOST_HARDFAULT_DISABLE: 1
+    - MULTICORE_APP: 1
     - MCUXPRESSO_SDK
 
   add-path:

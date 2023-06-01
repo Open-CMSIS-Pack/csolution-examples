@@ -14,9 +14,7 @@ project:
         - file: main_ns.c
     - group: CMSE Library
       files:
-        - file: ../out/CM33_s/AVH/debug/debug+AVH_CMSE_Lib.o
-#       - file: $OutDir(CM33_s)$/CM33_s_CMSE_Lib.o
-#  $OutDir(CM33_s) would resolve into the directory /out/ of the current target-type / build-type, see issue #826
+        - file: $cmse-lib(CM33_s)$
 
   components:
     - component: CMSIS:CORE
