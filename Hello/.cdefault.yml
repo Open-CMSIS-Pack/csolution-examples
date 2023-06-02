@@ -23,6 +23,8 @@ default:
         - --entry=Reset_Handler
         - --info summarysizes
         - --map
+        - --diag_suppress=L6314W
+
 
     - for-compiler: IAR
       C-CPP:

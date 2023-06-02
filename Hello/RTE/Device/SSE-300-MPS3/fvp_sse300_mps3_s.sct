@@ -34,11 +34,9 @@ LR_CODE S_CODE_START {
      * the S_CODE_SIZE value. We also substract from the available space the
      * area used to align this section on 32 bytes boundary (for SAU conf).
      */
-/*  - no veneers in this example
     ER_CODE_CMSE_VENEER +0 ALIGN 32 {
         *(Veneer$$CMSE)
     }
-*/
     /*
      * This dummy region ensures that the next one will be aligned on a 32 bytes
      * boundary, so that the following region will not be mistakenly configured
