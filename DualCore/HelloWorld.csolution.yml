@@ -1,10 +1,11 @@
 solution:
+  created-for: CMSIS-Toolbox@2.0.0
   cdefault:
   compiler: AC6
   
   packs:
-    - pack: NXP::K32L3A60_DFP@16
-    - pack: NXP::FRDM-K32L3A6_BSP@16 
+    - pack: NXP::K32L3A60_DFP@16.0.0
+    - pack: NXP::FRDM-K32L3A6_BSP@16.0.0 
 
   target-types:
     - type: FRDM-K32L3A6

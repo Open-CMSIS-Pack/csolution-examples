@@ -2,6 +2,8 @@
 
 This is a collection of [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/devtools/blob/main/tools/README.md) project examples using the [`csolution` Project Manager](https://github.com/Open-CMSIS-Pack/devtools/blob/main/tools/projmgr/docs/Manual/Overview.md) utility.  The project files are provided in [`csolution.yml`](https://github.com/Open-CMSIS-Pack/devtools/blob/main/tools/projmgr/docs/Manual/Overview.md#yml-input-format) format for experimentation, exploration and education purposes.
 
+> **Note:** These examples use **CMSIS-Toolbox 2.0.0-dev0** or higher.
+> 
 - [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools#download-and-install)
 
 ## Use vcpkg

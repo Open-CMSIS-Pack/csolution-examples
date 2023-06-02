@@ -1,4 +1,5 @@
 solution:
+  created-for: CMSIS-Toolbox@2.0.0
   cdefault:
   compiler: AC6                               # currently required for components Compiler:I/O
 
