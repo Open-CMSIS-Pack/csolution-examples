@@ -4,7 +4,7 @@ project:
 # List the packs that define the device and/or board
   packs:
     - pack: ARM::CMSIS         # The CMSIS base software pack
-#   - pack: MyVendor:MyPack    # List additional software packs
+#   - pack: MyVendor::MyPack   # List additional software packs
 
   groups:
     - group: Source Files
