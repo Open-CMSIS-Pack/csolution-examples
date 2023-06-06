@@ -1,0 +1,27 @@
+project:
+# A project translates into one executable or library
+
+# List the packs that define the device and/or board
+  packs:
+    - pack: ARM::CMSIS         # The CMSIS base software pack
+#   - pack: MyVendor:MyPack    # List additional software packs
+
+  groups:
+    - group: Source Files
+#     files: 
+#       - file: main.c
+#       - file: MyFile1.c
+
+#   - group: MyGroup
+#     files: 
+#       - file: MyFile2.cpp
+
+# A software component is a re-usable unit that may be configurable
+  components:                  # List components to use for your application
+    - component: CMSIS:CORE    # The CMSIS-Core component used in most projects
+#   - component: Device:Startup&Baremetal
+#   - component: Cclass:Cgroup:Csub&Cvariant
+
+# A software layer is a collection of pre-configured source files or components
+# layers:                      # List software layers to use for your application
+#   - layer: MyLayer.clayer.yml
