@@ -21,5 +21,37 @@ To use these templates **copy the content of the folder to your own application 
    - Enter the device and/or board information along with software packs in `csolution.yml`.
    - Add source files, software components, and potentially software layers to `cproject.yml`.
 
-During the process the following CMSIS-Toolbox commands are useful:
+## Useful Commands
 
+During the process the following CMSIS-Toolbox commands are useful to solve common problems:
+
+### List Available Devices or Boards
+
+_**error csolution:** specified device '...' was not found among the installed packs._
+
+Use the `csolution` tool with the related `csolution.yml` file to list devices and/or boards that are available in the specified software packs.  If the device or board is not listed, check without specifying the `csolution.yml` file.
+
+```txt
+csolution list devices -s MyName.csolution.yml      # list device or board of the specified packs
+csolution list boards                               # list device or board of all installed packs
+```
+
+### List Available Components
+
+_**warning csolution:** dependency validation for context '...' failed_
+
+The warning itself may list already required components that may be added to the `cproject.yml` file.
+Use the `csolution` tool with the related `csolution.yml` file to list components available in the specified software packs. If the component is not listed, check without specifying the `csolution.yml` file.
+
+```txt
+csolution list components -s MyName.csolution.yml   # list components of the specified packs
+csolution list components                           # list components of all installed packs
+```
+
+### List Available Layers
+
+Use the `csolution` tool with the related `csolution.yml` file to list layers available in the specified software packs.
+
+```txt
+csolution list layers -s MyName.csolution.yml       # list layers of the specified packs
+```
