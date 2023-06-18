@@ -28,4 +28,5 @@ solution:
 
 # List related projects
   projects:
-    - project: MyName.cproject.yml
+    - project: Core0/MyName0.cproject.yml    # project running on Core0
+    - project: Core1/MyName1.cproject.yml    # project running on Core1

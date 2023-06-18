@@ -1,6 +1,9 @@
 project:
 # A project translates into one executable or library
 
+# specify targeted processor instance
+  device: :myCore0             # replace with your device's Pname 
+  
 # List the packs that define the device and/or board
   packs:
     - pack: ARM::CMSIS         # The CMSIS base software pack
@@ -9,7 +12,7 @@ project:
   groups:
     - group: Source Files
 #     files: 
-#       - file: main.c
+#       - file: main_core0.c
 #       - file: MyFile1.c
 
 #   - group: MyGroup
@@ -19,7 +22,7 @@ project:
 # A software component is a re-usable unit that may be configurable
   components:                  # List components to use for your application
     - component: CMSIS:CORE    # The CMSIS-Core component used in most projects
-#   - component: Device:Startup&Baremetal
+#   - component: Device:Startup
 #   - component: Cclass:Cgroup:Csub&Cvariant
 
 # A software layer is a collection of pre-configured source files or components
