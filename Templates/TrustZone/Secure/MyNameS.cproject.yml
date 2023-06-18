@@ -1,5 +1,7 @@
 project:
 # A project translates into one executable or library
+  processor:
+    trustzone: secure          # This project is executed in secure mode
 
 # List the packs that define the device and/or board
   packs:
