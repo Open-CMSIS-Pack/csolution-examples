@@ -1,6 +1,9 @@
 project:
 # A project translates into one executable or library
 
+# specify targeted processor instance
+  device: :myCore              # replace with your device's Pname 
+  
 # List the packs that define the device and/or board
   packs:
     - pack: ARM::CMSIS         # The CMSIS base software pack
