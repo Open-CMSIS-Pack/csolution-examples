@@ -1,20 +1,30 @@
 project:
 # A project translates into one executable or library
+processor:
+  trustzone: non-secure
 
 # List the packs that define the device and/or board
   packs:
     - pack: ARM::CMSIS         # The CMSIS base software pack
 #   - pack: MyVendor:MyPack    # List additional software packs
 
+# additional include paths
+  add-path:
+    - ../Secure                # Include path for CMSE Interface API
+
+# 
   groups:
     - group: Source Files
 #     files: 
-#       - file: main.c
+#       - file: main_ns.c
 #       - file: MyFile1.c
 
 #   - group: MyGroup
 #     files: 
 #       - file: MyFile2.cpp
+    - group: CMSE Library
+      files:
+        - file: $cmse-lib(MyNameS)$   # Cortex-M Security Extension's Secure Callable Entry Points
 
 # A software component is a re-usable unit that may be configurable
   components:                  # List components to use for your application
