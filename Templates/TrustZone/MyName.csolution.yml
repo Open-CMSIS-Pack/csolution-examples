@@ -28,4 +28,5 @@ solution:
 
 # List related projects
   projects:
-    - project: MyName.cproject.yml
+    - project: Secure/MyNameS.cproject.yml     # secure project comes first to be built first
+    - project: NonSecure/MyNameNS.cproject.yml # non-secure project(s) come after
