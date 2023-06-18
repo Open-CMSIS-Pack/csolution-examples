@@ -3,10 +3,10 @@ project:
     trustzone: non-secure
 
   add-path:
-    - ..\CM33_s
+    - ../CM33_s
 
   packs:
-    - pack: ARM::CMSIS@5.9.0
+    - pack: ARM::CMSIS
 
   groups:
     - group: Non-secure Code
