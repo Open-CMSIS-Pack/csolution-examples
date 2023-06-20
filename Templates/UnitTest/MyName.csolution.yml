@@ -28,4 +28,5 @@ solution:
 
 # List related projects
   projects:
-    - project: MyName.cproject.yml
+    - project: Test0/MyName0.cproject.yml
+    - project: Test1/MyName0.cproject.yml
