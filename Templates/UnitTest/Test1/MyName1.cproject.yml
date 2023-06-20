@@ -23,5 +23,6 @@ project:
 #   - component: Cclass:Cgroup:Csub&Cvariant
 
 # A software layer is a collection of pre-configured source files or components
-# layers:                      # List software layers to use for your application
-#   - layer: MyLayer.clayer.yml
+  layers:                      # List software layers to use for your application
+    - layer: ../Layer/MyName.clayer.yml
+
