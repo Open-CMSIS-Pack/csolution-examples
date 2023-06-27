@@ -7,7 +7,7 @@
     },
     {
       "kind": "artifact",
-      "location": "https://artifactory.keil.arm.com/artifactory/vcpkg-ce-registry/registry.zip",
+      "location": "https://artifacts.keil.arm.com/vcpkg-ce-registry/registry.zip",
       "name": "arm"
     }
   ],
