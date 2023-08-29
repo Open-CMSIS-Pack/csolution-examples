@@ -1,10 +1,10 @@
-# CMSIS-Toolbox Examples in `csolution.yml` format
+# CMSIS-Toolbox Examples in `csolution` project format
 
-This is a collection of [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/devtools/blob/main/tools/README.md) project examples using the [`csolution` Project Manager](https://github.com/Open-CMSIS-Pack/devtools/blob/main/tools/projmgr/docs/Manual/Overview.md) utility.  The project files are provided in [`csolution.yml`](https://github.com/Open-CMSIS-Pack/devtools/blob/main/tools/projmgr/docs/Manual/Overview.md#yml-input-format) format for experimentation, exploration and education purposes.
+This is a collection of [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox) project examples using the [`csolution` project format](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) utility.  The project files are provided for experimentation, exploration and education purposes.
 
-> **Note:** These examples use **CMSIS-Toolbox 2.0.0-dev0** or higher.
+> **Note:** These examples use **CMSIS-Toolbox 2.0.0** or higher.
 > 
-- [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/devtools/tree/main/tools#download-and-install)
+Refer to [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/installation.md) for information how to setup an enviornment.
 
 ## Use vcpkg
 
@@ -45,7 +45,21 @@ Source                               | Description
 [DualCore](./DualCore)               | Application with multiple processors
 [SimpleTrustZone](./SimpleTrustZone) | Simple TrustZone example
 
-Examples in other repositories:
+## Build Projects
+
+Before you build projects, ensure that the pack index on your local computer is up-to-date with the command.
+
+```txt
+> cpackget update-index        
+```
+
+The project files  contain a list of software packs that are used. When using the `cbuild` tool option `--packs` these packs are downloaded during the build process as shown in the following example command line:
+
+```txt
+> cbuild Hello.csolution.yml --packs --rebuild
+```
+
+## Examples in other repositories:
 
 Source            | Description
 :-----------------|:----------------------------------
@@ -55,18 +69,3 @@ Source            | Description
 [Arm TrustZone Demo](https://github.com/MDK-Packs/TrustZone)                                                       | Example that uses TF-M and Bootloader for firmware update.  Runs on [STM32U5 board](https://www.st.com/en/evaluation-tools/b-u585i-iot02a.html) or [AVH](https://avh.arm.com/)
 
 >**Note:** The examples may require additional tools. Refer to the instructions for each example to install the required toolchain.
-
-## Download Software Packs
-
-Before you start downloading new software packs, ensure that the pack index on your local computer is up-to-date with the command.
-
-```txt
-> cpackget update-index        
-```
-
-Most examples list in the `csolution.yml` file the software packs that are used. You may download these packs with the following commands:
-
-```txt
-> csolution list packs -s Demo.csolution.yml -m > packlist.txt
-> cpackget add -f packlist.txt
-```
