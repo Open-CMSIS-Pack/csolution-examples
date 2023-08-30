@@ -17,3 +17,9 @@ Non-secure application:
 
 Output:
 Variables used in this application can be viewed in the uVision Debugger Watch window.
+
+## Generated Project
+
+```txt
+> cbuild SimpleTZ.csolution.yml --packs --context .Debug
+```
