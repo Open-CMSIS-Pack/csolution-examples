@@ -6,35 +6,6 @@ This is a collection of [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis
 > 
 Refer to [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/installation.md) for information how to setup an enviornment.
 
-## Use vcpkg
-
-This example uses also [vcpkg](https://vcpkg.io/en/) for installation of a consistent tool environment.
-
-**Install vcpgk:**
-
-- Windows cmd: `curl -LO https://aka.ms/vcpkg-init.cmd && .\vcpkg-init.cmd`
-- PowerShell: `iex (iwr -useb https://aka.ms/vcpkg-init.ps1)`
-- Linux / macOS: `. <(curl https://aka.ms/vcpkg-init.sh -L)`
-
-**Activating vcpkg in a new shell:**
-
-- Windows cmd: `%USERPROFILE%\.vcpkg\vcpkg-init.cmd`
-- PowerShell:  `. ~/.vcpkg/vcpkg-init.ps1`
-- Linux / macOS: `. ~/.vcpkg/vcpkg-init.sh`
-
-**Configuration file:**
-
-The default file name is: `vcpkg-configuration.json` (part of this repository)
-This file stores the required registries and the artifact versions to be installed and added to the path in your current shell.
-
-**Update “arm” registry:**
-
-This command is required when a new CMSIS-Toolbox update is released to pickup the new version:
-
-```txt
-vcpkg z-ce update arm
-```
-
 ## Project Examples
 
 Examples in this repository:
