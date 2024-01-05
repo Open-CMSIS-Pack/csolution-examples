@@ -26,13 +26,12 @@ jobs:
           . ~/.vcpkg/vcpkg-init
           cd Hello/
           vcpkg activate
-
-
-      - name: Cache packs
-        uses: actions/cache@v3
-        with:
-          key: packs
-          path: /home/.cache/arm/packs
-
-      - run: |
           cbuild Hello/Hello.csolution.yml --packs --rebuild
+
+
+#      - name: Cache packs
+#        uses: actions/cache@v3
+#        with:
+#          key: packs
+#          path: /home/.cache/arm/packs
+
