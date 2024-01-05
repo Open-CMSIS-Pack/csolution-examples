@@ -30,4 +30,4 @@ jobs:
       - run: |
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           vcpkg activate
-          cbuild get_started.csolution.yml --packs --update-rte --context .debug+avh
+          cbuild Hello/Hello.csolution.yml --packs --rebuild
