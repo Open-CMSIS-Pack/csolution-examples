@@ -26,7 +26,8 @@ jobs:
           . ~/.vcpkg/vcpkg-init
           cd Hello/
           vcpkg activate
-          cbuild Hello.csolution.yml --packs --rebuild
+          csolution --version
+#          cbuild Hello.csolution.yml --packs --rebuild
 
 
 #      - name: Cache packs
