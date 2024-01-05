@@ -20,7 +20,8 @@ jobs:
 #          key: vcpkg
 #          path: /home/runner/.vcpkg
 
-
+      - env:
+          GITHUB_TOKEN: ${{secrets.ARM_TOKEN}}
       - run: |
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
