@@ -31,7 +31,6 @@ jobs:
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
           vcpkg activate
-<<<<<<< HEAD
           if [[ -n "${{ env.ARM_UBL_ACTIVATION_CODE }}" ]]; then
             armlm activate --code ${{ env.ARM_UBL_ACTIVATION_CODE }}
           else
@@ -44,10 +43,6 @@ jobs:
           vcpkg activate
           cd Hello
           cbuild Hello.csolution.yml --packs --rebuild
-=======
-          csolution --version
-#          cbuild Hello.csolution.yml --packs --rebuild
->>>>>>> b9e7ba5 (Update build.yml)
 
       - name: Deactivate Arm tool license
         if: always()
