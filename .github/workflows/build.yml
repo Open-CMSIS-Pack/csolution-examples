@@ -20,14 +20,19 @@ jobs:
 #          key: vcpkg
 #          path: /home/runner/.vcpkg
 
+
+      - run: |
+          . <(curl https://aka.ms/vcpkg-init.sh -L)
+          . ~/.vcpkg/vcpkg-init
+          cd Hello/
+          vcpkg activate
+
+
       - name: Cache packs
         uses: actions/cache@v3
         with:
           key: packs
-          path: /home/runner/.cache/arm/packs
-
+          path: /home/.cache/arm/packs
 
       - run: |
-          . <(curl https://aka.ms/vcpkg-init.sh -L)
-          vcpkg activate
           cbuild Hello/Hello.csolution.yml --packs --rebuild
