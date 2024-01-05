@@ -1,4 +1,4 @@
-name: Build Csolution Hello example
+name: Build GetStarted example
 on:
   workflow_dispatch:
   pull_request:
