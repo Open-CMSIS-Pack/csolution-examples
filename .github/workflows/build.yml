@@ -21,13 +21,13 @@ jobs:
 #          path: /home/runner/.vcpkg
 
 
-#      - name: Cache vcpkg
-#        uses: actions/cache@v3
-#        with:
-#          key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ matrix.compiler }}
-#          restore-keys: |
-#            vcpkg-${{ runner.os }}-${{ runner.arch }}-
-#          path: /home/runner/.vcpkg
+      - name: Cache vcpkg
+        uses: actions/cache@v3
+        with:
+          key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ matrix.compiler }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-${{ runner.arch }}-
+          path: /home/runner/.vcpkg
 
           
       - name: Activate Arm tool license and build
