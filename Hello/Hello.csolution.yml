@@ -8,6 +8,7 @@ solution:
   packs:
     - pack: ARM::CMSIS
     - pack: ARM::CMSIS-RTX
+    - pack: ARM::CORTEX-DFP
 
   target-types:
     - type: AVH                               # runs on Arm Virtual Hardware
