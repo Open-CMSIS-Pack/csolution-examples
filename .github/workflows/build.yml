@@ -31,17 +31,7 @@ jobs:
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
           vcpkg activate
-          if [[ -n "${{ env.ARM_UBL_ACTIVATION_CODE }}" ]]; then
-            armlm activate --code ${{ env.ARM_UBL_ACTIVATION_CODE }}
-          else
-            armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
-          fi
-
-      - name: Build Hello project
-        run: |
-          . ~/.vcpkg/vcpkg-init
-          vcpkg activate
-          cd Hello
+          armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
           cbuild Hello.csolution.yml --packs --rebuild
 
       - name: Deactivate Arm tool license
