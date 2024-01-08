@@ -20,15 +20,33 @@ jobs:
 #          key: vcpkg
 #          path: /home/runner/.vcpkg
 
-      - name: Build
+
+      - name: Cache vcpkg
+        uses: actions/cache@v3
+        with:
+          key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ matrix.compiler }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-${{ runner.arch }}-
+          path: /home/runner/.vcpkg
+
+          
+      - name: Activate Arm tool license
         env:
-          GITHUB_TOKEN: ${{secrets.ARM_TOKEN}}
+          ARM_UBL_ACTIVATION_CODE: ${{secrets.ARM_TOKEN}}
+        run: |
+          . ~/.vcpkg/vcpkg-init
+          vcpkg activate
+          if [[ -n "${{ env.ARM_UBL_ACTIVATION_CODE }}" ]]; then
+            armlm activate --code ${{ env.ARM_UBL_ACTIVATION_CODE }}
+          else
+            armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
+          fi
+
+      - name: Build
         run: | 
           . <(curl https://aka.ms/vcpkg-init.sh -L)
-          . ~/.vcpkg/vcpkg-init
           cd Hello/
           vcpkg activate
-          armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
           cbuild Hello.csolution.yml --packs --rebuild
 
 
