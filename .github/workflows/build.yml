@@ -21,16 +21,16 @@ jobs:
 #          path: /home/runner/.vcpkg
 
 
-      - name: Cache vcpkg
-        uses: actions/cache@v3
-        with:
-          key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ matrix.compiler }}
-          restore-keys: |
-            vcpkg-${{ runner.os }}-${{ runner.arch }}-
-          path: /home/runner/.vcpkg
+#      - name: Cache vcpkg
+#        uses: actions/cache@v3
+#        with:
+#          key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ matrix.compiler }}
+#          restore-keys: |
+#            vcpkg-${{ runner.os }}-${{ runner.arch }}-
+#          path: /home/runner/.vcpkg
 
           
-      - name: Activate Arm tool license
+      - name: Activate Arm tool license and build
         env:
           ARM_UBL_ACTIVATION_CODE: ${{secrets.ARM_TOKEN}}
         run: |
@@ -43,11 +43,9 @@ jobs:
           else
             armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
           fi
-
-      - name: Build
-        run: |
           cbuild Hello.csolution.yml --packs --rebuild
 
+          
 
 #      - name: Cache packs
 #        uses: actions/cache@v3
