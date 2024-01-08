@@ -45,6 +45,19 @@ jobs:
           fi
           cbuild Hello.csolution.yml --packs --rebuild
 
+
+      - name: Deactivate Arm tool license
+        if: always()
+        working-directory: ./Hello
+        run: |
+          . /home/runner/.vcpkg/vcpkg-init
+          vcpkg activate
+          if [[ -n "${{ env.ARM_UBL_ACTIVATION_CODE }}" ]]; then
+            armlm deactivate --code ${{ env.ARM_UBL_ACTIVATION_CODE }}
+          else
+            armlm deactivate --product KEMDK-COM0
+          fi
+
           
 
 #      
