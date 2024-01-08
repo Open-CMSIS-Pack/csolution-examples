@@ -34,7 +34,9 @@ jobs:
         env:
           ARM_UBL_ACTIVATION_CODE: ${{secrets.ARM_TOKEN}}
         run: |
+          . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
+          cd Hello/
           vcpkg activate
           if [[ -n "${{ env.ARM_UBL_ACTIVATION_CODE }}" ]]; then
             armlm activate --code ${{ env.ARM_UBL_ACTIVATION_CODE }}
@@ -43,10 +45,7 @@ jobs:
           fi
 
       - name: Build
-        run: | 
-          . <(curl https://aka.ms/vcpkg-init.sh -L)
-          cd Hello/
-          vcpkg activate
+        run: |
           cbuild Hello.csolution.yml --packs --rebuild
 
 
