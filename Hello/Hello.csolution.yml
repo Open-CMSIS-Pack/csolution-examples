@@ -7,7 +7,7 @@ solution:
 # it is recommended to list the pack or packs that define the device or board used in the csolution.yml file
   packs:
     - pack: ARM::CMSIS
-    - pack: ARM::CMSIS:RTOS2
+    - pack: ARM::CMSIS-RTX
 
   target-types:
     - type: AVH                               # runs on Arm Virtual Hardware
