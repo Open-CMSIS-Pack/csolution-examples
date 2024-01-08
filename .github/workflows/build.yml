@@ -10,6 +10,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+        ARM_UBL_ACTIVATION_CODE: ${{secrets.ARM_TOKEN}}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -31,8 +33,6 @@ jobs:
 
           
       - name: Activate Arm tool license and build
-        env:
-          ARM_UBL_ACTIVATION_CODE: ${{secrets.ARM_TOKEN}}
         run: |
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
