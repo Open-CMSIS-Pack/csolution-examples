@@ -28,6 +28,7 @@ jobs:
           . ~/.vcpkg/vcpkg-init
           cd Hello/
           vcpkg activate
+          armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
           cbuild Hello.csolution.yml --packs --rebuild
 
 
