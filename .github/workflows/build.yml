@@ -22,8 +22,6 @@ jobs:
           key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}
           
       - name: Activate Arm tool license and build
-        env:
-          ARM_UBL_ACTIVATION_CODE: ${{secrets.ARM_TOKEN}}
         run: |
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
