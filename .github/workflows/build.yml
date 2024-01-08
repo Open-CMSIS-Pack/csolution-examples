@@ -16,22 +16,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-
       - name: Cache vcpkg
         uses: actions/cache@v3
         with:
           key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}
-          restore-keys: |
-            vcpkg-${{ runner.os }}-${{ runner.arch }}-
-          path: /home/runner/.vcpkg
-
           
       - name: Activate Arm tool license
+        env:
+          ARM_UBL_ACTIVATION_CODE: ${{secrets.ARM_TOKEN}}
         run: |
-          . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
           vcpkg activate
-          armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
+          if [[ -n "${{ env.ARM_UBL_ACTIVATION_CODE }}" ]]; then
+            armlm activate --code ${{ env.ARM_UBL_ACTIVATION_CODE }}
+          else
+            armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
+          fi
+
+      - name: Build
+        run: | 
+          . <(curl https://aka.ms/vcpkg-init.sh -L)
+          cd Hello/
+          vcpkg activate
           cbuild Hello.csolution.yml --packs --rebuild
 
       - name: Deactivate Arm tool license
