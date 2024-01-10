@@ -30,4 +30,4 @@ project:
     - component: Compiler:I/O:STDOUT&User
     - component: Device:Definition
     - component: Device:Startup&Baremetal
-    - component: ARM::CMSIS:OS Tick:SysTick@1.0.5
+    - component: ARM::CMSIS:OS Tick:SysTick
