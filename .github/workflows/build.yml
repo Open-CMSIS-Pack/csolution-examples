@@ -43,8 +43,13 @@ jobs:
           else
             armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
           fi
-          cbuild Hello.csolution.yml --packs --rebuild
 
+      - name: Build Hello project
+        run: |
+          . ~/.vcpkg/vcpkg-init
+          cd Hello/
+          vcpkg activate
+          cbuild Hello.csolution.yml --packs --rebuild
 
       - name: Deactivate Arm tool license
         if: always()
@@ -59,11 +64,4 @@ jobs:
           fi
 
           
-
-#      
-#     - name: Cache packs
-#        uses: actions/cache@v3
-#        with:
-#          key: packs
-#          path: /home/.cache/arm/packs
 
