@@ -32,6 +32,12 @@ jobs:
           else
             armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
           fi
+
+      - name: Build Hello project
+        run: |
+          . ~/.vcpkg/vcpkg-init
+          cd Hello/
+          vcpkg activate
           cbuild Hello.csolution.yml --packs --rebuild
 
       - name: Deactivate Arm tool license
