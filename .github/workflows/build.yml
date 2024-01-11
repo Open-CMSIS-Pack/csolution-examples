@@ -1,4 +1,4 @@
-name: Build GetStarted example
+name: Build Csolution Hello example
 on:
   workflow_dispatch:
   pull_request:
@@ -20,7 +20,7 @@ jobs:
       - name: Cache vcpkg
         uses: actions/cache@v3
         with:
-          key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}-${{ matrix.compiler }}
+          key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}
           restore-keys: |
             vcpkg-${{ runner.os }}-${{ runner.arch }}-
           path: /home/runner/.vcpkg
@@ -30,7 +30,6 @@ jobs:
         run: |
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
-          cd Hello/
           vcpkg activate
           if [[ -n "${{ env.ARM_UBL_ACTIVATION_CODE }}" ]]; then
             armlm activate --code ${{ env.ARM_UBL_ACTIVATION_CODE }}
@@ -39,16 +38,14 @@ jobs:
           fi
 
       - name: Build Hello project
-        if: always()
         run: |
           . ~/.vcpkg/vcpkg-init
-          cd Hello/
           vcpkg activate
+          cd Hello
           cbuild Hello.csolution.yml --packs --rebuild
 
       - name: Deactivate Arm tool license
         if: always()
-        working-directory: ./Hello
         run: |
           . /home/runner/.vcpkg/vcpkg-init
           vcpkg activate
