@@ -32,7 +32,7 @@ jobs:
           path: /home/runner/.vcpkg
 
           
-      - name: Activate Arm tool license and build
+      - name: Activate Arm tool license
         run: |
           . <(curl https://aka.ms/vcpkg-init.sh -L)
           . ~/.vcpkg/vcpkg-init
@@ -45,6 +45,7 @@ jobs:
           fi
 
       - name: Build Hello project
+        if: always()
         run: |
           . ~/.vcpkg/vcpkg-init
           cd Hello/
