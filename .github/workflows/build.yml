@@ -1,0 +1,59 @@
+name: Build Csolution Hello example
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+        ARM_UBL_ACTIVATION_CODE: ${{secrets.ARM_TOKEN}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+
+      - name: Cache vcpkg
+        uses: actions/cache@v3
+        with:
+          key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ github.run_id }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-${{ runner.arch }}-
+          path: /home/runner/.vcpkg
+
+          
+      - name: Activate Arm tool license
+        run: |
+          . <(curl https://aka.ms/vcpkg-init.sh -L)
+          . ~/.vcpkg/vcpkg-init
+          vcpkg activate
+          if [[ -n "${{ env.ARM_UBL_ACTIVATION_CODE }}" ]]; then
+            armlm activate --code ${{ env.ARM_UBL_ACTIVATION_CODE }}
+          else
+            armlm activate --server https://mdk-preview.keil.arm.com --product KEMDK-COM0
+          fi
+
+      - name: Build Hello project
+        run: |
+          . ~/.vcpkg/vcpkg-init
+          vcpkg activate
+          cd Hello
+          cbuild Hello.csolution.yml --packs --rebuild
+
+      - name: Deactivate Arm tool license
+        if: always()
+        run: |
+          . /home/runner/.vcpkg/vcpkg-init
+          vcpkg activate
+          if [[ -n "${{ env.ARM_UBL_ACTIVATION_CODE }}" ]]; then
+            armlm deactivate --code ${{ env.ARM_UBL_ACTIVATION_CODE }}
+          else
+            armlm deactivate --product KEMDK-COM0
+          fi
+
+          
+
