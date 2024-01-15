@@ -1,4 +1,19 @@
 project:
+  misc: 
+    - for-compiler: AC6
+      C-CPP:
+        - --include cm4_cmsis_5_to_6_patch.h
+    - for-compiler: GCC
+      C-CPP:
+        - --include cm4_cmsis_5_to_6_patch.h
+    - for-compiler: CLANG
+      C-CPP:
+        - --include cm4_cmsis_5_to_6_patch.h
+    - for-compiler: IAR
+      C-CPP:
+        - --preinclude cm4_cmsis_5_to_6_patch.h
+
+
   device: :cm4
 
   packs:
@@ -13,6 +28,7 @@ project:
 
   add-path:
     - ../middleware/multicore/mcmgr/src
+    - ../cm4
 
 
   components:
