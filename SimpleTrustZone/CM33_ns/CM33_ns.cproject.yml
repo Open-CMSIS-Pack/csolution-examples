@@ -5,9 +5,6 @@ project:
   add-path:
     - ../CM33_s
 
-  packs:
-    - pack: ARM::CMSIS
-
   groups:
     - group: Non-secure Code
       files:
