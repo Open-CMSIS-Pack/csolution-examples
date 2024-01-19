@@ -4,7 +4,7 @@ solution:
   compiler: AC6
 
   packs:
-    - pack: ARM::CMSIS@6.0.0
+    - pack: ARM::CMSIS
     - pack: ARM::CMSIS-RTX
     - pack: ARM::Cortex_DFP
 
