@@ -2,16 +2,16 @@ project:
   misc: 
     - for-compiler: AC6
       C-CPP:
-        - --include cm4_cmsis_5_to_6_patch.h
+        - --include cmsis_core5.h
     - for-compiler: GCC
       C-CPP:
-        - --include cm4_cmsis_5_to_6_patch.h
+        - --include cmsis_core5.h
     - for-compiler: CLANG
       C-CPP:
-        - --include cm4_cmsis_5_to_6_patch.h
+        - --include cmsis_core5.h
     - for-compiler: IAR
       C-CPP:
-        - --preinclude cm4_cmsis_5_to_6_patch.h
+        - --preinclude cmsis_core5.h
 
 
   device: :cm4
