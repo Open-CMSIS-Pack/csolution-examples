@@ -9,20 +9,36 @@ on:
     - cron: '30 22 * * 0'
 
 jobs:
-  build:
-    name: Build
+  build-and-run:    
+    name: Build and Run
+
+    strategy:
+      fail-fast: true
+      matrix:
+        compiler: [AC6, GCC, Clang]
+
     runs-on: ubuntu-latest
+
     env:
-        ARM_UBL_ACTIVATION_CODE: ${{secrets.ARM_TOKEN}}
+        ARM_UBL_ACTIVATION_CODE: ${{secrets.ARM_UBL_ACTIVATION_CODE}}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'    
+          cache: 'pip'
+
+      - name: Python requirements
+        run: |
+          pip install -r requirements.txt
 
       - name: Setup vcpkg environment
         uses: JonatanAntoni/actions/vcpkg@main
         with:
           config: vcpkg-configuration.json
-
           
       - name: Activate Arm tool license
         run: |
@@ -33,22 +49,22 @@ jobs:
           fi
 
       - name: Build Hello project
-        if: always()
+        if: always() && matrix.compiler == 'AC6'
         run: |
           cd Hello
-          cbuild Hello.csolution.yml --packs
+          cbuild Hello.csolution.yml --packs --update-rte --toolchain ${{ matrix.compiler }}
 
       - name: Build DualCore
-        if: always()
+        if: always() && matrix.compiler == 'AC6'
         run: |
           cd DualCore
-          cbuild HelloWorld.csolution.yml --packs --update-rte
+          cbuild HelloWorld.csolution.yml --packs --update-rte --toolchain ${{ matrix.compiler }}
 
       - name: SimpleTrustZone
         if: always()
         run: |
           cd SimpleTrustZone
-          cbuild SimpleTZ.csolution.yml --packs --update-rte
+          ./build.py --verbose -c ${{ matrix.compiler }} build run
           
 
       - name: Deactivate Arm tool license
