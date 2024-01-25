@@ -28,6 +28,8 @@
   #error device not specified!
 #endif
 
+#include <stdlib.h>
+
 /*----------------------------------------------------------------------------
   External References
  *----------------------------------------------------------------------------*/
@@ -147,6 +149,7 @@ __NO_RETURN void Reset_Handler(void)
  *----------------------------------------------------------------------------*/
 void HardFault_Handler(void)
 {
+  exit(-1);
   while(1);
 }
 
@@ -155,6 +158,7 @@ void HardFault_Handler(void)
  *----------------------------------------------------------------------------*/
 void Default_Handler(void)
 {
+  exit(-2);
   while(1);
 }
 

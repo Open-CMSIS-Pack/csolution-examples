@@ -23,6 +23,9 @@
  *    Initial Release
  *---------------------------------------------------------------------------*/
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "interface.h"        // Interface API
 
 extern volatile int val1, val2;
@@ -38,12 +41,18 @@ int func3 (int x)  {
 /* Non-secure main() */
 int main(void) {
  
+  printf("Non-secure application...\n");
+
   /* Call non-secure callable function func1 */
   val1 = func1 (1);
+  printf("func1(1) = %d\n", val1);
  
   /* Call non-secure callable function func2
      with callback to non-secure function func3 */
-  val2 = func2 (func3, 2);
+  val2 = func2(func3, 2);
+  printf("func2(func3, 2) = %d\n", val2);
  
+  exit(0);
+
   while (1);
 }

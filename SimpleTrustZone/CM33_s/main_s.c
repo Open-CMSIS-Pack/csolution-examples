@@ -27,13 +27,15 @@
  
 /* Use CMSE intrinsics */
 #include <arm_cmse.h>
+#include <stdio.h>
+#include <stdlib.h>
  
 #include "RTE_Components.h"
 #include CMSIS_device_header
  
 /* TZ_START_NS: Start address of non-secure application */
 #ifndef TZ_START_NS
-#define TZ_START_NS (0x200000U)
+#define TZ_START_NS (0x00200000U)
 #endif
  
 /* typedef for non-secure callback functions */
@@ -51,9 +53,13 @@ int main(void) {
   /* Get non-secure reset handler */
   NonSecure_ResetHandler = (funcptr_void)(*((uint32_t *)((TZ_START_NS) + 4U)));
  
+  printf("Jump to non-secure application at 0x%08X\n", NonSecure_ResetHandler);
+
   /* Start non-secure state software application */
   NonSecure_ResetHandler();
  
+  exit(1);
+
   /* Non-secure software does not return, this code is not executed */
   while (1) {
     __NOP();

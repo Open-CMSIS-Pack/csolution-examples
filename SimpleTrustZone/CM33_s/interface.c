@@ -28,15 +28,17 @@
 #include "interface.h"    // Header file with secure interface API
 
 /* typedef for non-secure callback functions */
-typedef funcptr funcptr_NS __attribute__((cmse_nonsecure_call));
+typedef funcptr __attribute__((cmse_nonsecure_call)) funcptr_NS;
 
 /* Non-secure callable (entry) function */
-int func1(int x) __attribute__((cmse_nonsecure_entry)) { 
+__attribute__((cmse_nonsecure_entry))
+int func1(int x) { 
   return x+3; 
 }
 
 /* Non-secure callable (entry) function, calling a non-secure callback function */
-int func2(funcptr callback, int x)  __attribute__((cmse_nonsecure_entry))	{
+__attribute__((cmse_nonsecure_entry))
+int func2(funcptr callback, int x) {
 	funcptr_NS callback_NS;               // non-secure callback function pointer
 	int y;
 	
