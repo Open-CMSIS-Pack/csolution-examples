@@ -27,3 +27,4 @@ solution:
   projects:
     - project: ./cm0plus/HelloWorld_cm0plus.cproject.yml
     - project: ./cm4/HelloWorld_cm4.cproject.yml
+      
