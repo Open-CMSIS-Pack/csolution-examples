@@ -5,7 +5,6 @@ solution:
 
   packs:
     - pack: ARM::CMSIS
-    - pack: ARM::CMSIS-RTX
     - pack: ARM::Cortex_DFP
 
   target-types:
