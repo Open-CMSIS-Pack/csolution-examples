@@ -1,0 +1,73 @@
+# hadolint ignore=DL3029
+FROM  --platform=linux/amd64 ubuntu:22.04
+
+SHELL ["/bin/bash", "-c"]
+
+ARG USERNAME=user
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+ARG DEBIAN_FRONTEND=noninteractive 
+
+# hadolint ignore=DL3008,DL3015
+# RUN apt-get update && \
+#     apt-get -y install \
+#         build-essential \
+#         curl \
+#         gdb \
+#         gh \
+#         git \
+#         less \
+#         libncurses5 \
+#         libtinfo5 \
+#         libusb-1.0-0 \
+#         llvm-15-tools \
+#         locales \
+#         nano \
+#         python3 \
+#         python3-pip \
+#         python-is-python3 \
+#         software-properties-common \
+#         sudo \
+#         unzip && \
+#     apt-get clean && \
+#     rm -rf /var/lib/apt/lists/* && \
+#     ln -s /usr/bin/FileCheck-15 /usr/bin/FileCheck
+
+# hadolint ignore=DL3008
+# RUN add-apt-repository ppa:deadsnakes/ppa && \
+#     apt-get -y --no-install-recommends install libpython3.9
+
+# RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
+#     locale-gen
+
+# hadolint ignore=DL3013
+# RUN pip install --no-cache-dir \
+#         lit \
+#         python-matrix-runner
+
+# RUN pushd /root && \
+#     curl -LO http://files.iar.com/ftp/pub/box/bxarm-9.50.1.deb && \
+#     dpkg -i bxarm-9.50.1.deb && \
+#     rm bxarm-9.50.1.deb
+# 
+# ENV PATH=$PATH:/opt/iarsystems/bxarm/arm/bin
+# ENV IAR_TOOLCHAIN_9_50_1=/opt/iarsystems/bxarm/arm/bin
+# ENV IAR_LMS_SETTINGS_DIR=/home/$USERNAME/.iarlm
+
+# Create the user
+# RUN groupadd --gid $USER_GID $USERNAME \
+#     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash \
+#     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+#     && chmod 0440 /etc/sudoers.d/$USERNAME
+# 
+# RUN mkdir -p /workspaces && \
+#     chown $USER_UID:$USER_GID /workspaces
+
+COPY postCreateCommand.sh /home/
+RUN chmod +x /home/postCreateCommand.sh
+
+# USER $USERNAME
+# WORKDIR /home/$USERNAME
+
+CMD ["/bin/bash"]
