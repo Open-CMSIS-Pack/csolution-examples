@@ -58,3 +58,4 @@ dkms.conf
 *.cprj
 RTE_Components.h
 **/tmp
+**/*.update@*

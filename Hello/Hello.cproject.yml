@@ -1,10 +1,5 @@
 project:
 
-# it is recommended to list the packs that contain the components in the cproject.yml file.
-  packs:
-    - pack: ARM::V2M_MPS3_SSE_300_BSP@1.2.0   # optional packs can specify a version
-    - pack: Keil::ARM_Compiler                # for retargeting stdout to UART
-
   groups:
     - group: Documentation
       files: 
@@ -19,15 +14,30 @@ project:
       files:
         - file: ./Board_IO/retarget_stdio.c
 
+  linker:
+    - for-compiler: AC6
+      script: RTE/Device/SSE-300-MPS3/linker_SSE300MPS3_secure.sct
+      regions: RTE/Device/SSE-300-MPS3/region_defs.h
+    - for-compiler: GCC
+      script: RTE/Device/SSE-300-MPS3/linker_SSE300MPS3_secure.ld
+      regions: RTE/Device/SSE-300-MPS3/region_defs.h
+    - for-compiler: CLANG
+      script: RTE/Device/SSE-300-MPS3/linker_SSE300MPS3_secure_clang.ld
+      regions: RTE/Device/SSE-300-MPS3/region_defs.h
+
   components:
     - component: CMSIS:CORE                             # short form, vendor selected from available packs
     - component: ARM::CMSIS:RTOS2:Keil RTX5&Source      # long form, vendor explicitly stated 
-    - component: CMSIS Driver:USART
-    - component: ARM::Native Driver:IO
-    - component: ARM::Native Driver:UART
-    - component: Compiler:I/O:STDERR&User
-    - component: Compiler:I/O:STDIN&User
-    - component: Compiler:I/O:STDOUT&User
-    - component: Device:Definition
-    - component: Device:Startup&Baremetal
     - component: ARM::CMSIS:OS Tick:SysTick
+    - component: CMSIS-Compiler:CORE
+    - component: CMSIS-Compiler:STDOUT:Custom
+    - component: CMSIS-Compiler:STDERR:Custom
+    - component: CMSIS-Compiler:STDIN:Custom
+    - component: CMSIS Driver:USART
+    - component: Device:Native Driver:IO
+    - component: Device:Native Driver:UART
+    - component: Device:Native Driver:SysCounter
+    - component: Device:Native Driver:SysTimer
+    - component: Device:Native Driver:Timeout
+    - component: Device:Definition
+    - component: Device:Startup&C Startup
