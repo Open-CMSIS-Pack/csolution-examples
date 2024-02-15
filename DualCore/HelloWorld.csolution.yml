@@ -1,16 +1,16 @@
 solution:
-  created-for: CMSIS-Toolbox@2.0.0
+  created-for: CMSIS-Toolbox@2.2.0
   cdefault:
   compiler: AC6
-  
+
   packs:
-    - pack: NXP::K32L3A60_DFP@16.0.0
-    - pack: NXP::FRDM-K32L3A6_BSP@16.0.0 
+    - pack: NXP::K32L3A60_DFP@17.0.0
+    - pack: NXP::FRDM-K32L3A6_BSP@17.0.0 
 
   target-types:
     - type: FRDM-K32L3A6
       board: FRDM-K32L3A6
-      #device: K32L3A60VPJ1A
+      device: K32L3A60VPJ1A
 
   build-types:                                # defines toolchain options for 'debug' and 'release'
     - type: Debug
@@ -27,4 +27,3 @@ solution:
   projects:
     - project: ./cm0plus/HelloWorld_cm0plus.cproject.yml
     - project: ./cm4/HelloWorld_cm4.cproject.yml
-      

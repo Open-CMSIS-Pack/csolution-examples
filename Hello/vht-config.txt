@@ -7,24 +7,6 @@ REMOTE_CONNECTION.CADIServer.enable_remote_cadi=0     # (bool  , init-time) defa
 REMOTE_CONNECTION.CADIServer.listen_address=127.0.0.1  # (string, init-time) default = '127.0.0.1' : Network address the server should listen on if enable_remote_cadi is set ("127.0.0.1" by default)
 REMOTE_CONNECTION.CADIServer.port=31627               # (int   , init-time) default = '0x7b8b' : TCP port the server should listen on if enable_remote_cadi is set (31627 by default)
 REMOTE_CONNECTION.CADIServer.range=0                  # (int   , init-time) default = '0x0'    : If requested port is not avaliable, search for next avaliable port in range: [port:port+range] (0 by default, only try specified port)
-ambapv2pvbus_vsocket.base_addr=0                      # (int   , init-time) default = '0x0'    : Base address
-ambapv2pvbus_vsocket.shareable=1                      # (bool  , init-time) default = '1'      : Shareable default
-ambapv2pvbusx8_vsi.ambapv2pvbus_0.base_addr=0         # (int   , init-time) default = '0x0'    : Base address
-ambapv2pvbusx8_vsi.ambapv2pvbus_0.shareable=1         # (bool  , init-time) default = '1'      : Shareable default
-ambapv2pvbusx8_vsi.ambapv2pvbus_1.base_addr=0         # (int   , init-time) default = '0x0'    : Base address
-ambapv2pvbusx8_vsi.ambapv2pvbus_1.shareable=1         # (bool  , init-time) default = '1'      : Shareable default
-ambapv2pvbusx8_vsi.ambapv2pvbus_2.base_addr=0         # (int   , init-time) default = '0x0'    : Base address
-ambapv2pvbusx8_vsi.ambapv2pvbus_2.shareable=1         # (bool  , init-time) default = '1'      : Shareable default
-ambapv2pvbusx8_vsi.ambapv2pvbus_3.base_addr=0         # (int   , init-time) default = '0x0'    : Base address
-ambapv2pvbusx8_vsi.ambapv2pvbus_3.shareable=1         # (bool  , init-time) default = '1'      : Shareable default
-ambapv2pvbusx8_vsi.ambapv2pvbus_4.base_addr=0         # (int   , init-time) default = '0x0'    : Base address
-ambapv2pvbusx8_vsi.ambapv2pvbus_4.shareable=1         # (bool  , init-time) default = '1'      : Shareable default
-ambapv2pvbusx8_vsi.ambapv2pvbus_5.base_addr=0         # (int   , init-time) default = '0x0'    : Base address
-ambapv2pvbusx8_vsi.ambapv2pvbus_5.shareable=1         # (bool  , init-time) default = '1'      : Shareable default
-ambapv2pvbusx8_vsi.ambapv2pvbus_6.base_addr=0         # (int   , init-time) default = '0x0'    : Base address
-ambapv2pvbusx8_vsi.ambapv2pvbus_6.shareable=1         # (bool  , init-time) default = '1'      : Shareable default
-ambapv2pvbusx8_vsi.ambapv2pvbus_7.base_addr=0         # (int   , init-time) default = '0x0'    : Base address
-ambapv2pvbusx8_vsi.ambapv2pvbus_7.shareable=1         # (bool  , init-time) default = '1'      : Shareable default
 core_clk.mul=32000000                                 # (int   , init-time) default = '0x17d7840' : Clock Rate Multiplier. This parameter is not exposed via CADI and can only be set in LISA
 cpu0.BEATS_PER_TICK=2                                 # (int   , init-time) default = '0x2'    : Number of beats from each in-flight vector instruction executed in 1 tick (1,2 or 4).
 cpu0.BF_is_nop=0                                      # (bool  , init-time) default = '0'      : BF instruction executes as NOP, even if we have LO_BRANCH_INFO.
@@ -95,7 +77,6 @@ cpu0.ecc_on=0                                         # (bool  , init-time) defa
 cpu0.execute_via_archex=1                             # (bool  , init-time) default = '1'      : Use ArchEx-generated code from V8_EAC12_SEPTEMBER_2021_RELEASE_NO_AUTOGEN for execution
 cpu0.has_cde=0                                        # (bool  , init-time) default = '0'      : Enables Custom Datapath Extensions
 cpu0.has_core_dside_bus_gasket=0                      # (bool  , init-time) default = '0'      : STL gasket enabled
-cpu0.has_pmu=0                                        # (bool  , init-time) default = '0'      : Availability of optional PMU.
 cpu0.has_unpriviledged_debug=1                        # (bool  , init-time) default = '1'      : Unpriviledged Debug Extension supported for Mainline Extension
 cpu0.icache-state_modelled=0                          # (bool  , run-time ) default = '0'      : Set whether I-cache has stateful implementation
 cpu0.icache-ways=2                                    # (int   , init-time) default = '0x2'    : L1 I-cache ways (sets are implicit from size)
@@ -1702,74 +1683,4 @@ mps3_board.visualisation.disable-visualisation=0      # (bool  , init-time) defa
 mps3_board.visualisation.idler.delay_ms=50            # (int   , init-time) default = '0x32'   : Determines the period, in milliseconds of real time, between gui_callback() calls.
 mps3_board.visualisation.rate_limit-enable=1          # (bool  , init-time) default = '1'      : Rate limit simulation.
 mps3_board.visualisation.window_title=CLCD %cpu%      # (string, init-time) default = 'CLCD %cpu%' : Window title (%cpu% is replaced by cpu_name)
-pvbus2ambapv_vio.counters-file-name=                  # (string, init-time) default = ''       : Prefix of the file name to store counters at the end of simulation
-pvbus2ambapv_vio.dmi-container-type=TZAttr            # (string, init-time) default = 'TZAttr' : Type of the DMI cache. Allowed values: TZAttr and FullAttr
-pvbus2ambapv_vio.dump-dmi-cache=0                     # (bool  , run-time ) default = '0'      : Dumps the content of the DMI cache into a file
-pvbus2ambapv_vio.dump-dmi-file-name=                  # (string, init-time) default = ''       : Prefix of the file name to dump the content of the DMI when requested
-pvbus2ambapv_vio.force-dmi-size=1                     # (bool  , init-time) default = '1'      : Force DMI start and end address to be 4kB-aligned
-pvbus2ambapv_vio.min-range-to-cache=65536             # (int   , init-time) default = '0x10000' : Min DMI range size to cache in the bridge
-pvbus2ambapv_vio.size=281474976710656                 # (int   , init-time) default = '0x1000000000000' : Maximum size of memory region
-pvbus2ambapv_vsocket.counters-file-name=              # (string, init-time) default = ''       : Prefix of the file name to store counters at the end of simulation
-pvbus2ambapv_vsocket.dmi-container-type=TZAttr        # (string, init-time) default = 'TZAttr' : Type of the DMI cache. Allowed values: TZAttr and FullAttr
-pvbus2ambapv_vsocket.dump-dmi-cache=0                 # (bool  , run-time ) default = '0'      : Dumps the content of the DMI cache into a file
-pvbus2ambapv_vsocket.dump-dmi-file-name=              # (string, init-time) default = ''       : Prefix of the file name to dump the content of the DMI when requested
-pvbus2ambapv_vsocket.force-dmi-size=1                 # (bool  , init-time) default = '1'      : Force DMI start and end address to be 4kB-aligned
-pvbus2ambapv_vsocket.min-range-to-cache=65536         # (int   , init-time) default = '0x10000' : Min DMI range size to cache in the bridge
-pvbus2ambapv_vsocket.size=281474976710656             # (int   , init-time) default = '0x1000000000000' : Maximum size of memory region
-pvbus2ambapvx8_vsi.pvbus2ambapv_0.counters-file-name=  # (string, init-time) default = ''       : Prefix of the file name to store counters at the end of simulation
-pvbus2ambapvx8_vsi.pvbus2ambapv_0.dmi-container-type=TZAttr  # (string, init-time) default = 'TZAttr' : Type of the DMI cache. Allowed values: TZAttr and FullAttr
-pvbus2ambapvx8_vsi.pvbus2ambapv_0.dump-dmi-cache=0    # (bool  , run-time ) default = '0'      : Dumps the content of the DMI cache into a file
-pvbus2ambapvx8_vsi.pvbus2ambapv_0.dump-dmi-file-name=  # (string, init-time) default = ''       : Prefix of the file name to dump the content of the DMI when requested
-pvbus2ambapvx8_vsi.pvbus2ambapv_0.force-dmi-size=1    # (bool  , init-time) default = '1'      : Force DMI start and end address to be 4kB-aligned
-pvbus2ambapvx8_vsi.pvbus2ambapv_0.min-range-to-cache=65536  # (int   , init-time) default = '0x10000' : Min DMI range size to cache in the bridge
-pvbus2ambapvx8_vsi.pvbus2ambapv_0.size=281474976710656  # (int   , init-time) default = '0x1000000000000' : Maximum size of memory region
-pvbus2ambapvx8_vsi.pvbus2ambapv_1.counters-file-name=  # (string, init-time) default = ''       : Prefix of the file name to store counters at the end of simulation
-pvbus2ambapvx8_vsi.pvbus2ambapv_1.dmi-container-type=TZAttr  # (string, init-time) default = 'TZAttr' : Type of the DMI cache. Allowed values: TZAttr and FullAttr
-pvbus2ambapvx8_vsi.pvbus2ambapv_1.dump-dmi-cache=0    # (bool  , run-time ) default = '0'      : Dumps the content of the DMI cache into a file
-pvbus2ambapvx8_vsi.pvbus2ambapv_1.dump-dmi-file-name=  # (string, init-time) default = ''       : Prefix of the file name to dump the content of the DMI when requested
-pvbus2ambapvx8_vsi.pvbus2ambapv_1.force-dmi-size=1    # (bool  , init-time) default = '1'      : Force DMI start and end address to be 4kB-aligned
-pvbus2ambapvx8_vsi.pvbus2ambapv_1.min-range-to-cache=65536  # (int   , init-time) default = '0x10000' : Min DMI range size to cache in the bridge
-pvbus2ambapvx8_vsi.pvbus2ambapv_1.size=281474976710656  # (int   , init-time) default = '0x1000000000000' : Maximum size of memory region
-pvbus2ambapvx8_vsi.pvbus2ambapv_2.counters-file-name=  # (string, init-time) default = ''       : Prefix of the file name to store counters at the end of simulation
-pvbus2ambapvx8_vsi.pvbus2ambapv_2.dmi-container-type=TZAttr  # (string, init-time) default = 'TZAttr' : Type of the DMI cache. Allowed values: TZAttr and FullAttr
-pvbus2ambapvx8_vsi.pvbus2ambapv_2.dump-dmi-cache=0    # (bool  , run-time ) default = '0'      : Dumps the content of the DMI cache into a file
-pvbus2ambapvx8_vsi.pvbus2ambapv_2.dump-dmi-file-name=  # (string, init-time) default = ''       : Prefix of the file name to dump the content of the DMI when requested
-pvbus2ambapvx8_vsi.pvbus2ambapv_2.force-dmi-size=1    # (bool  , init-time) default = '1'      : Force DMI start and end address to be 4kB-aligned
-pvbus2ambapvx8_vsi.pvbus2ambapv_2.min-range-to-cache=65536  # (int   , init-time) default = '0x10000' : Min DMI range size to cache in the bridge
-pvbus2ambapvx8_vsi.pvbus2ambapv_2.size=281474976710656  # (int   , init-time) default = '0x1000000000000' : Maximum size of memory region
-pvbus2ambapvx8_vsi.pvbus2ambapv_3.counters-file-name=  # (string, init-time) default = ''       : Prefix of the file name to store counters at the end of simulation
-pvbus2ambapvx8_vsi.pvbus2ambapv_3.dmi-container-type=TZAttr  # (string, init-time) default = 'TZAttr' : Type of the DMI cache. Allowed values: TZAttr and FullAttr
-pvbus2ambapvx8_vsi.pvbus2ambapv_3.dump-dmi-cache=0    # (bool  , run-time ) default = '0'      : Dumps the content of the DMI cache into a file
-pvbus2ambapvx8_vsi.pvbus2ambapv_3.dump-dmi-file-name=  # (string, init-time) default = ''       : Prefix of the file name to dump the content of the DMI when requested
-pvbus2ambapvx8_vsi.pvbus2ambapv_3.force-dmi-size=1    # (bool  , init-time) default = '1'      : Force DMI start and end address to be 4kB-aligned
-pvbus2ambapvx8_vsi.pvbus2ambapv_3.min-range-to-cache=65536  # (int   , init-time) default = '0x10000' : Min DMI range size to cache in the bridge
-pvbus2ambapvx8_vsi.pvbus2ambapv_3.size=281474976710656  # (int   , init-time) default = '0x1000000000000' : Maximum size of memory region
-pvbus2ambapvx8_vsi.pvbus2ambapv_4.counters-file-name=  # (string, init-time) default = ''       : Prefix of the file name to store counters at the end of simulation
-pvbus2ambapvx8_vsi.pvbus2ambapv_4.dmi-container-type=TZAttr  # (string, init-time) default = 'TZAttr' : Type of the DMI cache. Allowed values: TZAttr and FullAttr
-pvbus2ambapvx8_vsi.pvbus2ambapv_4.dump-dmi-cache=0    # (bool  , run-time ) default = '0'      : Dumps the content of the DMI cache into a file
-pvbus2ambapvx8_vsi.pvbus2ambapv_4.dump-dmi-file-name=  # (string, init-time) default = ''       : Prefix of the file name to dump the content of the DMI when requested
-pvbus2ambapvx8_vsi.pvbus2ambapv_4.force-dmi-size=1    # (bool  , init-time) default = '1'      : Force DMI start and end address to be 4kB-aligned
-pvbus2ambapvx8_vsi.pvbus2ambapv_4.min-range-to-cache=65536  # (int   , init-time) default = '0x10000' : Min DMI range size to cache in the bridge
-pvbus2ambapvx8_vsi.pvbus2ambapv_4.size=281474976710656  # (int   , init-time) default = '0x1000000000000' : Maximum size of memory region
-pvbus2ambapvx8_vsi.pvbus2ambapv_5.counters-file-name=  # (string, init-time) default = ''       : Prefix of the file name to store counters at the end of simulation
-pvbus2ambapvx8_vsi.pvbus2ambapv_5.dmi-container-type=TZAttr  # (string, init-time) default = 'TZAttr' : Type of the DMI cache. Allowed values: TZAttr and FullAttr
-pvbus2ambapvx8_vsi.pvbus2ambapv_5.dump-dmi-cache=0    # (bool  , run-time ) default = '0'      : Dumps the content of the DMI cache into a file
-pvbus2ambapvx8_vsi.pvbus2ambapv_5.dump-dmi-file-name=  # (string, init-time) default = ''       : Prefix of the file name to dump the content of the DMI when requested
-pvbus2ambapvx8_vsi.pvbus2ambapv_5.force-dmi-size=1    # (bool  , init-time) default = '1'      : Force DMI start and end address to be 4kB-aligned
-pvbus2ambapvx8_vsi.pvbus2ambapv_5.min-range-to-cache=65536  # (int   , init-time) default = '0x10000' : Min DMI range size to cache in the bridge
-pvbus2ambapvx8_vsi.pvbus2ambapv_5.size=281474976710656  # (int   , init-time) default = '0x1000000000000' : Maximum size of memory region
-pvbus2ambapvx8_vsi.pvbus2ambapv_6.counters-file-name=  # (string, init-time) default = ''       : Prefix of the file name to store counters at the end of simulation
-pvbus2ambapvx8_vsi.pvbus2ambapv_6.dmi-container-type=TZAttr  # (string, init-time) default = 'TZAttr' : Type of the DMI cache. Allowed values: TZAttr and FullAttr
-pvbus2ambapvx8_vsi.pvbus2ambapv_6.dump-dmi-cache=0    # (bool  , run-time ) default = '0'      : Dumps the content of the DMI cache into a file
-pvbus2ambapvx8_vsi.pvbus2ambapv_6.dump-dmi-file-name=  # (string, init-time) default = ''       : Prefix of the file name to dump the content of the DMI when requested
-pvbus2ambapvx8_vsi.pvbus2ambapv_6.force-dmi-size=1    # (bool  , init-time) default = '1'      : Force DMI start and end address to be 4kB-aligned
-pvbus2ambapvx8_vsi.pvbus2ambapv_6.min-range-to-cache=65536  # (int   , init-time) default = '0x10000' : Min DMI range size to cache in the bridge
-pvbus2ambapvx8_vsi.pvbus2ambapv_6.size=281474976710656  # (int   , init-time) default = '0x1000000000000' : Maximum size of memory region
-pvbus2ambapvx8_vsi.pvbus2ambapv_7.counters-file-name=  # (string, init-time) default = ''       : Prefix of the file name to store counters at the end of simulation
-pvbus2ambapvx8_vsi.pvbus2ambapv_7.dmi-container-type=TZAttr  # (string, init-time) default = 'TZAttr' : Type of the DMI cache. Allowed values: TZAttr and FullAttr
-pvbus2ambapvx8_vsi.pvbus2ambapv_7.dump-dmi-cache=0    # (bool  , run-time ) default = '0'      : Dumps the content of the DMI cache into a file
-pvbus2ambapvx8_vsi.pvbus2ambapv_7.dump-dmi-file-name=  # (string, init-time) default = ''       : Prefix of the file name to dump the content of the DMI when requested
-pvbus2ambapvx8_vsi.pvbus2ambapv_7.force-dmi-size=1    # (bool  , init-time) default = '1'      : Force DMI start and end address to be 4kB-aligned
-pvbus2ambapvx8_vsi.pvbus2ambapv_7.min-range-to-cache=65536  # (int   , init-time) default = '0x10000' : Min DMI range size to cache in the bridge
-pvbus2ambapvx8_vsi.pvbus2ambapv_7.size=281474976710656  # (int   , init-time) default = '0x1000000000000' : Maximum size of memory region
 #------------------------------------------------------------------------------
