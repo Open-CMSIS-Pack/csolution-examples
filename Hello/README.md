@@ -37,9 +37,13 @@ The project is generated using the [CMSIS-Toolbox](https://github.com/Open-CMSIS
 The project is configured for execution on Arm Virtual Hardware which removes the requirement for a physical hardware board.  
 
 - When using MDK-Professional, you may execute it with the command:
-
+### For debug type
   ```txt
-  > C:/Keil_v5/ARM/VHT/VHT_Corstone_SSE-300_Ethos-U55 -f vht-config.txt -a ./out/Hello/AVH/Debug/Debug+AVH.axf
+  > C:/Keil_v5/ARM/VHT/VHT_Corstone_SSE-300_Ethos-U55 -f vht-config.txt -a ./out/Debug/Hello.axf
+  ```
+### For release type
+  ```txt
+  > C:/Keil_v5/ARM/VHT/VHT_Corstone_SSE-300_Ethos-U55 -f vht-config.txt -a ./out/Release/Hello.axf
   ```
 
 - [Keil Studio Cloud](https://studio.keil.arm.com/) integrates also the Arm Virtual Hardware VHT_Corstone_SSE-300_Ethos-U55 model. The steps to use the example are:

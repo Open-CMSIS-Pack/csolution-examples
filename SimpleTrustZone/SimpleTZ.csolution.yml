@@ -1,10 +1,10 @@
 solution:
-  created-for: CMSIS-Toolbox@2.0.0
+  created-for: CMSIS-Toolbox@2.2.0
   cdefault:
   compiler: AC6
 
   packs:
-    - pack: ARM::CMSIS
+    - pack: ARM::CMSIS@6.0.0
     - pack: ARM::Cortex_DFP
 
   target-types:

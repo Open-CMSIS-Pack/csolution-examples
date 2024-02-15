@@ -1,4 +1,6 @@
 project:
+  device: :cm4
+
   misc: 
     - for-compiler: AC6
       C-CPP:
@@ -13,11 +15,8 @@ project:
       C-CPP:
         - --preinclude cmsis_core5.h
 
-
-  device: :cm4
-
   packs:
-    - pack: ARM::CMSIS
+    - pack: ARM::CMSIS@6.0.0
 
   define:
     - CPU_K32L3A60VPJ1A_cm4
@@ -28,8 +27,7 @@ project:
 
   add-path:
     - ../middleware/multicore/mcmgr/src
-    - ../cm4
-
+    - ./RTE/CMSIS
 
   components:
     - component: NXP::Device:Startup
