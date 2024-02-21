@@ -67,7 +67,7 @@ jobs:
           ./build.py --verbose -c ${{ matrix.compiler}} build
 
       - name: SimpleTrustZone Run 
-        if: ${{ env.ARM_UBL_ACTIVATION_CODE }} && always
+        if: ${{ env.ARM_UBL_ACTIVATION_CODE && always() }}
         run: |
           cd SimpleTrustZone
           ./build.py --verbose -c ${{ matrix.compiler }} run
