@@ -1,7 +1,5 @@
-#! armclang --target=arm-arm-none-eabi -march=armv8.1-m.main -E -xc
-
 ;/*
-; * Copyright (c) 2018-2021 Arm Limited. All rights reserved.
+; * Copyright (c) 2018-2023 Arm Limited
 ; *
 ; * Licensed under the Apache License, Version 2.0 (the "License");
 ; * you may not use this file except in compliance with the License.
@@ -25,25 +23,6 @@ LR_CODE S_CODE_START {
         .ANY (+RO)
     }
 
-    /*
-     * Place the CMSE Veneers (containing the SG instruction) after the code, in
-     * a separate 32 bytes aligned region so that the SAU can programmed to just
-     * set this region as Non-Secure Callable. The maximum size of this
-     * executable region makes it only used the space left over by the ER_CODE
-     * region so that you can rely on code+veneer size combined will not exceed
-     * the S_CODE_SIZE value. We also substract from the available space the
-     * area used to align this section on 32 bytes boundary (for SAU conf).
-     */
-    ER_CODE_CMSE_VENEER +0 ALIGN 32 {
-        *(Veneer$$CMSE)
-    }
-    /*
-     * This dummy region ensures that the next one will be aligned on a 32 bytes
-     * boundary, so that the following region will not be mistakenly configured
-     * as Non-Secure Callable by the SAU.
-     */
-    ER_CODE_CMSE_VENEER_DUMMY +0 ALIGN 32 EMPTY 0 {}
-
     /* This empty, zero long execution region is here to mark the limit address
      * of the last execution region that is allocated in SRAM.
      */
@@ -63,7 +42,10 @@ LR_CODE S_CODE_START {
     }
     #endif
 
-    ARM_LIB_STACK +0 ALIGN 32 EMPTY STACK_SIZE {   ; Reserve empty region for stack
+    ARM_LIB_STACK +0 ALIGN 32 EMPTY STACK_SIZE - 0x8 {   ; Reserve empty region for stack
+    }
+
+    STACKSEAL +0 EMPTY 0x8 {
     }
 
     /* This empty, zero long execution region is here to mark the limit address

@@ -36,7 +36,7 @@ static void app_main (void *argument) {
   
   while (1)  {
     printf ("Hello World %d\r\n", count);
-    if (count > 100) printf ("\x04");  // EOT (0x04) stops simulation
+    if (count > 10) printf ("\x04");  // EOT (0x04) stops simulation
     count++;
     osDelay (1000);
   }

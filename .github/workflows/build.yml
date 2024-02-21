@@ -49,10 +49,10 @@ jobs:
           fi
 
       - name: Build Hello project
-        if: always() && matrix.compiler == 'AC6'
+        if: always()
         run: |
           cd Hello
-          cbuild Hello.csolution.yml --packs --update-rte --toolchain ${{ matrix.compiler }}
+          ./build.py --verbose -c ${{ matrix.compiler }} build run
 
       - name: Build DualCore
         if: always() && matrix.compiler == 'AC6'
