@@ -61,7 +61,7 @@ jobs:
           cbuild HelloWorld.csolution.yml --packs --update-rte --toolchain ${{ matrix.compiler }}
 
       - name: SimpleTrustZone Build and Run 
-        if: ${{ env.ARM_UBL_ACTIVATION_CODE }}
+        if: ${{ env.ARM_UBL_ACTIVATION_CODE }} && always
         run: |
           cd SimpleTrustZone
           ./build.py --verbose -c ${{ matrix.compiler }} build run
