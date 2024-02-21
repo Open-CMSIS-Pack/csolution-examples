@@ -60,11 +60,17 @@ jobs:
           cd DualCore
           cbuild HelloWorld.csolution.yml --packs --update-rte --toolchain ${{ matrix.compiler }}
 
-      - name: SimpleTrustZone
-        if: always()
+      - name: SimpleTrustZone Build and Run 
+        if: ${{ env.ARM_UBL_ACTIVATION_CODE }}
         run: |
           cd SimpleTrustZone
           ./build.py --verbose -c ${{ matrix.compiler }} build run
+
+      - name: SimpleTrustZone Build only
+        if: always()
+        run: |
+          cd SimpleTrustZone
+          ./build.py --verbose -c ${{ matrix.compiler}} build
           
 
       - name: Deactivate Arm tool license
