@@ -6,8 +6,8 @@
             "type": "arm-debugger",
             "request": "launch",           
             "programs": [
-                "${workspaceFolder}/SimpleTrustZone/out/AVH/CM33_ns.axf",
-                "${workspaceFolder}/SimpleTrustZone/out/AVH/CM33_s.axf"
+                "${workspaceFolder}/SimpleTrustZone/out/CM33_ns/AVH/Debug/CM33_ns.axf",
+                "${workspaceFolder}/SimpleTrustZone/out/CM33_s/AVH/Debug/CM33_s.axf"
             ],
             "programMode": "ram",
             // armdbg --cdb-list
@@ -21,8 +21,8 @@
             "type": "arm-debugger",
             "request": "launch",           
             "programs": [
-                "${workspaceFolder}/SimpleTrustZone/out/AVH/CM33_ns.elf",
-                "${workspaceFolder}/SimpleTrustZone/out/AVH/CM33_s.elf"
+                "${workspaceFolder}/SimpleTrustZone/out/CM33_ns/AVH/Debug/CM33_ns.elf",
+                "${workspaceFolder}/SimpleTrustZone/out/CM33_s/AVH/Debug/CM33_s.elf"
             ],
             "programMode": "ram",
             // armdbg --cdb-list

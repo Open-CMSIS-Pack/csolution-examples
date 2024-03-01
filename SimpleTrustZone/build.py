@@ -68,8 +68,8 @@ def cbuild(config):
 @matrix_command()
 def model_exec(config):
     return ["FVP_MPS2_Cortex-M33", "-q", "--simlimit", 100, "-f", "model_config.txt",
-            "-a", f"out/AVH/CM33_ns.{config.compiler.image_ext}",
-            "-a", f"out/AVH/CM33_s.{config.compiler.image_ext}"]
+            "-a", f"out/CM33_ns/AVH/Debug/CM33_ns.{config.compiler.image_ext}",
+            "-a", f"out/CM33_s/AVH/Debug/CM33_s.{config.compiler.image_ext}"]
 
 
 @matrix_filter
