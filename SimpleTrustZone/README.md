@@ -27,7 +27,7 @@ Variables used in this application can be viewed in the uVision Debugger Watch w
 ## Run in Fast Models
 
 ```txt
-> FVP_MPS2_Cortex-M33 -f model_config.txt -a cpu0=out/AVH/CM33_ns.axf -a cpu0=out/AVH/CM33_s.axf 
+> FVP_MPS2_Cortex-M33 -f model_config.txt -a cpu0=out/CM33_ns/AVH/Debug/CM33_ns.axf -a cpu0=out/CM33_s/AVH/Debug/CM33_s.axf 
 telnetterminal0: Listening for serial connection on port 5000
 telnetterminal1: Listening for serial connection on port 5001
 telnetterminal2: Listening for serial connection on port 5002
