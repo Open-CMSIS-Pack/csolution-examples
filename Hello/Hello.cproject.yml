@@ -2,7 +2,7 @@ project:
 
 # it is recommended to list the packs that contain the components in the cproject.yml file.
   packs:
-    - pack: ARM::V2M_MPS3_SSE_300_BSP@1.5.0   # optional packs can specify a version
+    - pack: ARM::V2M_MPS3_SSE_300_BSP@1.4.0   # optional packs can specify a version
     - pack: ARM::CMSIS-Compiler                # for retargeting stdout to UART
 
   groups:
