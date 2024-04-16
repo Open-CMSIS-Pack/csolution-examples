@@ -2,11 +2,6 @@
   "registries": [
     {
       "kind": "artifact",
-      "location": "https://aka.ms/vcpkg-ce-default",
-      "name": "microsoft"
-    },
-    {
-      "kind": "artifact",
       "location": "https://artifacts.tools.arm.com/vcpkg-registry",
       "name": "arm"
     }
