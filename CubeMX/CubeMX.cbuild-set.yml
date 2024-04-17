@@ -1,0 +1,4 @@
+cbuild-set:
+  generated-by: csolution version 2.3.0
+  contexts:
+    - context: CubeMX.Debug+STM32U5Board
