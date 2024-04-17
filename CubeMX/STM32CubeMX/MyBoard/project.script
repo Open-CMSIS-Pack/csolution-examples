@@ -1,5 +1,5 @@
 loadboard B-U585I-IOT02A allmodes
 project name STM32CubeMX
 project toolchain "MDK-ARM V5"
-project path "C:\w\csolution-examples\CubeMX\STM32CubeMX\STM32U5Board"
+project path "C:\w\csolution-examples\CubeMX\STM32CubeMX\MyBoard"
 SetCopyLibrary "copy only"

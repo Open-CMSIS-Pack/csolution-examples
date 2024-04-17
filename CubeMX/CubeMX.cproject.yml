@@ -1,15 +1,15 @@
 project:
 
-  groups:
-    - group: Documentation
-      files: 
-        - file: ./README.md
+# groups:
+#   - group: Documentation
+#     files: 
+#       - file: ./README.md
 
   components:
-    - component: CMSIS:CORE                             # short form, vendor selected from available packs
+    - component: CMSIS:CORE
     - component: Device:Startup    
-    - component: CMSIS:RTOS2:Keil RTX5&Source
-    - component: CMSIS:OS Tick
+#    - component: CMSIS:RTOS2:Keil RTX5&Source
+#    - component: CMSIS:OS Tick
 
 
 
