@@ -1,15 +1,15 @@
 # CubeMX project
 
-This project shows the usage of CubeMX
+This project shows the usage of CubeMX. Refer to the documentation chapter [
+[**CMSIS-Toolbox > Work with CubeMX**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs/CubeMX.md) for details.
 
 ## Prerequisites
 
 ### Tools
 
 - [CMSIS-Toolbox 2.3.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher
-- [Keil MDK 5.37](https://www2.keil.com/mdk5/)
-  - Arm Compiler 6.18 (part of MDK, Eval Version sufficient for compilation)
-  - Arm Virtual Hardware for Corstone-300 v11.18.1 (requires MDK - Professional)
+- [Keil MDK 5.37](https://www2.keil.com/mdk5/) or higher
+- [STM32CubeMX 6.11](https://www.st.com/en/development-tools/stm32cubemx.html) or higher
 
 >**Note:** later versions will also compiler with GCC.
 
@@ -35,4 +35,4 @@ This command starts STM32CubeMX using the previous configuration with the curren
 
 ## Execute Project
 
-ToDo
+You may use the debugger of choice for executing this program.
