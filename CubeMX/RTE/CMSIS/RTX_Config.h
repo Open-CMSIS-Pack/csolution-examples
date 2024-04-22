@@ -287,10 +287,12 @@
 #define OS_TIMER_THREAD_CLASS       0
 #endif
  
-//   <y>Timer Thread Zone
+//   <o>Timer Thread Zone <0-127>
 //   <i> Defines Thread Zone.
 //   <i> Default: 0
-#define OS_TIMER_THREAD_ZONE        1
+#ifndef OS_TIMER_THREAD_ZONE
+#define OS_TIMER_THREAD_ZONE        0
+#endif
  
 //   <o>Timer Callback Queue entries <0-256>
 //   <i> Number of concurrent active timer callback functions.

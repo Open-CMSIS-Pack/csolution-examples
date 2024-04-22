@@ -4,7 +4,7 @@
 
 //-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
 
-// <n>Device pack:   Keil::STM32U5xx_DFP@3.0.0-extgen0
+// <n>Device pack:   Keil::STM32U5xx_DFP@3.0.0-dev0
 // <i>Device pack used to generate this file
 
 // <h>ROM Configuration
@@ -64,13 +64,6 @@
 #define __RAM1_NOINIT 0
 // </h>
 
-// </h>
-
-// <h>Stack / Heap Configuration
-//   <o0> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
-//   <o1> Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
-#define __STACK_SIZE 0x00000200
-#define __HEAP_SIZE 0x00000C00
 // </h>
 
 
