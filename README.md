@@ -4,7 +4,7 @@ This is a collection of [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis
 
 > **Note:** These examples use **CMSIS-Toolbox 2.0.0** or higher.
 > 
-Refer to [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/installation.md) for information how to setup an enviornment.
+> Refer to [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/installation.md) for information how to setup an enviornment.
 
 ## Project Examples
 
@@ -12,9 +12,10 @@ Examples in this repository:
 
 Source                               | Description
 :------------------------------------|:----------------------------------
-[Hello](./Hello)                     | A simple project to get started
-[DualCore](./DualCore)               | Application with multiple processors
-[SimpleTrustZone](./SimpleTrustZone) | Simple TrustZone example
+[Hello](./Hello)                     | A simple project to get started.
+[DualCore](./DualCore)               | Application with multiple processors.
+[SimpleTrustZone](./SimpleTrustZone) | Simple TrustZone example.
+[CubeMX](./CubeMX)                   | Project that uses [STM32Cube](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs/CubeMX.md) as generator for device configuration.
 
 ## Build Projects
 

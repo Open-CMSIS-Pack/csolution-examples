@@ -1,7 +1,7 @@
 # CubeMX project
 
 This project shows the usage of CubeMX. Refer to the documentation chapter
-[**CMSIS-Toolbox > Work with CubeMX**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs/CubeMX.md) for details.
+[**CMSIS-Toolbox > Configure STM32 Devices with CubeMX**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs/CubeMX.md) for details.
 
 ## Prerequisites
 
@@ -17,29 +17,28 @@ This project shows the usage of CubeMX. Refer to the documentation chapter
 
 - Required packs are listed in the file [`CubeMX.csolution.yml`](./CubeMX.csolution.yml) and [`CubeMX.cproject.yml`](./CubeMX.cproject.yml)
 
-DFP and BSP development packs are available here https://github.com/Open-CMSIS-Pack/pack-examples. Clone the repo and install the packs by executing:
-```txt
-> cpackget add <path to Keil.STM32U5xx_DFP.pdsc>
-> cpackget add <path to Keil.B-U585I-IOT02A_BSP.pdsc>
+DFP and BSP development packs are available here https://github.com/Open-CMSIS-Pack/pack-examples. Clone the repo to <working-dir> and install the packs by executing:
+
+```bash
+> cpackget add <working-dir\pack-examples\STM32U5xx_DFP\Keil.STM32U5xx_DFP.pdsc
+> cpackget add <working-dir>\pack-examples\B-U585I-IOT02A_BSP\Keil.B-U585I-IOT02A_BSP.pdsc 
 ```
 
 ## Run CubeMX
 
-This command starts STM32CubeMX using the previous configuration with the current selected context set.
+This command starts STM32CubeMX using the specified context.
 
-```txt
-> csolution CubeMX.csolution.yml run --generator CubeMX --context-set
-```
-
-This command starts STM32CubeMX using the previous configuration with the specified context.
-
-```txt
+```bash
 > csolution CubeMX.csolution.yml run --generator CubeMX --context CubeMX.Debug+MyBoard
 ```
 
+For using CubeMX refer to the documentation chapter
+[**CMSIS-Toolbox > Configure STM32 Devices with CubeMX**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs/CubeMX.md).
+
+
 ## Generated Project
 
-```txt
+```bash
 > cbuild CubeMX.csolution.yml --packs --update-rte
 ```
 
