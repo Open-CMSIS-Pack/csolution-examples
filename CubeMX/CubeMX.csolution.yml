@@ -7,10 +7,8 @@ solution:
 # it is recommended to list the pack or packs that define the device or board used in the csolution.yml file
   packs:
     - pack: ARM::CMSIS@6.0.0
-#   - pack: ARM::CMSIS-RTX
-    - pack: Keil::B-U585I-IOT02A_BSP
+    - pack: Keil::B-U585I-IOT02A_BSP@>=2.0.0-0
     - pack: Keil::STM32U5xx_DFP@>=3.0.0-0
-    
   target-types:
     - type: MyBoard                           # My evaluation kit
       board: B-U585I-IOT02A                   # Board name as defined by the pack

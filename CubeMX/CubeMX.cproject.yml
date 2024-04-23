@@ -1,10 +1,10 @@
 project:
   packs:
-    - pack: ARM::CMSIS-RTX                    # RTOS Software Pack    
+    - pack: ARM::CMSIS-RTX                    # RTOS Software Pack
 
   groups:
     - group: Documentation
-      files: 
+      files:
         - file: ./README.md
     - group: MyApp
       files:
@@ -12,6 +12,6 @@ project:
 
   components:
     - component: CMSIS:CORE
-    - component: Device:Startup    
+    - component: Device:CubeMX
     - component: CMSIS:RTOS2:Keil RTX5&Source
     - component: CMSIS:OS Tick

@@ -17,6 +17,7 @@ generator-import:
         - file: ./STM32CubeMX/Src/main.c
         - file: ./STM32CubeMX/Src/stm32u5xx_it.c
         - file: ./STM32CubeMX/Src/stm32u5xx_hal_msp.c
+        - file: ./STM32CubeMX/Src/stm32u5xx_hal_timebase_tim.c
         - file: ./STM32CubeMX/MDK-ARM/startup_stm32u585xx.s
         - file: ./STM32CubeMX/Src/system_stm32u5xx.c
     - group: STM32 HAL Driver
