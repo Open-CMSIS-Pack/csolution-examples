@@ -2,8 +2,8 @@
 
 This is a collection of [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox) project examples using the [`csolution` project format](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) utility.  The project files are provided for experimentation, exploration and education purposes.
 
-> **Note:** These examples use **CMSIS-Toolbox 2.0.0** or higher.
-> 
+> **Note:** These examples use **CMSIS-Toolbox 2.2.0** or higher.
+>
 > Refer to [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/installation.md) for information how to setup an enviornment.
 
 ## Project Examples
@@ -31,7 +31,7 @@ The project files  contain a list of software packs that are used. When using th
 > cbuild Hello.csolution.yml --packs --rebuild
 ```
 
-## Examples in other repositories:
+## Examples in other repositories
 
 Source            | Description
 :-----------------|:----------------------------------

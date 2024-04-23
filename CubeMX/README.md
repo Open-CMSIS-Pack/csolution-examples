@@ -17,7 +17,7 @@ This project shows the usage of CubeMX. Refer to the documentation chapter
 
 - Required packs are listed in the file [`CubeMX.csolution.yml`](./CubeMX.csolution.yml) and [`CubeMX.cproject.yml`](./CubeMX.cproject.yml)
 
-DFP and BSP development packs are available here https://github.com/Open-CMSIS-Pack/pack-examples. Clone the repo to <working-dir> and install the packs by executing:
+DFP and BSP development packs are available here [github.com/Open-CMSIS-Pack/pack-examples](https://github.com/Open-CMSIS-Pack/pack-examples). Clone the repo to `<working-dir>` and install the packs by executing:
 
 ```bash
 > cpackget add <working-dir\pack-examples\STM32U5xx_DFP\Keil.STM32U5xx_DFP.pdsc
@@ -34,7 +34,6 @@ This command starts STM32CubeMX using the specified context.
 
 For using CubeMX refer to the documentation chapter
 [**CMSIS-Toolbox > Configure STM32 Devices with CubeMX**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs/CubeMX.md).
-
 
 ## Generated Project
 
