@@ -58,6 +58,7 @@ jobs:
         if: always() && matrix.compiler == 'AC6'
         run: |
           cd DualCore
+          cpackget add NXP::K32L3A60_DFP@17.0.0
           cbuild HelloWorld.csolution.yml --packs --update-rte --toolchain ${{ matrix.compiler }}
 
       - name: SimpleTrustZone Build only
