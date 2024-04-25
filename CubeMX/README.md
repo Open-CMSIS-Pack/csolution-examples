@@ -20,7 +20,7 @@ This project shows the usage of CubeMX. Refer to the documentation chapter
 DFP and BSP development packs are available here [github.com/Open-CMSIS-Pack/pack-examples](https://github.com/Open-CMSIS-Pack/pack-examples). Clone the repo to `<working-dir>` and install the packs by executing:
 
 ```bash
-> cpackget add <working-dir\pack-examples\STM32U5xx_DFP\Keil.STM32U5xx_DFP.pdsc
+> cpackget add <working-dir>\pack-examples\STM32U5xx_DFP\Keil.STM32U5xx_DFP.pdsc
 > cpackget add <working-dir>\pack-examples\B-U585I-IOT02A_BSP\Keil.B-U585I-IOT02A_BSP.pdsc 
 ```
 
