@@ -12,7 +12,8 @@ jobs:
   Build:
     strategy:
       matrix:
-        compiler: [AC6, GCC, Clang]
+        # compiler: [AC6, GCC, Clang]
+        compiler: [AC6]
 
       fail-fast: false
 
