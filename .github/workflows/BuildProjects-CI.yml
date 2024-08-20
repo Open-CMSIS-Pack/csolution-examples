@@ -48,13 +48,13 @@ jobs:
         run: |
               cbuild HelloWorld.csolution.yml --update-rte --packs --rebuild
 
-      - name: Upload HelloWorld build Artifacts
+      - name: Upload HelloWorld-DualCore build Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: HelloWorld_AC6
+          name: HelloWorld_DualCore_AC6
           path: |
-            ./HelloWorld/out/
+            ./DualCore/out/
           retention-days: 1
 
       - name: Build SimpleTrustZone project
