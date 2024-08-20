@@ -11,6 +11,8 @@ on:
 jobs:
   Build:
     strategy:
+      matrix:
+        compiler: [AC6, GCC, Clang]
 
       fail-fast: false
 
@@ -31,13 +33,13 @@ jobs:
       - name: Build Hello project
         working-directory: ./Hello/
         run: |
-            cbuild Hello.csolution.yml --update-rte --packs --rebuild
+            cbuild Hello.csolution.yml --update-rte --packs --toolchain ${{ matrix.compiler }} --rebuild
 
       - name: Upload Hello build Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Hello_AC6
+          name: Hello_${{ matrix.compiler }}
           path: |
             ./Hello/out/
           retention-days: 1
@@ -46,13 +48,13 @@ jobs:
         if: always()      
         working-directory: ./DualCore/
         run: |
-              cbuild HelloWorld.csolution.yml --update-rte --packs --rebuild
+              cbuild HelloWorld.csolution.yml --update-rte --packs --toolchain ${{ matrix.compiler }} --rebuild
 
       - name: Upload HelloWorld-DualCore build Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: HelloWorld_DualCore_AC6
+          name: HelloWorld_DualCore_${{ matrix.compiler }}
           path: |
             ./DualCore/out/
           retention-days: 1
@@ -61,13 +63,13 @@ jobs:
         if: always()      
         working-directory: ./SimpleTrustZone/
         run: |
-            cbuild SimpleTZ.csolution.yml --update-rte --packs --rebuild
+            cbuild SimpleTZ.csolution.yml --update-rte --packs --toolchain ${{ matrix.compiler }} --rebuild
 
       - name: Upload SimpleTrustZone build Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: SimpleTrustZone_AC6
+          name: SimpleTrustZone_${{ matrix.compiler }}
           path: |
             ./SimpleTrustZone/out/
           retention-days: 1
