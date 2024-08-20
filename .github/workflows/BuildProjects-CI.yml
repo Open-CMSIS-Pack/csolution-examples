@@ -11,7 +11,14 @@ on:
 jobs:
   Build:
     strategy:
+
       matrix:
+        target: [
+          {proj: Hello,         folder: Hello,             board: AVH},
+          {proj: HelloWorld,    folder: DualCore,          board: FRDM-K32L3A6},
+          {proj: SimpleTZ,      folder: SimpleTrustZone,   board: FRDM-K32L3A6}
+        ]
+
         # compiler: [AC6, GCC, Clang]
         compiler: [AC6]
 
@@ -31,46 +38,16 @@ jobs:
       - name: Activate Arm tool license
         uses: ARM-software/cmsis-actions/armlm@v1
 
-      - name: Build Hello project
-        working-directory: ./Hello/
+      - name: Build ${{ matrix.target.proj }} project
+        working-directory: ./${{ matrix.target.folder }}/
         run: |
-            cbuild Hello.csolution.yml --update-rte --packs --toolchain ${{ matrix.compiler }} --rebuild
+            cbuild ${{ matrix.target.proj }}.csolution.yml --update-rte --packs --toolchain ${{ matrix.compiler }} --rebuild
 
-      - name: Upload Hello build Artifacts
+      - name: Upload ${{ matrix.target.proj }} build Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Hello_${{ matrix.compiler }}
+          name: ${{ matrix.target.proj }}_${{ matrix.compiler }}
           path: |
-            ./Hello/out/
-          retention-days: 1
-
-      - name: Build DualCore project
-        if: always()      
-        working-directory: ./DualCore/
-        run: |
-              cbuild HelloWorld.csolution.yml --update-rte --packs --toolchain ${{ matrix.compiler }} --rebuild
-
-      - name: Upload HelloWorld-DualCore build Artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: HelloWorld_DualCore_${{ matrix.compiler }}
-          path: |
-            ./DualCore/out/
-          retention-days: 1
-
-      - name: Build SimpleTrustZone project
-        if: always()      
-        working-directory: ./SimpleTrustZone/
-        run: |
-            cbuild SimpleTZ.csolution.yml --update-rte --packs --toolchain ${{ matrix.compiler }} --rebuild
-
-      - name: Upload SimpleTrustZone build Artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: SimpleTrustZone_${{ matrix.compiler }}
-          path: |
-            ./SimpleTrustZone/out/
+            ./${{ matrix.target.folder }}/out/
           retention-days: 1
