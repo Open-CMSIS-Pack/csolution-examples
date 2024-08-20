@@ -14,9 +14,9 @@ jobs:
 
       matrix:
         target: [
-          {folder: Hello,            proj: Hello,         board: AVH},
+          {folder: Hello,            proj: Hello,         board: CS300},
           {folder: DualCore,         proj: HelloWorld,    board: FRDM-K32L3A6},
-          {folder: SimpleTrustZone,  proj: SimpleTZ,      board: AVH}
+          {folder: SimpleTrustZone,  proj: SimpleTZ,      board: CS300}
         ]
 
         # compiler: [AC6, GCC, Clang]
