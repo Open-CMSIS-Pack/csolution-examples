@@ -14,9 +14,9 @@ jobs:
 
       matrix:
         target: [
-          {proj: Hello,         folder: Hello,             board: AVH},
-          {proj: HelloWorld,    folder: DualCore,          board: FRDM-K32L3A6},
-          {proj: SimpleTZ,      folder: SimpleTrustZone,   board: FRDM-K32L3A6}
+          {folder: Hello,            proj: Hello,         board: AVH},
+          {folder: DualCore,         proj: HelloWorld,    board: FRDM-K32L3A6},
+          {folder: SimpleTrustZone,  proj: SimpleTZ,      board: FRDM-K32L3A6}
         ]
 
         # compiler: [AC6, GCC, Clang]
@@ -38,10 +38,15 @@ jobs:
       - name: Activate Arm tool license
         uses: ARM-software/cmsis-actions/armlm@v1
 
-      - name: Build ${{ matrix.target.proj }} project
+      - name: Build ${{ matrix.target.proj }}.Release context
         working-directory: ./${{ matrix.target.folder }}/
         run: |
-            cbuild ${{ matrix.target.proj }}.csolution.yml --update-rte --packs --toolchain ${{ matrix.compiler }} --rebuild
+            cbuild ${{ matrix.target.proj }}.csolution.yml --update-rte --packs --context .Release+${{ matrix.target.board }} --toolchain ${{ matrix.compiler }} --rebuild
+
+      - name: Build ${{ matrix.target.proj }}.Debug context
+        working-directory: ./${{ matrix.target.folder }}/
+        run: |
+            cbuild ${{ matrix.target.proj }}.csolution.yml --update-rte --packs --context .Debug+${{ matrix.target.board }} --toolchain ${{ matrix.compiler }} --rebuild
 
       - name: Upload ${{ matrix.target.proj }} build Artifacts
         if: always()
