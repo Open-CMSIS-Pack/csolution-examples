@@ -1,27 +1,34 @@
 solution:
-  created-for: CMSIS-Toolbox@2.2.0
+
+  created-for: CMSIS-Toolbox@2.4.0
   description: Print Hello World and a counter value via UART
   cdefault:
-  compiler: AC6                               # currently required for components Compiler:I/O
 
-# it is recommended to list the pack or packs that define the device or board used in the csolution.yml file
+
+  # It is recommended to list the pack or packs that define the device or board used in the csolution.yml file
   packs:
-    - pack: ARM::CMSIS@6.0.0
+    - pack: ARM::CMSIS
     - pack: ARM::CMSIS-RTX
+    - pack: ARM::V2M_MPS3_SSE_300_BSP          # Corstone-300 (Cortex-M55)
+    - pack: ARM::CMSIS-Compiler                # For retargeting stdout to UART
+
 
   target-types:
-    - type: AVH                               # runs on Arm Virtual Hardware
+    - type: CS300                              # Runs on Arm Virtual Hardware
       device: ARM::SSE-300-MPS3
-                                              # add more hardware targets (don't forget to add the required packs)
 
+                                              # add more hardware targets (don't forget to add the required packs)
   build-types:                                # defines toolchain options for 'debug' and 'release'
     - type: Debug
       debug: on
-      optimize: none
+      optimize: debug
 
     - type: Release
       debug: off
       optimize: balanced
+
+  output-dirs:
+    outdir:  $SolutionDir()$/out/$Project$/$TargetType$/$BuildType$/$Compiler$
 
   projects:                                   # list related projects
     - project: ./Hello.cproject.yml
