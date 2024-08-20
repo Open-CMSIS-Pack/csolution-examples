@@ -1,20 +1,24 @@
 solution:
-  created-for: CMSIS-Toolbox@2.2.0
+  created-for: CMSIS-Toolbox@2.4.0
   cdefault:
   compiler: AC6
 
   packs:
-    - pack: ARM::CMSIS@6.0.0
-    - pack: ARM::Cortex_DFP
+    - pack: ARM::CMSIS
+    - pack: ARM::CMSIS-RTX
+    - pack: ARM::V2M_MPS3_SSE_300_BSP          # Corstone-300 (Cortex-M55)
+    - pack: ARM::CMSIS-Compiler                # For retargeting stdout to UART
+    - pack: ARM::CMSIS-View
 
   target-types:
-    - device: ARM::ARMCM33
-      type: AVH
+    - type: CS300                              # Runs on Arm Virtual Hardware
+      device: ARM::SSE-300-MPS3
 
   build-types:
     - type: Debug
       debug: on
-      optimize: none
+      optimize: debug
+
     - type: Release
       debug: off
       optimize: balanced
