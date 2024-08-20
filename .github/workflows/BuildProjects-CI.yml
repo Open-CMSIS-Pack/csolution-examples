@@ -1,0 +1,73 @@
+name: Build Hello project
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  schedule:
+    - cron: '00 20 * * 6'    
+
+jobs:
+  Build:
+    strategy:
+
+      fail-fast: false
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1
+        with:
+          config: ".ci/vcpkg-configuration.json"
+
+      - name: Activate Arm tool license
+        uses: ARM-software/cmsis-actions/armlm@v1
+
+      - name: Build Hello project
+        working-directory: ./Hello/
+        run: |
+            cbuild Hello.csolution.yml --update-rte --packs --rebuild
+
+      - name: Upload Hello build Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Hello_AC6
+          path: |
+            ./Hello/out/
+          retention-days: 1
+
+      - name: Build DualCore project
+        if: always()      
+        working-directory: ./DualCore/
+        run: |
+              cbuild HelloWorld.csolution.yml --update-rte --packs --rebuild
+
+      - name: Upload HelloWorld build Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: HelloWorld_AC6
+          path: |
+            ./HelloWorld/out/
+          retention-days: 1
+
+      - name: Build SimpleTrustZone project
+        if: always()      
+        working-directory: ./SimpleTrustZone/
+        run: |
+            cbuild SimpleTZ.csolution.yml --update-rte --packs --rebuild
+
+      - name: Upload SimpleTrustZone build Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SimpleTrustZone_AC6
+          path: |
+            ./SimpleTrustZone/out/
+          retention-days: 1
