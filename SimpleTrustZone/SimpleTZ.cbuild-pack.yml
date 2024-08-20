@@ -1,11 +1,11 @@
 cbuild-pack:
   resolved-packs:
     - resolved-pack: ARM::CMSIS@6.0.0
-      selected-by:
+      selected-by-pack:
         - ARM::CMSIS@6.0.0
     - resolved-pack: ARM::CMSIS-View@1.1.0
-      selected-by:
+      selected-by-pack:
         - ARM::CMSIS-View
     - resolved-pack: ARM::Cortex_DFP@1.0.0
-      selected-by:
+      selected-by-pack:
         - ARM::Cortex_DFP
