@@ -45,7 +45,7 @@ jobs:
         if: always()      
         working-directory: ./DualCore/
         run: |
-            cbuild HelloWorld.csolution.yml --update-rte --packs --toolchain GCC
+            cbuild HelloWorld.csolution.yml --update-rte --packs --toolchain GCC --rebuild
 
       - name: Upload HelloWorld GCC build Artifacts
         if: always()
