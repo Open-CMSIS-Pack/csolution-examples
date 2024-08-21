@@ -40,18 +40,3 @@ jobs:
           path: |
             ./DualCore/out/
           retention-days: 1
-
-      - name: Build HelloWorld with GCC and all contexts
-        if: always()      
-        working-directory: ./DualCore/
-        run: |
-            cbuild HelloWorld.csolution.yml --update-rte --packs --toolchain GCC --rebuild
-
-      - name: Upload HelloWorld GCC build Artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: HelloWorld_GCC
-          path: |
-              ./DualCore/out/
-          retention-days: 1
