@@ -50,27 +50,25 @@ jobs:
             echo " Show simulation UART output build eith AC6 Release"
             cat ./out/Hello/CS300/Release/AC6_fvp_stdout.log
 
-
       - name: Build Hello with GCC and all contexts
         working-directory: ./Hello/
         run: |
             cbuild Hello.csolution.yml --update-rte --packs --toolchain GCC
-    
+
       - name: Run Hello build-type Debug, GCC
         working-directory: ./Hello/
         run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
+            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
             -C mps3_board.uart0.out_file=./out/Hello/CS300/Debug/GCC_fvp_stdout.log \
             --simlimit 60 --stat
             echo " Show simulation UART output build eith GCC Debug"
             cat ./out/Hello/CS300/Debug/GCC_fvp_stdout.log
-    
+
       - name: Run Hello build-type Release, GCC
         working-directory: ./Hello/
         run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
+            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
             -C mps3_board.uart0.out_file=./out/Hello/CS300/Release/GCC_fvp_stdout.log \
             --simlimit 60 --stat
             echo " Show simulation UART output build eith GCC Release"
             cat ./out/Hello/CS300/Release/GCC_fvp_stdout.log
-    
