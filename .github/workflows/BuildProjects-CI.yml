@@ -19,7 +19,6 @@ jobs:
           {folder: SimpleTrustZone,  proj: SimpleTZ,      board: CS300}
         ]
 
-        # compiler: [AC6, GCC, Clang]
         compiler: [AC6]
 
       fail-fast: false
