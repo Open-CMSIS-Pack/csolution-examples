@@ -1,9 +1,12 @@
 solution:
-  created-for: CMSIS-Toolbox@2.2.0
+
+  created-for: CMSIS-Toolbox@2.4.0
   cdefault:
-  compiler: AC6
 
   packs:
+    - pack: ARM::CMSIS
+    - pack: ARM::CMSIS-RTX
+    - pack: ARM::CMSIS-Compiler                # For retargeting stdout to UART      
     - pack: NXP::K32L3A60_DFP@17.0.0
     - pack: NXP::FRDM-K32L3A6_BSP@17.0.0 
 
@@ -15,11 +18,14 @@ solution:
   build-types:                                # defines toolchain options for 'debug' and 'release'
     - type: Debug
       debug: on
-      optimize: none
+      optimize: debug
 
     - type: Release
       debug: off
       optimize: balanced
+
+  output-dirs:
+    outdir:  $SolutionDir()$/out/$Project$/$TargetType$/$BuildType$/$Compiler$
 
   projects:
     - project: ./cm0plus/HelloWorld_cm0plus.cproject.yml
