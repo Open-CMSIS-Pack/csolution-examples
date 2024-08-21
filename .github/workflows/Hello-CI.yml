@@ -33,6 +33,7 @@ jobs:
             cbuild Hello.csolution.yml --update-rte --packs --toolchain AC6
 
       - name: Run Hello build-type Debug, AC6
+        if: always()
         working-directory: ./Hello/
         run: |
             FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
@@ -42,6 +43,7 @@ jobs:
             cat ./out/Hello/CS300/Debug/AC6_fvp_stdout.log
 
       - name: Run Hello build-type Release, AC6
+        if: always()
         working-directory: ./Hello/
         run: |
             FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
@@ -51,11 +53,13 @@ jobs:
             cat ./out/Hello/CS300/Release/AC6_fvp_stdout.log
 
       - name: Build Hello with GCC and all contexts
+        if: always()
         working-directory: ./Hello/
         run: |
             cbuild Hello.csolution.yml --update-rte --packs --toolchain GCC
 
       - name: Run Hello build-type Debug, GCC
+        if: always()
         working-directory: ./Hello/
         run: |
             FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
@@ -65,6 +69,7 @@ jobs:
             cat ./out/Hello/CS300/Debug/GCC_fvp_stdout.log
 
       - name: Run Hello build-type Release, GCC
+        if: always()
         working-directory: ./Hello/
         run: |
             FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
