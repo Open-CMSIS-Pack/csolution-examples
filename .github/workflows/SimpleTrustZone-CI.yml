@@ -1,0 +1,55 @@
+name:  Test Build and Execution
+on:
+
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  schedule:
+    - cron: '00 20 * * 6'
+
+jobs:
+  Build:
+    strategy:
+      matrix:
+
+        compiler: [
+          {name: AC6, ext: axf},
+          {name: GCC, ext: elf}
+        ]
+        build: [ 
+          {type: Release},
+          {type: Debug}
+        ]
+
+      fail-fast: false
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1
+        with:
+          config: ".ci/vcpkg-configuration.json"
+
+      - name: Activate Arm tool license
+        uses: ARM-software/cmsis-actions/armlm@v1
+
+      - name: Build SimpleTZ with ${{ matrix.compiler.name }} for ${{ matrix.build.type }}
+        working-directory: ./SimpleTrustZone/
+        run: |
+            cbuild SimpleTZ.csolution.yml --update-rte --packs --context  SimpleTZ.${{ matrix.build.type }}+CS300 --toolchain ${{ matrix.compiler.name }}
+
+      - name: Run SimpleTZ build with ${{ matrix.compiler.name }} and type ${{ matrix.build.type }}
+        if: always()
+        working-directory: ./SimpleTrustZone/
+        run: |
+            FVP_Corstone_SSE-300 -a ./out/SimpleTZ/CS300/${{ matrix.build.type }}/${{ matrix.compiler.name }} -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
+            -C mps3_board.uart0.out_file=./out/SimpleTZ/CS300/${{ matrix.build.type }}/${{ matrix.compiler.name }}_fvp_stdout.log \
+            --simlimit 60 --stat
+            echo " Show simulation UART output. Build with ${{ matrix.compiler.name }} and type ${{ matrix.build.type }}"
+            cat ./out/SimpleTZ/CS300/${{ matrix.build.type }}/${{ matrix.compiler.name }}_fvp_stdout.log

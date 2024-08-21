@@ -6,7 +6,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: '00 20 * * 6'    
+    - cron: '00 20 * * 6'
 
 jobs:
   Build:
@@ -39,7 +39,7 @@ jobs:
             FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
             -C mps3_board.uart0.out_file=./out/Hello/CS300/Debug/AC6_fvp_stdout.log \
             --simlimit 60 --stat
-            echo " Show simulation UART output build eith AC6 Debug"
+            echo " Show simulation UART output build with AC6 Debug"
             cat ./out/Hello/CS300/Debug/AC6_fvp_stdout.log
 
       - name: Run Hello build-type Release, AC6
@@ -49,7 +49,7 @@ jobs:
             FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
             -C mps3_board.uart0.out_file=./out/Hello/CS300/Release/AC6_fvp_stdout.log \
             --simlimit 60 --stat
-            echo " Show simulation UART output build eith AC6 Release"
+            echo " Show simulation UART output build with AC6 Release"
             cat ./out/Hello/CS300/Release/AC6_fvp_stdout.log
 
       - name: Build Hello with GCC and all contexts
@@ -65,7 +65,7 @@ jobs:
             FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
             -C mps3_board.uart0.out_file=./out/Hello/CS300/Debug/GCC_fvp_stdout.log \
             --simlimit 60 --stat
-            echo " Show simulation UART output build eith GCC Debug"
+            echo " Show simulation UART output build with GCC Debug"
             cat ./out/Hello/CS300/Debug/GCC_fvp_stdout.log
 
       - name: Run Hello build-type Release, GCC
@@ -75,5 +75,5 @@ jobs:
             FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
             -C mps3_board.uart0.out_file=./out/Hello/CS300/Release/GCC_fvp_stdout.log \
             --simlimit 60 --stat
-            echo " Show simulation UART output build eith GCC Release"
+            echo " Show simulation UART output build with GCC Release"
             cat ./out/Hello/CS300/Release/GCC_fvp_stdout.log
