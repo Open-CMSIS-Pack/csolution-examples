@@ -39,16 +39,11 @@ jobs:
       - name: Activate Arm tool license
         uses: ARM-software/cmsis-actions/armlm@v1
 
-      - name: Build CM33_s with ${{ matrix.compiler.name }} for ${{ matrix.build.type }}
-        working-directory: ./SimpleTrustZone/
-        run: |
-            cbuild SimpleTZ.csolution.yml --update-rte --packs --context CM33_s.${{ matrix.build.type }}+CS300 --toolchain ${{ matrix.compiler.name }}
-
-      - name: Build CM33_ns with ${{ matrix.compiler.name }} for ${{ matrix.build.type }}
+      - name: Build CM33_ns and CM33_ns contexts with ${{ matrix.compiler.name }} for ${{ matrix.build.type }}
         if: always()
         working-directory: ./SimpleTrustZone/
         run: |
-            cbuild SimpleTZ.csolution.yml --update-rte --packs --context CM33_ns.${{ matrix.build.type }}+CS300 --toolchain ${{ matrix.compiler.name }}
+            cbuild SimpleTZ.csolution.yml --update-rte --packs --context .${{ matrix.build.type }}+CS300 --toolchain ${{ matrix.compiler.name }}
     
       - name: Run CM33_s build with ${{ matrix.compiler.name }} and type ${{ matrix.build.type }}
         if: always()
