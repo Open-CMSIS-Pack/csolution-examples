@@ -15,9 +15,6 @@ project:
       C-CPP:
         - --preinclude cmsis_core5.h
 
-  packs:
-    - pack: ARM::CMSIS@6.0.0
-
   define:
     - CPU_K32L3A60VPJ1A_cm4
     - MCMGR_HANDLE_EXCEPTIONS: 1
