@@ -39,17 +39,33 @@ jobs:
       - name: Activate Arm tool license
         uses: ARM-software/cmsis-actions/armlm@v1
 
-      - name: Build SimpleTZ with ${{ matrix.compiler.name }} for ${{ matrix.build.type }}
+      - name: Build CM33_s with ${{ matrix.compiler.name }} for ${{ matrix.build.type }}
         working-directory: ./SimpleTrustZone/
         run: |
-            cbuild SimpleTZ.csolution.yml --update-rte --packs --context  SimpleTZ.${{ matrix.build.type }}+CS300 --toolchain ${{ matrix.compiler.name }}
+            cbuild SimpleTZ.csolution.yml --update-rte --packs --context  CM33_s.${{ matrix.build.type }}+CS300 --toolchain ${{ matrix.compiler.name }}
 
-      - name: Run SimpleTZ build with ${{ matrix.compiler.name }} and type ${{ matrix.build.type }}
+      - name: Build CM33_ns with ${{ matrix.compiler.name }} for ${{ matrix.build.type }}
         if: always()
         working-directory: ./SimpleTrustZone/
         run: |
-            FVP_Corstone_SSE-300 -a ./out/SimpleTZ/CS300/${{ matrix.build.type }}/${{ matrix.compiler.name }} -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
-            -C mps3_board.uart0.out_file=./out/SimpleTZ/CS300/${{ matrix.build.type }}/${{ matrix.compiler.name }}_fvp_stdout.log \
+            cbuild SimpleTZ.csolution.yml --update-rte --packs --context  CM33_ns.${{ matrix.build.type }}+CS300 --toolchain ${{ matrix.compiler.name }}
+    
+      - name: Run CM33_s build with ${{ matrix.compiler.name }} and type ${{ matrix.build.type }}
+        if: always()
+        working-directory: ./SimpleTrustZone/
+        run: |
+            FVP_Corstone_SSE-300 -a ./out/CM33_s/CS300/${{ matrix.build.type }}/CM33_s.${{ matrix.compiler.ext }} -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
+            -C mps3_board.uart0.out_file=./out/CM33_s/CS300/${{ matrix.build.type }}/${{ matrix.compiler.name }}_CM33_s_fvp_stdout.log \
             --simlimit 60 --stat
-            echo " Show simulation UART output. Build with ${{ matrix.compiler.name }} and type ${{ matrix.build.type }}"
-            cat ./out/SimpleTZ/CS300/${{ matrix.build.type }}/${{ matrix.compiler.name }}_fvp_stdout.log
+            echo " Show simulation UART output for CM33_s build with ${{ matrix.compiler.name }} and type ${{ matrix.build.type }}"
+            cat ./out/CM33_s/CS300/${{ matrix.build.type }}/${{ matrix.compiler.name }}_CM33_s_fvp_stdout.log
+
+      - name: Run CM33_ns build with ${{ matrix.compiler.name }} and type ${{ matrix.build.type }}
+        if: always()
+        working-directory: ./SimpleTrustZone/
+        run: |
+            FVP_Corstone_SSE-300 -a ./out/CM33_ns/CS300/${{ matrix.build.type }}/CM33_ns.${{ matrix.compiler.ext }} -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
+            -C mps3_board.uart0.out_file=./out/CM33_ns/CS300/${{ matrix.build.type }}/${{ matrix.compiler.name }}_CM33_ns_fvp_stdout.log \
+            --simlimit 60 --stat
+             echo " Show simulation UART output for CM33_ns build with ${{ matrix.compiler.name }} and type ${{ matrix.build.type }}"
+             cat ./out/CM33_ns/CS300/${{ matrix.build.type }}/${{ matrix.compiler.name }}_CM33_ns_fvp_stdout.log
