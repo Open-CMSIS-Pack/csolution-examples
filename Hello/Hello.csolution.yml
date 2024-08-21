@@ -27,8 +27,5 @@ solution:
       debug: off
       optimize: balanced
 
-  output-dirs:
-    outdir:  $SolutionDir()$/out/$Project$/$TargetType$/$BuildType$/$Compiler$
-
   projects:                                   # list related projects
     - project: ./Hello.cproject.yml
