@@ -35,7 +35,7 @@ jobs:
       - name: Run Hello build-type Debug, AC6
         working-directory: ./Hello/
         run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/vht-config.txt \
+            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
             -C mps3_board.uart0.out_file=./out/Debug/Hello/AC6_fvp_stdout.log \
             --simlimit 60 --stat
             echo " Show simulation UART output build eith AC6 Debug"
@@ -44,7 +44,7 @@ jobs:
       - name: Run Hello build-type Release, AC6
         working-directory: ./Hello/
         run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/vht-config.txt \
+            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
             -C mps3_board.uart0.out_file=./out/Release/Hello/AC6_fvp_stdout.log \
             --simlimit 60 --stat
             echo " Show simulation UART output build eith AC6 Release"
@@ -59,7 +59,7 @@ jobs:
       - name: Run Hello build-type Debug, GCC
         working-directory: ./Hello/
         run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/vht-config.txt \
+            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
             -C mps3_board.uart0.out_file=./out/Debug/Hello/GCC_fvp_stdout.log \
             --simlimit 60 --stat
             echo " Show simulation UART output build eith GCC Debug"
@@ -68,7 +68,7 @@ jobs:
       - name: Run Hello build-type Release, GCC
         working-directory: ./Hello/
         run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/vht-config.txt \
+            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
             -C mps3_board.uart0.out_file=./out/Release/Hello/GCC_fvp_stdout.log \
             --simlimit 60 --stat
             echo " Show simulation UART output build eith GCC Release"
