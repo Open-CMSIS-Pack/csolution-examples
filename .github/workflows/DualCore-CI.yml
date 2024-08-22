@@ -1,4 +1,4 @@
-name: Test Build
+name: "DualCore: Test Build"
 on:
   workflow_dispatch:
   pull_request:

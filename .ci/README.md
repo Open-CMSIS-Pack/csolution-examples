@@ -15,6 +15,6 @@ Projects in the Arm csolution-examples uses the **`ARM compiler (AC6)`** as well
 
 - **`DualCore-CI.yml`** implements a build test for a DualCore  (**`cm0plus, cm4`**) project by using the **`AC6`** toolchain. The output of this build test is stored as artifact and can be downloaded.
 
-- **`SimpleTrustZone-CI.yml`** implements build tests for a **`TrustZone`** based project by using the **`AC6`** and **`GCC`** toolchains. The execution tests runs on [**`Arm Virtual Hardware - Fixed Virtual Platforms (AVH FVP)`**](https://arm-software.github.io/AVH/main/simulation/html/index.html) simulation models. The directory **`FVP`** contains configuration files for the **`FVP simulation models`**.
+- **`SimpleTZ-CI.yml`** implements build tests for a **`TrustZone`** based project by using the **`AC6`** and **`GCC`** toolchains. The execution tests runs on [**`Arm Virtual Hardware - Fixed Virtual Platforms (AVH FVP)`**](https://arm-software.github.io/AVH/main/simulation/html/index.html) simulation models. The directory **`FVP`** contains configuration files for the **`FVP simulation models`**.
 
 - **`CubeMX-CI.yml`**  implements a build test for a **`CubeMX`** generated project by using only the **`AC6`** toolchain. The output of this build test is stored as artifact and can be downloaded.

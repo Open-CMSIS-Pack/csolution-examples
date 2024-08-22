@@ -1,6 +1,5 @@
-name:  Test Build and Execution
+name: "SimpleTZ: Test Build and Execution"
 on:
-
   workflow_dispatch:
   pull_request:
     branches: [main]

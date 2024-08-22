@@ -1,6 +1,5 @@
-name: Test Build
+name: "CubeMX: Test Build"
 on:
-
   workflow_dispatch:
   pull_request:
     branches: [main]
