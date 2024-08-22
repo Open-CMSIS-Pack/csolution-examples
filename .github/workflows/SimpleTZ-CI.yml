@@ -3,8 +3,14 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [main]
+    paths:
+      - SimpleTrustZone/**
+      - .github/workflows/SimpleTZ-CI.yml
   push:
     branches: [main]
+    paths:
+      - SimpleTrustZone/**
+      - .github/workflows/SimpleTZ-CI.yml
   schedule:
     - cron: '00 20 * * 6'
 
@@ -22,8 +28,6 @@ jobs:
           {type: Debug}
         ]
 
-      fail-fast: false
-
     runs-on: ubuntu-latest
 
     steps:
@@ -39,13 +43,10 @@ jobs:
         uses: ARM-software/cmsis-actions/armlm@v1
 
       - name: Build CM33_ns and CM33_ns contexts with ${{ matrix.compiler.name }} for ${{ matrix.build.type }}
-        if: always()
         working-directory: ./SimpleTrustZone/
-        run: |
-            cbuild SimpleTZ.csolution.yml --update-rte --packs --context .${{ matrix.build.type }}+CS300 --toolchain ${{ matrix.compiler.name }}
+        run: cbuild SimpleTZ.csolution.yml --update-rte --packs --context .${{ matrix.build.type }}+CS300 --toolchain ${{ matrix.compiler.name }}
     
       - name: Run CM33_s build with ${{ matrix.compiler.name }} and type ${{ matrix.build.type }}
-        if: always()
         working-directory: ./SimpleTrustZone/
         run: |
             FVP_Corstone_SSE-300 -a ./out/CM33_s/CS300/${{ matrix.build.type }}/CM33_s.${{ matrix.compiler.ext }} -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
@@ -55,7 +56,6 @@ jobs:
             cat ./out/CM33_s/CS300/${{ matrix.build.type }}/${{ matrix.compiler.name }}_CM33_s_fvp_stdout.log
 
       - name: Run CM33_ns build with ${{ matrix.compiler.name }} and type ${{ matrix.build.type }}
-        if: always()
         working-directory: ./SimpleTrustZone/
         run: |
             FVP_Corstone_SSE-300 -a ./out/CM33_ns/CS300/${{ matrix.build.type }}/CM33_ns.${{ matrix.compiler.ext }} -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \

@@ -3,16 +3,19 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [main]
+    paths:
+      - CubeMX/**
+      - .github/workflows/CubeMX-CI.yml
   push:
     branches: [main]
+    paths:
+      - CubeMX/**
+      - .github/workflows/CubeMX-CI.yml
   schedule:
     - cron: '00 20 * * 6'
 
 jobs:
   Build:
-    strategy:
-      fail-fast: false
-
     runs-on: ubuntu-latest
 
     steps:
@@ -28,13 +31,9 @@ jobs:
         uses: ARM-software/cmsis-actions/armlm@v1
 
       - name: Build project release type for AC6
-        if: always()
         working-directory: ./CubeMX/
-        run: |
-            cbuild CubeMX.csolution.yml --update-rte --packs --context .Release+MyBoard --toolchain AC6 --rebuild
+        run: cbuild CubeMX.csolution.yml --update-rte --packs --context .Release+MyBoard --toolchain AC6 --rebuild
 
       - name: Build project debug type for AC6
-        if: always()
         working-directory: ./CubeMX/
-        run: |
-            cbuild CubeMX.csolution.yml --update-rte --packs --context .Debug+MyBoard --toolchain AC6 --rebuild
+        run: cbuild CubeMX.csolution.yml --update-rte --packs --context .Debug+MyBoard --toolchain AC6 --rebuild
