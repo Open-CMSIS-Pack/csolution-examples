@@ -53,7 +53,7 @@ jobs:
             -a ./out/CM33_s/CS300/${{ matrix.build.type }}/CM33_s.${{ matrix.compiler.ext }} \
             -a ./out/CM33_ns/CS300/${{ matrix.build.type }}/CM33_ns.${{ matrix.compiler.ext }} \
             -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
-            -C mps3_board.uart0.out_file=./out/{{ matrix.compiler.name }}_${{ matrix.build.type }}_fvp_stdout.log \
+            -C mps3_board.uart0.out_file=./out/${{ matrix.compiler.name }}_${{ matrix.build.type }}_fvp_stdout.log \
             --simlimit 60 --stat
             echo " Show simulation UART output for project CM33_s and CM33_s"
-            cat ./out/{{ matrix.compiler.name }}_${{ matrix.build.type }}_fvp_stdout.log
+            cat ./out/${{ matrix.compiler.name }}_${{ matrix.build.type }}_fvp_stdout.log
