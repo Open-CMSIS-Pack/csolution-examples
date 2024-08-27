@@ -39,15 +39,15 @@ The project is configured for execution on Arm Virtual Hardware which removes th
 - When using MDK-Professional, you may execute it with the command:
 ### For debug type
   ```txt
-  > C:/Keil_v5/ARM/VHT/VHT_Corstone_SSE-300_Ethos-U55 -f vht-config.txt -a ./out/Debug/Hello.axf
+  > C:/Keil_v5/ARM/avh-fvp/bin/models/FVP_Corstone_SSE-300 -f FVP/FVP_Corstone_SSE-300/fvp-config.txt -a ./out/Debug/Hello.axf
   ```
 ### For release type
   ```txt
-  > C:/Keil_v5/ARM/VHT/VHT_Corstone_SSE-300_Ethos-U55 -f vht-config.txt -a ./out/Release/Hello.axf
+  > C:/Keil_v5/ARM/avh-fvp/bin/models/FVP_Corstone_SSE-300 -f FVP/FVP_Corstone_SSE-300/fvp-config.txt -a ./out/Release/Hello.axf
   ```
 
-- [Keil Studio Cloud](https://studio.keil.arm.com/) integrates also the Arm Virtual Hardware VHT_Corstone_SSE-300_Ethos-U55 model. The steps to use the example are:
+- [Keil Studio Cloud](https://studio.keil.arm.com/) integrates also the Arm Virtual Hardware FVP_Corstone_SSE-300/_Ethos-U55/_Ethos-U65 models. The steps to use the example are:
   - Start [Keil Studio Cloud](https://studio.keil.arm.com/) and login to the system using your account.
   - Use **File - Clone** and enter the URL: (https://github.com/Open-CMSIS-Pack/csolution-examples).  Add
-  - Select from the drop-down *Target hardware*: **Corstone SSE-300 (Cortex-M55, Ethos-U55)**
+  - Select from the drop-down *Target hardware*: **Corstone SSE-300 (Cortex-M55, Ethos-U55, Ethos-U65)**
   - Click **Run project** which executes the project build step and then starts running on Arm Virtual Hardware.
