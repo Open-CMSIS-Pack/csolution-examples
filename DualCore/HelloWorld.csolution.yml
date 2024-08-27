@@ -1,6 +1,6 @@
 solution:
 
-  created-for: CMSIS-Toolbox@2.4.0
+  created-for: CMSIS-Toolbox@2.5.0
   cdefault:
 
   packs:

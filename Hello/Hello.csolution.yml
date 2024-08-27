@@ -17,8 +17,8 @@ solution:
     - type: CS300                              # Runs on Arm Virtual Hardware
       device: ARM::SSE-300-MPS3
 
-                                              # add more hardware targets (don't forget to add the required packs)
-  build-types:                                # defines toolchain options for 'debug' and 'release'
+                                               # add more hardware targets (don't forget to add the required packs)
+  build-types:                                 # defines toolchain options for 'debug' and 'release'
     - type: Debug
       debug: on
       optimize: debug
@@ -27,5 +27,5 @@ solution:
       debug: off
       optimize: balanced
 
-  projects:                                   # list related projects
+  projects:                                    # list related projects
     - project: ./Hello.cproject.yml
