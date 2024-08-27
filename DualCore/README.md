@@ -3,5 +3,5 @@
 ## Generated Project
 
 ```txt
-> cbuild HelloWorld.csolution.yml --packs
+> cbuild HelloWorld.csolution.yml --packs --update-rte
 ```

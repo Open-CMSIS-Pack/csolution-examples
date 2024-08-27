@@ -21,7 +21,7 @@ Variables used in this application can be viewed in the uVision Debugger Watch w
 ## Generated Project
 
 ```txt
-> cbuild SimpleTZ.csolution.yml --packs --context .Debug
+> cbuild SimpleTZ.csolution.yml --packs --context .Debug --update-rte
 ```
 
 ## Run in Fast Models

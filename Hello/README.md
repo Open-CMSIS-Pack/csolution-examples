@@ -27,7 +27,7 @@ The project is generated using the [CMSIS-Toolbox](https://github.com/Open-CMSIS
 ## Generated Project
 
 ```txt
-> cbuild Hello.csolution.yml --packs
+> cbuild Hello.csolution.yml --packs --update-rte
 ```
 
 >**Note:** During the build process required packs may be downloaded.
