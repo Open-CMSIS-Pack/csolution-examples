@@ -1,3 +1,9 @@
+[![License](https://img.shields.io/github/license/Open-CMSIS-Pack/csolution-examples?label)](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/main/LICENSE)
+[![Hello: Test Build and Execution test](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/Hello/Hello-CI.yml?logo=arm&logoColor=0091bd&label=Hello:%20Test%20Build%20and%20Execution)](/.github/workflows/Hello-CI.yml)
+[![DualCore: Test Build](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/DualCore/DualCore-CI.yml?logo=arm&logoColor=0091bd&label=DualCore:%20Test%20Build)](/.github/workflows/DualCore-CI.yml)
+[![CubeMX: Test Build](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/CubeMX/CubeMX-CI.yml?logo=arm&logoColor=0091bd&label=CubeMX:%20Test%20and%20Build)](/.github/workflows/CubeMX-CI.yml)
+[![SimpleTZ: Test Build and Execution](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/SimpleTrustZone/SimpleTZ-CI.yml?logo=arm&logoColor=0091bd&label=SimpleTZ:%20Test%20Build%20and%20Execution)](/.github/workflows/SimpleTZ-CI.yml)
+
 # CMSIS-Toolbox Examples in `csolution` project format
 
 This is a collection of [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox) project examples using the [`csolution` project format](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) utility.  The project files are provided for experimentation, exploration and education purposes.
@@ -22,13 +28,13 @@ Source                               | Description
 Before you build projects, ensure that the pack index on your local computer is up-to-date with the command.
 
 ```txt
-> cpackget update-index        
+> cpackget update-index
 ```
 
 The project files  contain a list of software packs that are used. When using the `cbuild` tool option `--packs` these packs are downloaded during the build process as shown in the following example command line:
 
 ```txt
-> cbuild Hello.csolution.yml --packs --rebuild
+> cbuild Hello.csolution.yml --rebuild --context-set --update-rte --packs
 ```
 
 ## Examples in other repositories
@@ -36,7 +42,6 @@ The project files  contain a list of software packs that are used. When using th
 Source            | Description
 :-----------------|:----------------------------------
 [Hello](./Hello)  | A simple project to get started
-[AWS Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/30043722-0362-4859-bc6f-c28836a2d7ac/en-US)  | Getting Started With Arm Virtual Hardware (AVH) in Keil Studio Cloud (KSC) - All examples use `csolution` format
 [AWS_MQTT_MutualAuth_Demo](https://github.com/Open-CMSIS-Pack/AWS_MQTT_MutualAuth_SW_Framework)                    | MQTT demo that uses layers for re-targeting to different physical boards
 [Arm TrustZone Demo](https://github.com/MDK-Packs/TrustZone)                                                       | Example that uses TF-M and Bootloader for firmware update.  Runs on [STM32U5 board](https://www.st.com/en/evaluation-tools/b-u585i-iot02a.html) or [AVH](https://avh.arm.com/)
 

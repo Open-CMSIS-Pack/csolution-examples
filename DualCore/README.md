@@ -3,5 +3,5 @@
 ## Generated Project
 
 ```txt
-> cbuild HelloWorld.csolution.yml --packs --update-rte
+> cbuild HelloWorld.csolution.yml --update-rte --packs --toolchain AC6
 ```

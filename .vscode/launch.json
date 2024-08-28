@@ -4,31 +4,31 @@
         {
             "name": "SimpleTZ (AC6)",
             "type": "arm-debugger",
-            "request": "launch",           
+            "request": "launch",
             "programs": [
-                "${workspaceFolder}/SimpleTrustZone/out/CM33_ns/AVH/Debug/CM33_ns.axf",
-                "${workspaceFolder}/SimpleTrustZone/out/CM33_s/AVH/Debug/CM33_s.axf"
+               "${workspaceFolder}/SimpleTrustZone/out/CM33_ns/CS300/Debug/CM33_ns.axf",
+               "${workspaceFolder}/SimpleTrustZone/out/CM33_s/CS300/Debug/CM33_s.axf"
             ],
             "programMode": "ram",
             // armdbg --cdb-list
             "cdbEntry": "Arm FVP::MPS2_Cortex_M33::Bare Metal Debug::Bare Metal Debug::Cortex-M33_0",
             "cdbEntryParams":  {
-                "model_params": "-f ${workspaceFolder}/SimpleTrustZone/model_config.txt"
+              "model_params": "-f ${workspaceFolder}/SimpleTrustZone/model_config.txt"
             }
         },
         {
             "name": "SimpleTZ (GCC/Clang)",
             "type": "arm-debugger",
-            "request": "launch",           
+            "request": "launch",
             "programs": [
-                "${workspaceFolder}/SimpleTrustZone/out/CM33_ns/AVH/Debug/CM33_ns.elf",
-                "${workspaceFolder}/SimpleTrustZone/out/CM33_s/AVH/Debug/CM33_s.elf"
+               "${workspaceFolder}/SimpleTrustZone/out/CM33_ns/CS300/Debug/CM33_ns.elf",
+               "${workspaceFolder}/SimpleTrustZone/out/CM33_s/CS300/Debug/CM33_s.elf"
             ],
             "programMode": "ram",
             // armdbg --cdb-list
             "cdbEntry": "Arm FVP::MPS2_Cortex_M33::Bare Metal Debug::Bare Metal Debug::Cortex-M33_0",
             "cdbEntryParams":  {
-                "model_params": "-f ${workspaceFolder}/SimpleTrustZone/model_config.txt"
+               "model_params": "-f ${workspaceFolder}/SimpleTrustZone/model_config.txt"
             }
         }
     ]

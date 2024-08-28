@@ -1,11 +1,17 @@
 cbuild-pack:
   resolved-packs:
-    - resolved-pack: ARM::CMSIS@6.0.0
-      selected-by:
-        - ARM::CMSIS@6.0.0
-    - resolved-pack: ARM::CMSIS-View@1.1.0
-      selected-by:
+    - resolved-pack: ARM::CMSIS@6.1.0
+      selected-by-pack:
+        - ARM::CMSIS
+    - resolved-pack: ARM::CMSIS-Compiler@2.1.0
+      selected-by-pack:
+        - ARM::CMSIS-Compiler
+    - resolved-pack: ARM::CMSIS-RTX@5.9.0
+      selected-by-pack:
+        - ARM::CMSIS-RTX
+    - resolved-pack: ARM::CMSIS-View@1.2.0
+      selected-by-pack:
         - ARM::CMSIS-View
-    - resolved-pack: ARM::Cortex_DFP@1.0.0
-      selected-by:
-        - ARM::Cortex_DFP
+    - resolved-pack: ARM::V2M_MPS3_SSE_300_BSP@1.5.0
+      selected-by-pack:
+        - ARM::V2M_MPS3_SSE_300_BSP

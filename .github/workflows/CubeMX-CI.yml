@@ -1,0 +1,35 @@
+name: "CubeMX: Test Build"
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - CubeMX/**
+      - .github/workflows/CubeMX-CI.yml
+  push:
+    branches: [main]
+    paths:
+      - CubeMX/**
+      - .github/workflows/CubeMX-CI.yml
+  schedule:
+    - cron: '00 20 * * 6'
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        uses: ARM-software/cmsis-actions/vcpkg@v1
+        with:
+          config: ".ci/vcpkg-configuration.json"
+
+      - name: Activate Arm tool license
+        uses: ARM-software/cmsis-actions/armlm@v1
+
+      - name: Build project with AC6
+        working-directory: ./CubeMX/
+        run: cbuild CubeMX.csolution.yml --update-rte --packs --toolchain AC6 --rebuild
