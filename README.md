@@ -1,8 +1,8 @@
 [![License](https://img.shields.io/github/license/Open-CMSIS-Pack/csolution-examples?label)](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/main/LICENSE)
-[![Hello: Test Build and Execution test](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/Hello/Hello-CI.yml?logo=arm&logoColor=0091bd&label=Hello:%20Test%20Build%20and%20Execution)](/.github/workflows/Hello-CI.yml)
-[![DualCore: Test Build](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/DualCore/DualCore-CI.yml?logo=arm&logoColor=0091bd&label=DualCore:%20Test%20Build)](/.github/workflows/DualCore-CI.yml)
-[![CubeMX: Test Build](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/CubeMX/CubeMX-CI.yml?logo=arm&logoColor=0091bd&label=CubeMX:%20Test%20and%20Build)](/.github/workflows/CubeMX-CI.yml)
-[![SimpleTZ: Test Build and Execution](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/SimpleTrustZone/SimpleTZ-CI.yml?logo=arm&logoColor=0091bd&label=SimpleTZ:%20Test%20Build%20and%20Execution)](/.github/workflows/SimpleTZ-CI.yml)
+[![Hello: Test Build and Execution test](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/Hello-CI.yml?logo=arm&logoColor=0091bd&label=Hello:%20Test%20Build%20and%20Execution)](/.github/workflows/Hello-CI.yml)
+[![DualCore: Test Build](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/DualCore-CI.yml?logo=arm&logoColor=0091bd&label=DualCore:%20Test%20Build)](/.github/workflows/DualCore-CI.yml)
+[![CubeMX: Test Build](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/CubeMX-CI.yml?logo=arm&logoColor=0091bd&label=CubeMX:%20Test%20and%20Build)](/.github/workflows/CubeMX-CI.yml)
+[![SimpleTZ: Test Build and Execution](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/SimpleTZ-CI.yml?logo=arm&logoColor=0091bd&label=SimpleTZ:%20Test%20Build%20and%20Execution)](/.github/workflows/SimpleTZ-CI.yml)
 
 # CMSIS-Toolbox Examples in `csolution` project format
 
