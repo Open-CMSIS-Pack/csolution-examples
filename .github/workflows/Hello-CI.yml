@@ -32,7 +32,7 @@ jobs:
 
       - name: Build Hello with AC6 and all contexts
         working-directory: ./Hello/
-        run: cbuild Hello.csolution.yml --update-rte --packs --toolchain AC6
+        run: cbuild Hello.csolution.yml --packs --toolchain AC6
 
       - name: Run Hello build-type Debug, AC6
         working-directory: ./Hello/
@@ -54,7 +54,7 @@ jobs:
 
       - name: Build Hello with GCC and all contexts
         working-directory: ./Hello/
-        run: cbuild Hello.csolution.yml --update-rte --packs --toolchain GCC
+        run: cbuild Hello.csolution.yml --packs --toolchain GCC
 
       - name: Run Hello build-type Debug, GCC
         working-directory: ./Hello/
