@@ -13,4 +13,4 @@ project:
   components:
     - component: CMSIS:CORE
     - component: Device:Startup&C Startup
-    - component: ARM::CMSIS-View:Event Recorder&DAP
+    #- component: ARM::CMSIS-View:Event Recorder&DAP

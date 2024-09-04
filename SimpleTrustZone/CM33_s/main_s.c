@@ -30,7 +30,7 @@
 #include <stdio.h>
 #include <stdlib.h>
  
-#include "RTE_Components.h"
+#include "RTE/Device/RTE_Components.h"
 #include CMSIS_device_header
  
 /* TZ_START_NS: Start address of non-secure application */
@@ -53,7 +53,7 @@ int main(void) {
   /* Get non-secure reset handler */
   NonSecure_ResetHandler = (funcptr_void)(*((uint32_t *)((TZ_START_NS) + 4U)));
  
-  printf("Jump to non-secure application at 0x%08X\n", (uint32_t)NonSecure_ResetHandler);
+  printf("Jump to non-secure application at 0x%08X\n", (unsigned int)NonSecure_ResetHandler);
 
   /* Start non-secure state software application */
   NonSecure_ResetHandler();
