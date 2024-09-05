@@ -30,7 +30,7 @@
 #include <stdio.h>
 #include <stdlib.h>
  
-#include "RTE/Device/RTE_Components.h"
+#include "RTE_Components.h"
 #include CMSIS_device_header
  
 /* TZ_START_NS: Start address of non-secure application */
