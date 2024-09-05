@@ -21,20 +21,34 @@ Variables used in this application can be viewed in the uVision Debugger Watch w
 ## Generated Project
 
 ```txt
-> cbuild SimpleTZ.csolution.yml --packs --context .Debug --update-rte
+> cbuild SimpleTZ.csolution.yml --packs .Debug+AVH --toolchain AC6
 ```
 
 ## Run in Fast Models
 
 ```txt
-> FVP_MPS2_Cortex-M33 -f model_config.txt -a cpu0=out/CM33_ns/AVH/Debug/CM33_ns.axf -a cpu0=out/CM33_s/AVH/Debug/CM33_s.axf 
+> FVP_MPS2_Cortex-M33 -a ./out/CM33_ns/AVH/Debug/CM33_ns.axf -a ./out/CM33_s/AVH/Debug/CM33_s.axf -f ./../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt --stat
+
 telnetterminal0: Listening for serial connection on port 5000
 telnetterminal1: Listening for serial connection on port 5001
 telnetterminal2: Listening for serial connection on port 5002
-Jump to non-secure application at 0x0020242D
+
+Jump to non-secure application at 0x00201565
 Non-secure application...
 func1(1) = 4
 func2(func3, 2) = 9
 
 Info: /OSCI/SystemC: Simulation stopped by user.
+
+--- FVP_MPS2_Cortex_M33 statistics: -------------------------------------------
+Simulated time                          : 0.000400s
+User time                               : 0.004335s
+System time                             : 0.004148s
+Wall time                               : 0.008444s
+Performance index                       : 0.05
+cpu0                                    :   1.37 MIPS (       11610 Inst)
+cpu1                                    :   0.00 MIPS (           0 Inst)
+Total                                   :   1.37 MIPS (       11610 Inst)
+Memory highwater mark                   : 0x11278000 bytes ( 0.268 GB )
+-------------------------------------------------------------------------------
 ```
