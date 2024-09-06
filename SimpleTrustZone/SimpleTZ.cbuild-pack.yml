@@ -3,9 +3,9 @@ cbuild-pack:
     - resolved-pack: ARM::CMSIS@6.1.0
       selected-by-pack:
         - ARM::CMSIS
-    - resolved-pack: ARM::CMSIS-View@1.1.0
+    - resolved-pack: ARM::CMSIS-View@1.2.0
       selected-by-pack:
         - ARM::CMSIS-View
-    - resolved-pack: ARM::Cortex_DFP@1.0.0
+    - resolved-pack: ARM::Cortex_DFP@1.1.0
       selected-by-pack:
         - ARM::Cortex_DFP
