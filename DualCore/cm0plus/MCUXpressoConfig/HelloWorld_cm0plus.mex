@@ -8,7 +8,7 @@
          <core name="Cortex-M0P" id="cm0plus" description=""/>
          <core name="Cortex-M4F" id="cm4" description=""/>
       </cores>
-      <description>Configuration imported from C:\D\GitHub\VladimirUmek\csolution-examples\DualCore\tmp</description>
+      <description>Configuration for CM0</description>
    </common>
    <preferences>
       <validate_boot_init_only>true</validate_boot_init_only>
@@ -16,9 +16,6 @@
       <generate_code_modified_registers_only>false</generate_code_modified_registers_only>
       <update_include_paths>true</update_include_paths>
       <generate_registers_defines>false</generate_registers_defines>
-      <project_links>
-         <project_link path="C:\D\GitHub\VladimirUmek\csolution-examples\DualCore\tmp"/>
-      </project_links>
    </preferences>
    <tools>
       <pins name="Pins" version="16.0" enabled="true" update_project_code="true">
