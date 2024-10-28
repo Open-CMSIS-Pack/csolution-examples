@@ -6,7 +6,6 @@
  */
 
 #include "pin_mux.h"
-#include "board.h"
 #include "mcmgr.h"
 
 #include "fsl_gpio.h"
@@ -14,6 +13,14 @@
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
+/* Board led color mapping */
+#ifndef BOARD_LED_RED_GPIO
+#define BOARD_LED_RED_GPIO GPIOA
+#endif
+#ifndef BOARD_LED_RED_GPIO_PIN
+#define BOARD_LED_RED_GPIO_PIN 24U
+#endif
+
 #define LED_INIT()   GPIO_PinInit(BOARD_LED_RED_GPIO, BOARD_LED_RED_GPIO_PIN, &led_config);
 #define LED_TOGGLE() GPIO_PortToggle(BOARD_LED_RED_GPIO, 1u << BOARD_LED_RED_GPIO_PIN);
 
