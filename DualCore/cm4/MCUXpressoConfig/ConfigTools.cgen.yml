@@ -1,0 +1,13 @@
+generator-import:
+  generated-by: 'MCUXpresso config tools Generated: 28/10/2024 09:29:53'
+  for-device: K32L3A60xxx
+  groups:
+  - group: ConfigTools board
+    files:
+    - file: board/clock_config.c
+    - file: board/clock_config.h
+    - file: board/peripherals.c
+    - file: board/peripherals.h
+    - file: board/pin_mux.c
+    - file: board/pin_mux.h
+    - file: utilities/fsl_debug_console_conf.h

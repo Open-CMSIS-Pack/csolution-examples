@@ -1,6 +1,12 @@
 project:
   device: :cm0plus
 
+  generators:
+    options:
+      - generator: MCUXpressoConfig
+        path: ./MCUXpressoConfig
+        name: ConfigTools
+
   define:
     - CPU_K32L3A60VPJ1A_cm0plus
     - MCMGR_HANDLE_EXCEPTIONS: 1
@@ -12,6 +18,7 @@ project:
     - ../middleware/multicore/mcmgr/src
 
   components:
+    - component: Device:Config Tools:Init
     - component: Device:Startup
     - component: Device:CMSIS:K32L3A60_header
     - component: Device:CMSIS:K32L3A60_system
@@ -32,8 +39,6 @@ project:
     - component: Device:SDK Utilities:serial_manager
     - component: Device:SDK Utilities:serial_manager_uart
     - component: Device:SDK Utilities:str
-
-    - component: Board Support:SDK Project Template:project_template&K32L3A60
 
     - component: CMSIS:CORE
 
