@@ -29,7 +29,6 @@ project:
 
     - component: Device:SDK Utilities:assert
     - component: Device:SDK Utilities:debug_console
-    - component: Device:SDK Utilities:K32L3A60_linker
     - component: Device:SDK Utilities:serial_manager
     - component: Device:SDK Utilities:serial_manager_uart
     - component: Device:SDK Utilities:str
@@ -56,7 +55,4 @@ project:
         - file: ../middleware/multicore/mcmgr/src/mcmgr_mu_internal.c
 
   linker:
-    - script: ./RTE/Device/K32L3A60VPJ1A_cm0plus/K32L3A60xxx_cm0plus_flash.scf
-      for-compiler: AC6
-    - script: ./RTE/Device/K32L3A60VPJ1A_cm0plus/K32L3A60xxx_cm0plus_flash.ld
-      for-compiler: GCC
+    - regions: RTE/Device/$Dname$_$Pname$/regions_$Bname$.h
