@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<configuration name="" xsi:schemaLocation="http://mcuxpresso.nxp.com/XSD/mex_configuration_16 http://mcuxpresso.nxp.com/XSD/mex_configuration_16.xsd" uuid="ddbc0104-ded1-4a0a-9d28-b28d49ac59a3" version="16" xmlns="http://mcuxpresso.nxp.com/XSD/mex_configuration_16" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <common>
+      <processor>K32L3A60xxx</processor>
+      <package>K32L3A60VPJ1A</package>
+      <mcu_data>ksdk2_0</mcu_data>
+      <cores selected="cm0plus">
+         <core name="Cortex-M0P" id="cm0plus" description=""/>
+         <core name="Cortex-M4F" id="cm4" description=""/>
+      </cores>
+      <description>Configuration for CM0</description>
+   </common>
+   <preferences>
+      <validate_boot_init_only>true</validate_boot_init_only>
+      <generate_extended_information>false</generate_extended_information>
+      <generate_code_modified_registers_only>false</generate_code_modified_registers_only>
+      <update_include_paths>true</update_include_paths>
+      <generate_registers_defines>false</generate_registers_defines>
+   </preferences>
+   <tools>
+      <pins name="Pins" version="16.0" enabled="true" update_project_code="true">
+         <generated_project_files>
+            <file path="../cm0plus/MCUXpressoConfig/board/pin_mux.c" update_enabled="true"/>
+            <file path="../cm0plus/MCUXpressoConfig/board/pin_mux.h" update_enabled="true"/>
+         </generated_project_files>
+         <pins_profile>
+            <processor_version>16.3.0</processor_version>
+            <pin_labels>
+               <pin_label pin_num="D6" pin_signal="PTA24/LPSPI2_PCS0/LPSPI1_SCK/LPI2C2_SCL/FB_OE_b/TPM2_CH0" label="LED_REG" identifier="BOARD_LED_REG;LED_REG"/>
+            </pin_labels>
+            <external_user_signals>
+               <properties/>
+            </external_user_signals>
+         </pins_profile>
+         <functions_list>
+            <function name="BOARD_InitPins">
+               <description></description>
+               <options>
+                  <callFromInitBoot>true</callFromInitBoot>
+                  <coreID>cm0plus</coreID>
+                  <enableClock>true</enableClock>
+               </options>
+               <dependencies>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Pins initialization requires the COMMON Driver in the project." problem_level="2" source="Pins:BOARD_InitPins">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.port" description="Pins initialization requires the PORT Driver in the project." problem_level="2" source="Pins:BOARD_InitPins">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.gpio" description="Pins initialization requires the GPIO Driver in the project." problem_level="2" source="Pins:BOARD_InitPins">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <pins>
+                  <pin peripheral="GPIOA" signal="GPIO, 24" pin_num="D6" pin_signal="PTA24/LPSPI2_PCS0/LPSPI1_SCK/LPI2C2_SCL/FB_OE_b/TPM2_CH0">
+                     <pin_features>
+                        <pin_feature name="identifier" value="LED_REG"/>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+               </pins>
+            </function>
+         </functions_list>
+      </pins>
+      <clocks name="Clocks" version="14.0" enabled="true" update_project_code="true">
+         <generated_project_files>
+            <file path="../cm0plus/MCUXpressoConfig/board/clock_config.c" update_enabled="true"/>
+            <file path="../cm0plus/MCUXpressoConfig/board/clock_config.h" update_enabled="true"/>
+         </generated_project_files>
+         <clocks_profile>
+            <processor_version>16.3.0</processor_version>
+         </clocks_profile>
+         <clock_configurations>
+            <clock_configuration name="BOARD_BootClockRUN" id_prefix="" prefix_user_defined="false">
+               <description></description>
+               <options/>
+               <dependencies>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Clocks initialization requires the COMMON Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm0plus">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="SWComponent" resourceId="platform.drivers.common" description="Clocks initialization requires the COMMON Driver in the project." problem_level="2" source="Clocks:BOARD_BootClockRUN">
+                     <feature name="enabled" evaluation="equal" configuration="cm4">
+                        <data>true</data>
+                     </feature>
+                  </dependency>
+               </dependencies>
+               <clock_sources/>
+               <clock_outputs>
+                  <clock_output id="Bus_clock.outFreq" value="48 MHz" locked="false" accuracy=""/>
+                  <clock_output id="Core_clock.outFreq" value="48 MHz" locked="false" accuracy=""/>
+                  <clock_output id="LPO_CLK.outFreq" value="1 kHz" locked="false" accuracy=""/>
+                  <clock_output id="Platform_clock.outFreq" value="48 MHz" locked="false" accuracy=""/>
+                  <clock_output id="Slow_clock.outFreq" value="24 MHz" locked="false" accuracy=""/>
+                  <clock_output id="System_clock.outFreq" value="48 MHz" locked="false" accuracy=""/>
+               </clock_outputs>
+               <clock_settings/>
+               <called_from_default_init>true</called_from_default_init>
+            </clock_configuration>
+         </clock_configurations>
+      </clocks>
+      <dcdx name="DCDx" version="3.0" enabled="false" update_project_code="true">
+         <generated_project_files/>
+         <dcdx_profile>
+            <processor_version>N/A</processor_version>
+         </dcdx_profile>
+         <dcdx_configurations/>
+      </dcdx>
+      <periphs name="Peripherals" version="15.0" enabled="true" update_project_code="true">
+         <generated_project_files>
+            <file path="../cm0plus/MCUXpressoConfig/board/peripherals.c" update_enabled="true"/>
+            <file path="../cm0plus/MCUXpressoConfig/board/peripherals.h" update_enabled="true"/>
+         </generated_project_files>
+         <peripherals_profile>
+            <processor_version>16.3.0</processor_version>
+         </peripherals_profile>
+         <functional_groups>
+            <functional_group name="BOARD_InitPeripherals" uuid="1ac64c79-39e1-4d69-982e-0b5705063acf" called_from_default_init="true" id_prefix="" core="cm0plus">
+               <description></description>
+               <options/>
+               <dependencies/>
+               <instances>
+                  <instance name="CM0P_NVIC" uuid="370779c2-a910-419b-9ec9-3f1d62d5622f" type="nvic" type_id="nvic" mode="general" peripheral="CM0P_NVIC" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="nvic">
+                        <array name="interrupt_table"/>
+                        <array name="interrupts"/>
+                     </config_set>
+                  </instance>
+                  <instance name="board" uuid="9b6eb315-158c-4040-8e7f-8baee3472f43" type="custom_sw_init" type_id="custom_sw_init" mode="general" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
+                     <config_set name="general">
+                        <setting name="user_includes" value="#include &quot;czlock_config.h&quot;"/>
+                        <setting name="user_definitions" value="#define "/>
+                        <setting name="global_init" value=""/>
+                        <setting name="user_code" value=""/>
+                     </config_set>
+                  </instance>
+               </instances>
+            </functional_group>
+         </functional_groups>
+         <components>
+            <component name="system" uuid="f1c81b14-e278-4c22-b89d-149736cd4a92" type_id="system">
+               <config_set_global name="global_system_definitions">
+                  <setting name="user_definitions" value=""/>
+                  <setting name="user_includes" value=""/>
+                  <setting name="global_init" value=""/>
+               </config_set_global>
+            </component>
+            <component name="uart_cmsis_common" uuid="ef11aa51-5042-4d7f-ba4f-ddd3d448a24f" type_id="uart_cmsis_common">
+               <config_set_global name="global_USART_CMSIS_common" quick_selection="default"/>
+            </component>
+            <component name="msg" uuid="5c029f98-0da9-48b6-9e6d-4e4c3d525155" type_id="msg">
+               <config_set_global name="global_messages"/>
+            </component>
+            <component name="gpio_adapter_common" uuid="4f343495-d7e9-4c19-ba00-7f10bc7fcb09" type_id="gpio_adapter_common">
+               <config_set_global name="global_gpio_adapter_common" quick_selection="default"/>
+            </component>
+            <component name="generic_uart" uuid="7547f23b-56f7-4237-9282-af1ce4af6478" type_id="generic_uart">
+               <config_set_global name="global_uart"/>
+            </component>
+            <component name="generic_enet" uuid="04e5921a-f372-4aa6-813a-66a0b8346c52" type_id="generic_enet">
+               <config_set_global name="global_enet"/>
+            </component>
+            <component name="generic_can" uuid="b9148aa5-7687-428b-86aa-e38caaf31a6f" type_id="generic_can">
+               <config_set_global name="global_can"/>
+            </component>
+         </components>
+      </periphs>
+      <tee name="TEE" version="7.0" enabled="false" update_project_code="true">
+         <generated_project_files/>
+         <tee_profile>
+            <processor_version>N/A</processor_version>
+         </tee_profile>
+      </tee>
+   </tools>
+</configuration>

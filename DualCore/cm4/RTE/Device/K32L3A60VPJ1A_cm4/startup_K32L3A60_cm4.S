@@ -19,7 +19,7 @@
     .arch armv7-m
     .eabi_attribute Tag_ABI_align_preserved, 1 /*8-byte alignment */
 
-    .section .isr_vector, "a"
+    .section RESET, "a"
     .align 2
     .globl __Vectors
 __Vectors:

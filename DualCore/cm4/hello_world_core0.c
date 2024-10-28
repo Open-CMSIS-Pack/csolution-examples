@@ -6,12 +6,11 @@
  */
 
 #include "fsl_debug_console.h"
-#include "fsl_gpio.h"
+#include "clock_config.h"
+#include "peripherals.h"
 #include "pin_mux.h"
-#include "board.h"
 #include "mcmgr.h"
 
-#include "fsl_common.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -51,7 +50,7 @@ int main(void)
     /* Init board hardware.*/
     BOARD_InitBootPins();
     BOARD_InitBootClocks();
-    BOARD_InitDebugConsole();
+    BOARD_InitBootPeripherals();
 
     /* Print the initial banner from Primary core */
     (void)PRINTF("\r\nHello World from the Primary Core!\r\n\n");
