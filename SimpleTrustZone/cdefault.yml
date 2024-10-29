@@ -32,6 +32,7 @@ default:
         - -Wl,-Map=$elf()$.map
         - -Wl,--gc-sections
         - -Wl,--no-warn-rwx-segments   # suppress incorrect linker warning
+        - --entry=Reset_Handler
 
     - for-compiler: CLANG
       C-CPP:
