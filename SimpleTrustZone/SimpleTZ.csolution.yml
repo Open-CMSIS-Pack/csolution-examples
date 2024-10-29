@@ -1,7 +1,6 @@
 solution:
   created-for: CMSIS-Toolbox@2.6.0
   cdefault:
-  compiler: AC6
 
   packs:
     - pack: ARM::CMSIS
