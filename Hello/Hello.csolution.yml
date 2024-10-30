@@ -1,6 +1,5 @@
 solution:
-
-  created-for: CMSIS-Toolbox@2.5.0
+  created-for: CMSIS-Toolbox@2.6.0
   description: Print Hello World and a counter value via UART
   cdefault:
   compiler: AC6

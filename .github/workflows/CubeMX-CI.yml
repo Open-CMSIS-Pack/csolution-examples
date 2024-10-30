@@ -32,4 +32,4 @@ jobs:
 
       - name: Build project with AC6
         working-directory: ./CubeMX/
-        run: cbuild CubeMX.csolution.yml --update-rte --packs --toolchain AC6 --rebuild
+        run: cbuild CubeMX.csolution.yml --packs --toolchain AC6 --rebuild
