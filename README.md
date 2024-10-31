@@ -8,9 +8,9 @@
 
 This is a collection of [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox) project examples using the [`csolution` project format](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) utility.  The project files are provided for experimentation, exploration and education purposes.
 
-> **Note:** These examples use **CMSIS-Toolbox 2.2.0** or higher.
+> **Note:** These examples use **CMSIS-Toolbox 2.6.0** or higher.
 >
-> Refer to [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/installation.md) for information how to setup an enviornment.
+> Refer to [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/installation.md) for information how to setup an environment.
 
 ## Project Examples
 
@@ -34,7 +34,7 @@ Before you build projects, ensure that the pack index on your local computer is 
 The project files  contain a list of software packs that are used. When using the `cbuild` tool option `--packs` these packs are downloaded during the build process as shown in the following example command line:
 
 ```txt
-> cbuild Hello.csolution.yml --rebuild --context-set --update-rte --packs
+> cbuild Hello.csolution.yml --packs --context-set --toolchain AC6 --rebuild 
 ```
 
 ## Examples in other repositories

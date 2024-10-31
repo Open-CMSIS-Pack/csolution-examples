@@ -1,6 +1,6 @@
 project:
 
-# it is recommended to list the packs that contain the components in the cproject.yml file.
+# It is recommended to list the packs that contain the components in the cproject.yml file.
   groups:
     - group: Documentation
       files: 
@@ -16,36 +16,17 @@ project:
         - file: ./Board_IO/retarget_stdio.c
 
   components:
-    - component: CMSIS:CORE                             # short form, vendor selected from available packs
-    - component: ARM::CMSIS:RTOS2:Keil RTX5&Source      # long form, vendor explicitly stated
-    - component: ARM::CMSIS:OS Tick
+    - component: CMSIS:CORE
+    - component: CMSIS:RTOS2:Keil RTX5&Source
+    - component: CMSIS:OS Tick
     - component: CMSIS Driver:USART
     - component: Device:Startup&C Startup
-    - component: ARM::CMSIS-Compiler:CORE
-    - component: ARM::CMSIS-Compiler:STDERR:Custom
-    - component: ARM::CMSIS-Compiler:STDOUT:Custom
-    - component: ARM::CMSIS-Compiler:STDIN:Custom
-
-    - component: ARM::Device:Native Driver:IO
-      for-context:
-      - +CS300
-
-    - component: ARM::Device:Native Driver:UART
-      for-context:
-      - +CS300
-
-    - component: ARM::Device:Native Driver:SysCounter
-      for-context:
-      - +CS300
-
-    - component: ARM::Device:Native Driver:SysTimer
-      for-context:
-      - +CS300
-
-    - component: ARM::Device:Native Driver:Timeout
-      for-context:
-      - +CS300
-
-    - component: ARM::Device:Definition
-      for-context:
-      - +CS300
+    - component: CMSIS-Compiler:CORE
+    - component: CMSIS-Compiler:STDOUT:Custom
+    - component: CMSIS-Compiler:STDIN:Custom
+    - component: Device:Native Driver:IO
+    - component: Device:Native Driver:UART
+    - component: Device:Native Driver:SysCounter
+    - component: Device:Native Driver:SysTimer
+    - component: Device:Native Driver:Timeout
+    - component: Device:Definition
