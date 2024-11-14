@@ -6,12 +6,21 @@ solution:
 
 # it is recommended to list the pack or packs that define the device or board used in the csolution.yml file
   packs:
-    - pack: ARM::CMSIS@^6.0.0
-    - pack: Keil::B-U585I-IOT02A_BSP@^2.0.0
-    - pack: Keil::STM32U5xx_DFP@^3.0.0
+    - pack: ARM::CMSIS
+    - pack: Keil::B-U585I-IOT02A_BSP
+    - pack: Keil::STM32U5xx_DFP
   target-types:
-    - type: MyBoard                           # My evaluation kit
+    - type: MyBoard_ROM                       # My evaluation kit (Execution from ROM)
       board: B-U585I-IOT02A                   # Board name as defined by the pack
+      variables:
+        - regions_header: RTE/Device/STM32U585AIIx/regions_B-U585I-IOT02A_ROM.h
+
+    - type: MyBoard_RAM                       # My evaluation kit (Execution from RAM)
+      board: B-U585I-IOT02A                   # Board name as defined by the pack
+      variables:
+        - regions_header: RTE/Device/STM32U585AIIx/regions_B-U585I-IOT02A_RAM.h
+      define:
+        - VECT_TAB_SRAM
 
   build-types:                                # defines toolchain options for 'debug' and 'release'
     - type: Debug

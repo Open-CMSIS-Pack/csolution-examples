@@ -2,13 +2,13 @@ cbuild-pack:
   resolved-packs:
     - resolved-pack: ARM::CMSIS@6.1.0
       selected-by-pack:
-        - ARM::CMSIS@^6.0.0
+        - ARM::CMSIS
     - resolved-pack: ARM::CMSIS-RTX@5.9.0
       selected-by-pack:
-        - ARM::CMSIS-RTX@^5.9.0
+        - ARM::CMSIS-RTX
     - resolved-pack: Keil::B-U585I-IOT02A_BSP@2.0.0
       selected-by-pack:
-        - Keil::B-U585I-IOT02A_BSP@^2.0.0
+        - Keil::B-U585I-IOT02A_BSP
     - resolved-pack: Keil::STM32U5xx_DFP@3.0.0
       selected-by-pack:
-        - Keil::STM32U5xx_DFP@^3.0.0
+        - Keil::STM32U5xx_DFP

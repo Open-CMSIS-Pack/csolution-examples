@@ -1,6 +1,6 @@
 project:
   packs:
-    - pack: ARM::CMSIS-RTX@^5.9.0                    # RTOS Software Pack
+    - pack: ARM::CMSIS-RTX                           # RTOS Software Pack
 
   groups:
     - group: Documentation
@@ -15,3 +15,9 @@ project:
     - component: Device:CubeMX
     - component: CMSIS:RTOS2:Keil RTX5&Source
     - component: CMSIS:OS Tick
+
+  linker:
+    - script: RTE/Device/STM32U585AIIx/ac6_linker_script.sct.src
+    - regions: $regions_header$
+      for-compiler: AC6
+

@@ -1,4 +1,4 @@
 cbuild-set:
-  generated-by: csolution version 2.3.0
+  generated-by: vscode-cmsis-csolution version 1.44.0
   contexts:
-    - context: CubeMX.Debug+MyBoard
+    - context: CubeMX.Debug+MyBoard_ROM
