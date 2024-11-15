@@ -4,11 +4,12 @@ solution:
   cdefault:
   compiler: AC6                               # currently required for components Compiler:I/O
 
-# it is recommended to list the pack or packs that define the device or board used in the csolution.yml file
+  # it is recommended to list the pack or packs that define the device or board used in the csolution.yml file
   packs:
-    - pack: ARM::CMSIS
-    - pack: Keil::B-U585I-IOT02A_BSP
-    - pack: Keil::STM32U5xx_DFP
+    - pack: ARM::CMSIS@^6.1.0
+    - pack: Keil::B-U585I-IOT02A_BSP@^2.0.0
+    - pack: Keil::STM32U5xx_DFP@^3.0.0
+    - pack: ARM::CMSIS-RTX@^5.9.0
   target-types:
     - type: MyBoard_ROM                       # My evaluation kit (Execution from ROM)
       board: B-U585I-IOT02A                   # Board name as defined by the pack
@@ -25,7 +26,7 @@ solution:
   build-types:                                # defines toolchain options for 'debug' and 'release'
     - type: Debug
       debug: on
-      optimize: none
+      optimize: debug
 
     - type: Release
       debug: off

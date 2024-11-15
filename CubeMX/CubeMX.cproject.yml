@@ -1,7 +1,4 @@
 project:
-  packs:
-    - pack: ARM::CMSIS-RTX                           # RTOS Software Pack
-
   groups:
     - group: Documentation
       files:
