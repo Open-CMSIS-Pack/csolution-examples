@@ -2,7 +2,10 @@ solution:
   created-for: CMSIS-Toolbox@2.6.0
   description: Print Hello World and a counter value via UART
   cdefault:
-  compiler: AC6
+
+  select-compiler:                            # list of tested compilers
+    - compiler: AC6
+    - compiler: GCC
 
   # It is recommended to list the pack or packs that define the device or board used in the csolution.yml file
   packs:
