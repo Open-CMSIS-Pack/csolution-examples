@@ -2,7 +2,7 @@
 
 This *csolution project* shows the usage of [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) which uses a [generator import file](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-CBuild-Format.md#generator-import-file) to obtain the device configuration and HAL driver source files.
 
-This project uses two different target-types to configure execution from Flash ROM or execution from RAM.
+This project uses two different target-types to configure execution from Flash ROM or execution from RAM. It uses a [variable](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md#variables) to define the regions header file for each target in the file [`CubeMX.csolution.yml`](./CubeMX.csolution.yml).
 
 ## Prerequisites
 
@@ -53,7 +53,7 @@ You may use the debugger of choice for executing this program.
 
 By default this project is the Arm Compiler 6 (AC6). Using STM32CubeMX it can be reconfigured for the GCC or IAR compiler. To configure it for the GCC compiler execute these steps:
 
-- In the <solution_name>.csolution.yml project file set `compiler: GCC`.
+- In the file [`CubeMX.csolution.yml`](./CubeMX.csolution.yml) set `compiler: GCC`.
 
 - Launch the STM32CubeMX generator with this CMSIS-Toolbox command: csolution <solution_name>.csolution.yml run -g CubeMX -c <context>
 
