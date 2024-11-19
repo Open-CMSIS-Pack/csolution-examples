@@ -1,9 +1,9 @@
 project:
 # A project translates into one executable or library
 
-# List the packs that define the device and/or board
+# List the packs used in the layer, optional with minimum version
   packs:
-    - pack: ARM::CMSIS         # The CMSIS base software pack
+    - pack: ARM::CMSIS@^6.1.0  # The CMSIS base software pack
 #   - pack: MyVendor:MyPack    # List additional software packs
 
   groups:

@@ -1,7 +1,7 @@
 solution:
-# A solution is a collection of related projects that share same base configration
+# A solution is a collection of related projects that share same base configuration
 
-  created-for: CMSIS-Toolbox@2.0.0
+  created-for: CMSIS-Toolbox@2.6.0
   cdefault:                 # use cdefault.yml for default toolchain settings
 # compiler: AC6             # uncomment to select a different compiler (AC6 or IAR)
 
@@ -20,7 +20,7 @@ solution:
   build-types:
     - type: Debug
       debug: on
-      optimize: none
+      optimize: debug
 
     - type: Release
       debug: off

@@ -1,10 +1,8 @@
 # Continuous Integration (CI) test for csolution-examples
 
-  
 Content of `.ci` Directory   | Description
 :----------------------------|:-----------------
 `vcpkg-configuration.json`   | Tool setup for the CI test.
-
 
 ## GitHub Action Workflows
 
@@ -17,4 +15,4 @@ Projects in the Arm csolution-examples uses the **`ARM compiler (AC6)`** as well
 
 - **`SimpleTZ-CI.yml`** implements build tests for a **`TrustZone`** based project by using the **`AC6`** and **`GCC`** toolchains. The execution tests runs on [**`Arm Virtual Hardware - Fixed Virtual Platforms (AVH FVP)`**](https://arm-software.github.io/AVH/main/simulation/html/index.html) simulation models. The directory **`FVP`** contains configuration files for the **`FVP simulation models`**.
 
-- **`CubeMX-CI.yml`**  implements a build test for a **`CubeMX`** generated project by using only the **`AC6`** toolchain. The output of this build test is stored as artifact and can be downloaded.
+- **`CubeMX-CI.yml`**  implements a build test for a **`CubeMX`** generated project by using only the **`AC6`** toolchain.

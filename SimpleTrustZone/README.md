@@ -42,8 +42,10 @@ The project is generated using the [CMSIS-Toolbox](https://github.com/Open-CMSIS
 
 ## Generate the project binaries
 
+Note that the file [SimpleTZ.cbuild-set.yml](./SimpleTZ.cbuild-set.yml) contains the selected [context set](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-overview.md#working-with-context-set) for the application.
+
 ```txt
-> cbuild SimpleTZ.csolution.yml --packs .Debug+AVH --toolchain AC6
+> cbuild SimpleTZ.csolution.yml --packs .Debug+AVH --toolchain AC6 --context-set
 ```
 
 ## Execute the project on ARM Virtual Hardware

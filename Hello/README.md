@@ -9,13 +9,11 @@ This project prints "Hello World" and a counter value via the UART output. It is
 - [CMSIS-Toolbox 2.6.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher
 - Arm Compiler 6.22 or higher
 - GCC Compiler 13.2.1 or higher
-- Arm Virtual Hardware for Corstone-300 v11.26.11
-
-All these tools can be installed via [vcpkg](https://learn.arm.com/learning-paths/microcontrollers/vcpkg-tool-installation/)
+- Arm Virtual Hardware for Corstone-300 v11.26.11 or higher
 
 ### Packs
 
-- Required packs are listed in the file [`Hello.csolution.yml`](./Hello.csolution.yml)
+- Required packs are listed in the file [`Hello.csolution.yml`](./Hello.csolution.yml). The file [`Hello.cbuild-pack.yml`](./Hello.cbuild-pack.yml) records the versions that have been used to generate the application.
 
 ## Project Structure
 
@@ -24,10 +22,14 @@ The project is generated using the [CMSIS-Toolbox](https://github.com/Open-CMSIS
 - [`Hello.csolution.yml`](./Hello.csolution.yml) lists the required packs, defines,hardware targets, and thebuild-types (along with the compiler).
 - [`Hello.cproject.yml`](./Hello.cproject.yml) defines the source files and the software components.
 
+> **Note:**
+>
+> The project also builds with the GCC compiler.
+
 ## Generate project binaries
 
-```txt
-> cbuild Hello.csolution.yml --packs
+```bash
+> cbuild Hello.csolution.yml --packs --toolchain AC6
 ```
 
 >**Note:** During the build process required packs may be downloaded.
@@ -37,16 +39,21 @@ The project is generated using the [CMSIS-Toolbox](https://github.com/Open-CMSIS
 The project is configured for execution on [**Arm Virtual Hardware**](https://developer.arm.com/Tools%20and%20Software/Arm%20Virtual%20Hardware) which removes the requirement for a physical hardware board.  
 
 ### Execute this project via command line
+
 #### For debug type
-  ```txt
-  > FVP_Corstone_SSE-300 -f FVP/FVP_Corstone_SSE-300/fvp-config.txt -a ./out/Debug/Hello.axf
-  ```
+
+```bash
+> FVP_Corstone_SSE-300 -f FVP/FVP_Corstone_SSE-300/fvp-config.txt -a ./out/Debug/Hello.axf
+```
+
 #### For release type
-  ```txt
-  > FVP_Corstone_SSE-300 -f FVP/FVP_Corstone_SSE-300/fvp-config.txt -a ./out/Release/Hello.axf
-  ```
+
+```bash
+> FVP_Corstone_SSE-300 -f FVP/FVP_Corstone_SSE-300/fvp-config.txt -a ./out/Release/Hello.axf
+```
 
 ### Execute this project in [**Keil Studio Cloud**](https://studio.keil.arm.com/)
+
 - Keil Studio Cloud integrates also the Arm Virtual Hardware for FVP_Corstone_SSE-300/_Ethos-U55/_Ethos-U65 models. The steps to use the example are:
   - Start [Keil Studio Cloud](https://studio.keil.arm.com/) and login to the system using your account.
   - Use **File - Clone** and enter the URL: (https://github.com/Open-CMSIS-Pack/csolution-examples).

@@ -9,9 +9,6 @@ This example generates **HelloWorld** executables for the **FRDM-K32L3A6** evalu
 - [CMSIS-Toolbox 2.6.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher
 - Arm Compiler 6.22 or higher
 - GCC Compiler 13.2.1 or higher
-- Arm Virtual Hardware for Corstone-300 v11.26.11
-
-All these tools can be installed via [vcpkg](https://learn.arm.com/learning-paths/microcontrollers/vcpkg-tool-installation/)
 
 ### Packs
 
@@ -31,3 +28,7 @@ The project is generated using the [CMSIS-Toolbox](https://github.com/Open-CMSIS
 ```txt
 > cbuild HelloWorld.csolution.yml --packs --toolchain AC6
 ```
+
+## Execute Project
+
+You may use the debugger of choice for executing this program.
