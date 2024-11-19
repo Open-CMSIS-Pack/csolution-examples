@@ -20,12 +20,14 @@ When using VS Code with the [Arm Environment Manager](https://marketplace.visual
 
 Examples in this repository:
 
-Source                               | Description
+*csolution project*                  | Description
 :------------------------------------|:----------------------------------
 [Hello](./Hello)                     | A simple project to get started. Requires no hardware as it runs on [AVH-FVP](https://github.com/ARM-software/AVH) simulation models.
 [DualCore](./DualCore)               | Application with multiple processors that runs on the [NXP FRDM-K32L3A6](https://www.keil.arm.com/boards/nxp-frdm-k32l3a6-989d2e5/projects/) board.
 [SimpleTrustZone](./SimpleTrustZone) | Simple TrustZone example that shows the concept of secure and non-secure projects. Runs on [AVH-FVP](https://github.com/ARM-software/AVH) simulation models.
 [CubeMX](./CubeMX)                   | Project that uses [STM32Cube](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs/CubeMX.md) for device configuration and contains a RAM and ROM target.
+
+Each *csolution project* example shows different aspects of the CMSIS-Toolbox. For example, the [CubeMX](./CubeMX) *csolution project* contains two targets that show RAM and ROM execution.
 
 ## Build Projects
 
@@ -47,7 +49,7 @@ The directory [Templates](./Templates) may be used as starting point for differe
 
 ## GitHub Action Workflows
 
-The directory [.ci](./.ci) contains the required setup for the Continuous Integration (CI) test of these examples with [GitHub action](./.github) workflows. The tools are downloaded from the [Arm Tools Artifactory](https://artifacts.tools.arm.com/). The test results are available 
+The directory [.ci](./.ci) contains the required setup for the Continuous Integration (CI) test of these examples with [GitHub action](./.github) workflows. The tools are downloaded from the [Arm Tools Artifactory](https://artifacts.tools.arm.com/). The test results are available in the [*Actions*](/../../actions) view.
 
 ## Examples in Other Repositories
 
@@ -55,3 +57,4 @@ Source            | Description
 :-----------------|:----------------------------------
 [github.com/Arm-Examples](https://github.com/Arm-Examples)  | A collection of several example projects
 [AWS_MQTT_MutualAuth_Demo](https://github.com/Open-CMSIS-Pack/AWS_MQTT_MutualAuth_SW_Framework)  | MQTT demo that uses layers for re-targeting to different physical boards
+[AVH_CI_Template](https://github.com/Arm-Examples/AVH_CI_Template) |  CI Template for unit test automation that uses [GitHub Actions](https://github.com/features/actions)
