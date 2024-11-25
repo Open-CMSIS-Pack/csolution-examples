@@ -11,7 +11,7 @@ project:
     - component: CMSIS:CORE
     - component: Device:CubeMX
     - component: CMSIS:RTOS2:Keil RTX5&Source
-    - component: CMSIS:OS Tick
+    - component: CMSIS:OS Tick:SysTick
 
   linker:
     - script: RTE/Device/STM32U585AIIx/ac6_linker_script.sct.src
