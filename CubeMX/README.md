@@ -1,6 +1,6 @@
 # CubeMX Example
 
-This *csolution project* shows the usage of [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) which uses a [generator import file](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format.md#generator-import-file) to obtain the device configuration and HAL driver source files.
+This *csolution project* shows the usage of [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) which uses a [generator import file](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format/#generator-import-file) to obtain the device configuration and HAL driver source files.
 
 This project uses two different target-types to configure execution from Flash ROM or execution from RAM. It uses a [variable](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format.md#variables) to define the regions header file for each target in the file [`CubeMX.csolution.yml`](./CubeMX.csolution.yml).
 
