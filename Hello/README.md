@@ -17,7 +17,7 @@ This project prints "Hello World" and a counter value via the UART output. It is
 
 ## Project Structure
 
-The project is generated using the [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-overview.md) and is defined in [`csolution`](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) format:
+The project is generated using the [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview.md) and is defined in [`csolution`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format.md) format:
 
 - [`Hello.csolution.yml`](./Hello.csolution.yml) lists the required packs, defines,hardware targets, and thebuild-types (along with the compiler).
 - [`Hello.cproject.yml`](./Hello.cproject.yml) defines the source files and the software components.
@@ -55,7 +55,7 @@ The project is configured for execution on [**Arm Virtual Hardware**](https://de
 ### Execute this project in [**Keil Studio Cloud**](https://studio.keil.arm.com/)
 
 - Keil Studio Cloud integrates also the Arm Virtual Hardware for FVP_Corstone_SSE-300/_Ethos-U55/_Ethos-U65 models. The steps to use the example are:
-  - Start [Keil Studio Cloud](https://studio.keil.arm.com/) and login to the system using your account.
-  - Use **File - Clone** and enter the URL: (https://github.com/Open-CMSIS-Pack/csolution-examples).
-  - Select from the drop-down *Target hardware*: **Corstone SSE-300 (Cortex-M55, Ethos-U55, Ethos-U65)**
-  - Click **Run project** which executes the project build step and then starts running on Arm Virtual Hardware.
+    - Start [Keil Studio Cloud](https://studio.keil.arm.com/) and login to the system using your account.
+    - Use **File - Clone** and enter the URL: (https://github.com/Open-CMSIS-Pack/csolution-examples).
+    - Select from the drop-down *Target hardware*: **Corstone SSE-300 (Cortex-M55, Ethos-U55, Ethos-U65)**
+    - Click **Run project** which executes the project build step and then starts running on Arm Virtual Hardware.

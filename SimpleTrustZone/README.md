@@ -18,7 +18,7 @@
 
 ## Project Structure
 
-The project is generated using the [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-overview.md) and is defined in [`csolution`](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) format:
+The project is generated using the [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview.md) and is defined in [`csolution`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format.md) format:
 
 - [`SimpleTZ.csolution.yml`](./SimpleTZ.csolution.yml) lists the required packs, defines, hardware targets, and the build-types (along with the compiler).
 - [`CM33_s.cproject.yml`](./CM33_s/CM33_s.cproject.yml) defines the source files and the software components used for the secure part.
@@ -42,7 +42,7 @@ The project is generated using the [CMSIS-Toolbox](https://github.com/Open-CMSIS
 
 ## Generate the project binaries
 
-Note that the file [SimpleTZ.cbuild-set.yml](./SimpleTZ.cbuild-set.yml) contains the selected [context set](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-overview.md#working-with-context-set) for the application.
+Note that the file [SimpleTZ.cbuild-set.yml](./SimpleTZ.cbuild-set.yml) contains the selected [context set](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview.md#working-with-context-set) for the application.
 
 ```txt
 > cbuild SimpleTZ.csolution.yml --packs .Debug+AVH --toolchain AC6 --context-set

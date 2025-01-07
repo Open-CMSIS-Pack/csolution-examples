@@ -3,9 +3,11 @@ solution:
   description: Print Hello World and a counter value via UART
   cdefault:
 
-  select-compiler:                            # list of tested compilers
+  select-compiler:                             # list of tested compilers
     - compiler: AC6
     - compiler: GCC
+
+  compiler: GCC                                # selected compiler
 
   # It is recommended to list the pack or packs that define the device or board used in the csolution.yml file
   packs:

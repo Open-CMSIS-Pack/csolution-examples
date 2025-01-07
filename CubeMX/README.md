@@ -1,8 +1,8 @@
 # CubeMX Example
 
-This *csolution project* shows the usage of [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) which uses a [generator import file](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-CBuild-Format.md#generator-import-file) to obtain the device configuration and HAL driver source files.
+This *csolution project* shows the usage of [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) which uses a [generator import file](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-CBuild-Format.md#generator-import-file) to obtain the device configuration and HAL driver source files.
 
-This project uses two different target-types to configure execution from Flash ROM or execution from RAM. It uses a [variable](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md#variables) to define the regions header file for each target in the file [`CubeMX.csolution.yml`](./CubeMX.csolution.yml).
+This project uses two different target-types to configure execution from Flash ROM or execution from RAM. It uses a [variable](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format.md#variables) to define the regions header file for each target in the file [`CubeMX.csolution.yml`](./CubeMX.csolution.yml).
 
 ## Prerequisites
 
@@ -62,6 +62,6 @@ By default this project is the Arm Compiler 6 (AC6). Using STM32CubeMX it can be
   - Select STM32CubeIDE and disable Generate Under Root.
   - Click GENERATE CODE to recreate the CubeMX generated files for the GCC compiler.
 
-In the file [CubeMX.cproject.yml](./CubeMX.cproject.yml), update `linker:` node configuration to reference appropriate [GCC linker script template](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-overview.md#linker-script-templates). You may customize this GCC linker script template file to your project's requirements.
+In the file [CubeMX.cproject.yml](./CubeMX.cproject.yml), update `linker:` node configuration to reference appropriate [GCC linker script template](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview.md#linker-script-templates). You may customize this GCC linker script template file to your project's requirements.
 
 [Rebuild the project](#build-project) using the CMSIS-Toolbox command `cbuild` with the option `--rebuild`.
