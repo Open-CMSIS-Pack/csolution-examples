@@ -16,12 +16,11 @@ This example generates **HelloWorld** executables for the **FRDM-K32L3A6** evalu
 
 ## Project Structure
 
-The project is generated using the [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/build-overview.md) and is defined in [`csolution`](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md) format:
+The project is generated using the [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview) and is defined in [`csolution`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format) format:
 
 - [`HelloWorld.csolution.yml`](./HelloWorld.csolution.yml) lists the required packs, defines, hardware targets, and the build-types (along with the compiler).
 - [`./cm0plus/HelloWorld_cm0plus.cproject.yml`](./cm0plus/HelloWorld_cm0plus.cproject.yml) defines the source files and the software components for the **Cortex-M0plus** core.
 - [`./cm4/HelloWorld_cm4.cproject.yml`](./cm4/HelloWorld_cm4.cproject.yml) defines the source files and the software components for the **Cortex-M4** core.
-
 
 ## Generate the project binaries
 

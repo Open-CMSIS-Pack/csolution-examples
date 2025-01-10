@@ -6,6 +6,8 @@ solution:
   select-compiler:
     - compiler: AC6
 
+  compiler: AC6
+  
   packs:
     - pack: ARM::CMSIS@^6.1.0
     - pack: ARM::CMSIS-RTX@^5.9.0

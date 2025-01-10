@@ -4,6 +4,8 @@ solution:
   select-compiler:
     - compiler: AC6
 
+  compiler: AC6
+  
   packs:
     - pack: ARM::CMSIS
     - pack: ARM::Cortex_DFP

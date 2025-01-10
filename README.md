@@ -6,13 +6,13 @@
 
 # CMSIS-Toolbox Examples in *csolution project format*
 
-This is a collection of [CMSIS-Toolbox](https://github.com/Open-CMSIS-Pack/cmsis-toolbox) project examples in [*csolution project format*](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/YML-Input-Format.md).  The project examples are provided for experimentation, exploration and education purposes.
+This is a collection of [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox) project examples in [*csolution project format*](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format).  The project examples are provided for experimentation, exploration and education purposes.
 
 ## Tool Requirements
 
 The examples use **CMSIS-Toolbox 2.6.0** or higher and require additional tools such as CMake, Ninja, Arm Compiler 6, GCC Compiler, and Arm Fixed Virtual Platforms (AVH-FVP).
 
-Refer to [**Installation of the CMSIS-Toolbox**](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/blob/main/docs/installation.md) for information on the setup of a development environment with these tools.
+Refer to [**Installation of the CMSIS-Toolbox**](https://open-cmsis-pack.github.io/cmsis-toolbox/installation) for information on the setup of a development environment with these tools.
 
 When using VS Code with the [Arm Environment Manager](https://marketplace.visualstudio.com/items?itemName=Arm.environment-manager) the required tools are installed based on the settings in the file [`vcpkg-configuration.json`](./vcpkg-configuration.json) using the [Arm Tools Artifactory](https://artifacts.tools.arm.com/).
 
