@@ -17,7 +17,7 @@ This project prints "Hello World" and a counter value via the UART output. It is
 
 ## Project Structure
 
-The project is generated using the [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview.md) and is defined in [`csolution`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format.md) format:
+The project is generated using the [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview) and is defined in [`csolution`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format) format:
 
 - [`Hello.csolution.yml`](./Hello.csolution.yml) lists the required packs, defines,hardware targets, and thebuild-types (along with the compiler).
 - [`Hello.cproject.yml`](./Hello.cproject.yml) defines the source files and the software components.
