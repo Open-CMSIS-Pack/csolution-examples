@@ -30,3 +30,8 @@ project:
     - component: Device:Native Driver:SysTimer
     - component: Device:Native Driver:Timeout
     - component: Device:Definition
+
+  output:         # generate output files
+    type:
+      - elf
+      - hex
