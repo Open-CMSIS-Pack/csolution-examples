@@ -62,3 +62,9 @@ project:
 
   linker:
     - regions: RTE/Device/$Dname$_$Pname$/regions_$Bname$.h
+
+  output:
+    type:
+      - elf
+      - hex
+      - map

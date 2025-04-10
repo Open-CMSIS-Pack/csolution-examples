@@ -44,6 +44,8 @@ void SystemInitHook(void)
  */
 int main(void)
 {
+    volatile int i = 0;
+
     /* Initialize MCMGR, install generic event handlers */
     (void)MCMGR_Init();
 
@@ -80,9 +82,11 @@ int main(void)
     /* Boot Secondary core application */
     (void)PRINTF("Starting Secondary core.\r\n");
     (void)MCMGR_StartCore(kMCMGR_Core1, (void *)(char *)CORE1_BOOT_ADDRESS, 2, kMCMGR_Start_Synchronous);
-    (void)PRINTF("The secondary core application has been started.\r\n");
+    (void)PRINTF("The secondary core application has been started.\r\n\n");
 
     for (;;)
     {
+        SDK_DelayAtLeastUs(1000000U, SDK_DEVICE_MAXIMUM_CPU_CLOCK_FREQUENCY);
+        (void)PRINTF("Hello World (Primary Core)! Counter: %d\r\n", ++i);
     }
 }
