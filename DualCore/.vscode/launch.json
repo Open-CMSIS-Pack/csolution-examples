@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "CM4 (launch - pyOCD)",
+            "type": "gdbtarget",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "out/HelloWorld_cm4/FRDM-K32L3A6/Debug/HelloWorld_cm4.axf",
+            "gdb": "arm-none-eabi-gdb",
+            "initCommands": [
+                "load out/HelloWorld_cm0plus/FRDM-K32L3A6/Debug/HelloWorld_cm0plus.hex",
+                "load out/HelloWorld_cm4/FRDM-K32L3A6/Debug/HelloWorld_cm4.hex",
+                // "set $pc = Reset_Handler",
+                "break main"
+            ],
+            "target": {
+                "server": "pyocd",
+                "port": "3333"
+            },
+            "cmsis": {
+                "cbuildRunFile": "FRDM-K32L3A6.cbuild-run.yml"
+            }
+        },
+        {
+            "name": "CM0+ (attach)",
+            "type": "gdbtarget",
+            "request": "attach",
+            "cwd": "${workspaceFolder}",
+            "program": "out/HelloWorld_cm0plus/FRDM-K32L3A6/Debug/HelloWorld_cm0plus.axf",
+            "gdb": "arm-none-eabi-gdb",
+            "target": {
+                "port": "3334"
+            },
+        }
+    ]
+}

@@ -1,0 +1,104 @@
+cbuild-run:
+  generated-by: csolution version 2.8.0
+  solution: HelloWorld.csolution.yml
+  target-type: FRDM-K32L3A6
+  compiler: AC6
+  device: NXP::K32L3A60VPJ1A
+  device-pack: NXP::K32L3A60_DFP@19.0.0
+  board: NXP::FRDM-K32L3A6
+  board-pack: NXP::FRDM-K32L3A6_BSP@19.0.0
+  debug-topology:
+    debugports:
+      - dpid: 0
+        accessports:
+          - apid: 0
+            index: 0
+          - apid: 1
+            index: 2
+    processors:
+      - pname: cm4
+        apid: 0
+      - pname: cm0plus
+        apid: 1
+  programming:
+    - algorithm: ${CMSIS_PACK_ROOT}/NXP/K32L3A60_DFP/19.0.0/devices/K32L3A60/arm/K32L3A60_P1024_4KB_SEC.FLM
+      start: 0x00000000
+      size: 0x00100000
+      ram-start: 0x20000000
+      ram-size: 0x00002000
+      default: true
+    - algorithm: ${CMSIS_PACK_ROOT}/NXP/K32L3A60_DFP/19.0.0/devices/K32L3A60/arm/K32L3A60_P256_2KB_SEC.FLM
+      start: 0x01000000
+      size: 0x00040000
+      ram-start: 0x20000000
+      ram-size: 0x00002000
+      default: true
+  system-descriptions:
+    - file: ${CMSIS_PACK_ROOT}/NXP/K32L3A60_DFP/19.0.0/devices/K32L3A60/K32L3A60_cm0plus.xml
+      type: svd
+      pname: cm0plus
+    - file: ${CMSIS_PACK_ROOT}/NXP/K32L3A60_DFP/19.0.0/devices/K32L3A60/K32L3A60_cm4.xml
+      type: svd
+      pname: cm4
+  output:
+    - file: out/HelloWorld_cm0plus/FRDM-K32L3A6/Debug/HelloWorld_cm0plus.axf
+      info: generate by HelloWorld_cm0plus.Debug+FRDM-K32L3A6
+      type: elf
+    - file: out/HelloWorld_cm0plus/FRDM-K32L3A6/Debug/HelloWorld_cm0plus.hex
+      info: generate by HelloWorld_cm0plus.Debug+FRDM-K32L3A6
+      type: hex
+    - file: out/HelloWorld_cm4/FRDM-K32L3A6/Debug/HelloWorld_cm4.axf
+      info: generate by HelloWorld_cm4.Debug+FRDM-K32L3A6
+      type: elf
+    - file: out/HelloWorld_cm4/FRDM-K32L3A6/Debug/HelloWorld_cm4.hex
+      info: generate by HelloWorld_cm4.Debug+FRDM-K32L3A6
+      type: hex
+  system-resources:
+    memory:
+      - name: FLEX_RAM
+        access: rw
+        start: 0x48000000
+        size: 0x00001000
+        default: true
+        from-pack: NXP::K32L3A60_DFP@19.0.0
+      - name: PROGRAM_FLASH_cm0plus
+        access: rx
+        start: 0x01000000
+        size: 0x00040000
+        default: true
+        from-pack: NXP::K32L3A60_DFP@19.0.0
+      - name: PROGRAM_FLASH_cm4
+        access: rx
+        start: 0x00000000
+        size: 0x00100000
+        default: true
+        startup: true
+        from-pack: NXP::K32L3A60_DFP@19.0.0
+      - name: SRAM_DTC_cm4
+        access: rw
+        start: 0x20000000
+        size: 0x00030000
+        default: true
+        from-pack: NXP::K32L3A60_DFP@19.0.0
+      - name: SRAM_ITC_cm4
+        access: rw
+        start: 0x08000000
+        size: 0x00010000
+        default: true
+        from-pack: NXP::K32L3A60_DFP@19.0.0
+      - name: SRAM_TCM_cm0plus
+        access: rw
+        start: 0x09000000
+        size: 0x00020000
+        default: true
+        from-pack: NXP::K32L3A60_DFP@19.0.0
+      - name: USB_RAM
+        access: rw
+        start: 0x48010000
+        size: 0x00000800
+        default: true
+        from-pack: NXP::K32L3A60_DFP@19.0.0
+  debugger:
+    - name: <default>
+      port: swd
+      clock: 10000000

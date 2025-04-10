@@ -29,6 +29,15 @@ solution:
       debug: off
       optimize: balanced
 
+  misc:
+    - for-compiler: AC6
+      C-CPP:
+        - -gdwarf-5
+      ASM:
+        - -gdwarf-5
+      Link:
+        - --entry=Reset_Handler
+
   projects:
     - project: ./cm0plus/HelloWorld_cm0plus.cproject.yml
     - project: ./cm4/HelloWorld_cm4.cproject.yml
