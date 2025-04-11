@@ -15,7 +15,7 @@
                 "load out/HelloWorld_cm0plus/FRDM-K32L3A6/Debug/HelloWorld_cm0plus.hex",
                 "load out/HelloWorld_cm4/FRDM-K32L3A6/Debug/HelloWorld_cm4.hex",
                 // "set $pc = Reset_Handler",
-                "break main"
+                "tbreak main"
             ],
             "target": {
                 "server": "pyocd",
