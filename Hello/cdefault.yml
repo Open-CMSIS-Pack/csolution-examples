@@ -41,7 +41,7 @@ default:
       C:
         - -std=gnu11
       Link:
-        - -lcrt0
+        # - -lcrt0 Must not be used starting CLANG 20.1.0
         - -Wl,-Map=$elf()$.map
         - -Wl,--gc-sections
 
