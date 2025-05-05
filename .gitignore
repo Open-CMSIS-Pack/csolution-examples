@@ -51,10 +51,20 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# CMSIS Solution files and folders not to be tracked
+# default directory of build artifacts
 **/out
-.clangd
-*.cbuild-idx.yml
-*.cbuild.yml
-*.cprj
-RTE_Components.h
+# directory containing intermediate files to be regenerated
 **/tmp
+# 
+.clangd
+# Update config files must be merged before commit
+*.update@*
+*.cbuild.yml
+*.cbuild-idx.yml
+*.cbuild-run.yml
+*.cbuild-set.yml
+# RTE_Components.h files are always regenerated and must not be checked in
+RTE_Components.h
+# outdated file types
+*.cprj
