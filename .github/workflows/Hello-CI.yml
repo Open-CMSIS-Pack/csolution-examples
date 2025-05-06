@@ -73,3 +73,25 @@ jobs:
             --simlimit 60 --stat
             echo " Show simulation UART output build with GCC Release"
             cat ./out/Hello/CS300/Release/GCC_fvp_stdout.log
+
+      - name: Build Hello with CLANG and all contexts
+        working-directory: ./Hello/
+        run: cbuild Hello.csolution.yml --packs --toolchain CLANG
+
+      - name: Run Hello build-type Debug, CLANG
+        working-directory: ./Hello/
+        run: |
+            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
+            -C mps3_board.uart0.out_file=./out/Hello/CS300/Debug/CLANG_fvp_stdout.log \
+            --simlimit 60 --stat
+            echo " Show simulation UART output build with CLANG Debug"
+            cat ./out/Hello/CS300/Debug/CLANG_fvp_stdout.log
+
+      - name: Run Hello build-type Release, CLANG
+        working-directory: ./Hello/
+        run: |
+            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
+            -C mps3_board.uart0.out_file=./out/Hello/CS300/Release/CLANG_fvp_stdout.log \
+            --simlimit 60 --stat
+            echo " Show simulation UART output build with CLANG Release"
+            cat ./out/Hello/CS300/Release/CLANG_fvp_stdout.log
