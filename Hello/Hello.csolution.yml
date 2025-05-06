@@ -6,6 +6,7 @@ solution:
   select-compiler:                             # list of tested compilers
     - compiler: AC6
     - compiler: GCC
+    - compiler: CLANG
 
   compiler: GCC                                # selected compiler
 
