@@ -3,6 +3,7 @@ solution:
   cdefault:
   select-compiler:
     - compiler: AC6
+    - compiler: GCC
 
   compiler: AC6
   
