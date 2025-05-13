@@ -19,6 +19,14 @@ solution:
     - type: FRDM-K32L3A6
       board: FRDM-K32L3A6
       device: K32L3A60VPJ1A
+      target-set:
+        - set: 
+          debugger:
+            name: CMSIS-DAP
+            start-pname: cm4
+          images:
+            - project-context: HelloWorld_cm0plus.Debug
+            - project-context: HelloWorld_cm4.Debug
 
   build-types:
     - type: Debug
