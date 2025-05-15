@@ -13,11 +13,16 @@
                 "monitor reset halt",
                 "tbreak main"
             ],
+            "customResetCommands": [
+                "monitor reset halt"
+            ],
             "target": {
                 "server": "pyocd",
                 "serverParameters": [
                     "--probe",
                     "cmsisdap:",
+                    "--connect",
+                    "attach",
                     "--persist"
                 ],
                 "port": "3333"
@@ -36,6 +41,9 @@
             "gdb": "arm-none-eabi-gdb",
             "initCommands": [
                 ""
+            ],
+            "customResetCommands": [
+                "monitor reset halt"
             ],
             "target": {
                 "port": "3333"

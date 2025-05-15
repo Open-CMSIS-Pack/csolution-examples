@@ -13,7 +13,7 @@
             "label": "CMSIS Load",
             "type": "shell",
             "command": [
-                "pyocd load --probe cmsisdap: --no-reset --cbuild-run ${command:cmsis-csolution.getCbuildRunFile}"
+                "pyocd load --probe cmsisdap: --cbuild-run ${command:cmsis-csolution.getCbuildRunFile}"
             ],
             "problemMatcher": []
         },
@@ -21,7 +21,7 @@
             "label": "CMSIS Run",
             "type": "shell",
             "command": [
-                "pyocd gdbserver --probe cmsisdap: --persist --reset-run --cbuild-run ${command:cmsis-csolution.getCbuildRunFile}"
+                "pyocd gdbserver --probe cmsisdap: --connect attach --persist --reset-run --cbuild-run ${command:cmsis-csolution.getCbuildRunFile}"
             ],
             "problemMatcher": []
         },
