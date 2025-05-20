@@ -1,0 +1,5 @@
+cbuild-set:
+  generated-by: vscode-cmsis-csolution version 1.52.1-23-g3f9a03e
+  contexts:
+    - context: CM33_s.Debug+AVH
+    - context: CM33_ns.Debug+AVH
