@@ -1,4 +1,5 @@
 name: "Hello: Test Build and Execution"
+
 on:
   workflow_dispatch:
   pull_request:
@@ -14,84 +15,58 @@ on:
   schedule:
     - cron: '00 20 * * 6'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: read-all
+
 jobs:
-  Build:
+  build-and-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain: [AC6, GCC, CLANG]
+        build_type: [Debug, Release]
 
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Install tools
-        uses: ARM-software/cmsis-actions/vcpkg@v1
+        uses: ARM-software/cmsis-actions/vcpkg@75fd924d583d17eacdbfaf77f21ca09e335c3c79 # v1
         with:
           config: ".ci/vcpkg-configuration.json"
 
       - name: Activate Arm tool license
-        uses: ARM-software/cmsis-actions/armlm@v1
+        uses: ARM-software/cmsis-actions/armlm@75fd924d583d17eacdbfaf77f21ca09e335c3c79 # v1
 
-      - name: Build Hello with AC6 and all contexts
-        working-directory: ./Hello/
-        run: cbuild Hello.csolution.yml --packs --toolchain AC6
-
-      - name: Run Hello build-type Debug, AC6
+      - name: Build Hello with ${{ matrix.toolchain }}
         working-directory: ./Hello/
         run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
-            -C mps3_board.uart0.out_file=./out/Hello/CS300/Debug/AC6_fvp_stdout.log \
-            --simlimit 60 --stat
-            echo " Show simulation UART output build with AC6 Debug"
-            cat ./out/Hello/CS300/Debug/AC6_fvp_stdout.log
+          echo "Building with toolchain: ${{ matrix.toolchain }}"
+          cbuild Hello.csolution.yml --packs --toolchain ${{ matrix.toolchain }}
 
-      - name: Run Hello build-type Release, AC6
+      - name: Run Hello Simulation ${{ matrix.toolchain }}-${{ matrix.build_type }}
         working-directory: ./Hello/
         run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.axf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
-            -C mps3_board.uart0.out_file=./out/Hello/CS300/Release/AC6_fvp_stdout.log \
+          # Determine file extension
+          EXT="elf"
+          if [[ "${{ matrix.toolchain }}" == "AC6" ]]; then EXT="axf"; fi
+
+          EXEC=./out/Hello/CS300/${{ matrix.build_type }}/Hello.${EXT}
+          LOG=./out/Hello/CS300/${{ matrix.build_type }}/${{ matrix.toolchain }}_fvp_stdout.log
+
+          FVP_Corstone_SSE-300 \
+            -a $EXEC \
+            -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
+            -C mps3_board.uart0.out_file=$LOG \
             --simlimit 60 --stat
-            echo " Show simulation UART output build with AC6 Release"
-            cat ./out/Hello/CS300/Release/AC6_fvp_stdout.log
 
-      - name: Build Hello with GCC and all contexts
-        working-directory: ./Hello/
-        run: cbuild Hello.csolution.yml --packs --toolchain GCC
-
-      - name: Run Hello build-type Debug, GCC
-        working-directory: ./Hello/
-        run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
-            -C mps3_board.uart0.out_file=./out/Hello/CS300/Debug/GCC_fvp_stdout.log \
-            --simlimit 60 --stat
-            echo " Show simulation UART output build with GCC Debug"
-            cat ./out/Hello/CS300/Debug/GCC_fvp_stdout.log
-
-      - name: Run Hello build-type Release, GCC
-        working-directory: ./Hello/
-        run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
-            -C mps3_board.uart0.out_file=./out/Hello/CS300/Release/GCC_fvp_stdout.log \
-            --simlimit 60 --stat
-            echo " Show simulation UART output build with GCC Release"
-            cat ./out/Hello/CS300/Release/GCC_fvp_stdout.log
-
-      - name: Build Hello with CLANG and all contexts
-        working-directory: ./Hello/
-        run: cbuild Hello.csolution.yml --packs --toolchain CLANG
-
-      - name: Run Hello build-type Debug, CLANG
-        working-directory: ./Hello/
-        run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Debug/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
-            -C mps3_board.uart0.out_file=./out/Hello/CS300/Debug/CLANG_fvp_stdout.log \
-            --simlimit 60 --stat
-            echo " Show simulation UART output build with CLANG Debug"
-            cat ./out/Hello/CS300/Debug/CLANG_fvp_stdout.log
-
-      - name: Run Hello build-type Release, CLANG
-        working-directory: ./Hello/
-        run: |
-            FVP_Corstone_SSE-300 -a ./out/Hello/CS300/Release/Hello.elf -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
-            -C mps3_board.uart0.out_file=./out/Hello/CS300/Release/CLANG_fvp_stdout.log \
-            --simlimit 60 --stat
-            echo " Show simulation UART output build with CLANG Release"
-            cat ./out/Hello/CS300/Release/CLANG_fvp_stdout.log
+          echo "Show simulation UART output for ${{ matrix.toolchain }} ${{ matrix.build_type }}"
+          cat $LOG
