@@ -35,7 +35,7 @@ jobs:
         run: cbuild HelloWorld.csolution.yml --packs --toolchain AC6
 
       - name: Upload HelloWorld AC6 build Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: HelloWorld_AC6
           path: |
