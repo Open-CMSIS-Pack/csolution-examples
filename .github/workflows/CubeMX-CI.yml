@@ -17,19 +17,143 @@ on:
 jobs:
   Build:
     runs-on: ubuntu-latest
+    outputs:
+      build_status: ${{ steps.build_step.outcome }}
+      build_timestamp: ${{ steps.set_timestamp.outputs.timestamp }}
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Set timestamp
+        id: set_timestamp
+        run: echo "timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_OUTPUT
+
       - name: Install tools
+        id: install_tools
         uses: ARM-software/cmsis-actions/vcpkg@v1
         with:
           config: ".ci/vcpkg-configuration.json"
+        continue-on-error: false
+
+      - name: Save tool installation logs
+        if: always()
+        run: |
+          mkdir -p logs
+          echo "=== Tool Installation Information ===" > logs/install_tools.log
+          echo "Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S")" >> logs/install_tools.log
+          echo "" >> logs/install_tools.log
+          
+          # Check if cbuild is available and get its version
+          if command -v cbuild &> /dev/null; then
+            echo "=== CMSIS Toolbox Version ===" >> logs/install_tools.log
+            cbuild --version 2>&1 >> logs/install_tools.log || echo "Version unavailable" >> logs/install_tools.log
+          else
+            echo "cbuild command not found" >> logs/install_tools.log
+          fi
+
+      - name: Upload tool logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tool-logs
+          path: logs/
 
       - name: Activate Arm tool license
         uses: ARM-software/cmsis-actions/armlm@v1
 
       - name: Build project with AC6
+        id: build_step
         working-directory: ./CubeMX/
         run: cbuild CubeMX.csolution.yml --packs --toolchain AC6 --rebuild
+
+  CollectData:
+    runs-on: ubuntu-latest
+    needs: Build
+    if: always()
+    steps:
+      - name: Download tool logs
+        uses: actions/download-artifact@v4
+        with:
+          name: tool-logs
+          path: logs/
+
+      - name: Parse and collect data
+        run: |
+          # Parse tool installation log
+          if [ -f logs/install_tools.log ]; then
+            echo "Parsing tool installation log..."
+            cat logs/install_tools.log
+          else
+            echo "No tool installation log found"
+          fi
+
+      - name: Generate JSON report
+        run: |
+          cat << 'EOF' > collect_data.py
+          import json
+          import re
+          from datetime import datetime
+
+          def parse_tool_log(log_path):
+              cmsis_toolbox_info = None
+              try:
+                  with open(log_path, 'r') as f:
+                      content = f.read()
+
+                  # Parse cbuild --version output
+                  # Looking for version number like "2.12.0" or similar
+                  match = re.search(r'=== CMSIS Toolbox Version ===\s*(.+?)(?:\n|$)', content)
+                  if match:
+                      version = match.group(1).strip()
+                      cmsis_toolbox_info = {
+                          "version": version,
+                          "tool": "cmsis-toolbox"
+                      }
+
+              except FileNotFoundError:
+                  print("Tool log file not found")
+              except Exception as e:
+                  print(f"Error parsing tool log: {e}")
+
+              return cmsis_toolbox_info
+
+          # Collect data
+          data = {
+              "workflow": "CubeMX: Test Build",
+              "build_job": {
+                  "last_run": "${{ needs.Build.outputs.build_timestamp }}",
+                  "status": "${{ needs.Build.outputs.build_status }}",
+                  "passed": "${{ needs.Build.outputs.build_status }}" == "success"
+              },
+              "cmsis_toolbox": parse_tool_log("logs/install_tools.log"),
+              "metadata": {
+                  "run_id": "${{ github.run_id }}",
+                  "run_number": "${{ github.run_number }}",
+                  "workflow_ref": "${{ github.workflow_ref }}",
+                  "event": "${{ github.event_name }}",
+                  "branch": "${{ github.ref_name }}",
+                  "commit": "${{ github.sha }}"
+              }
+          }
+
+          # Print JSON
+          print(json.dumps(data, indent=2))
+
+          # Save to file
+          with open('workflow_data.json', 'w') as f:
+              json.dump(data, f, indent=2)
+          EOF
+
+          python3 collect_data.py
+
+      - name: Display collected data
+        run: |
+          echo "=== Workflow Data Collection ==="
+          cat workflow_data.json
+
+      - name: Upload workflow data
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-data
+          path: workflow_data.json
