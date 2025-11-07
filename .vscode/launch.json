@@ -1,0 +1,94 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "SimpleTZ (AC6)",
+            "type": "arm-debugger",
+            "request": "launch",
+            "programs": [
+                "${workspaceFolder}/SimpleTrustZone/out/CM33_ns/CS300/Debug/CM33_ns.axf",
+                "${workspaceFolder}/SimpleTrustZone/out/CM33_s/CS300/Debug/CM33_s.axf"
+            ],
+            "programMode": "ram",
+            "cdbEntry": "Arm FVP::MPS2_Cortex_M33::Bare Metal Debug::Bare Metal Debug::Cortex-M33_0",
+            "cdbEntryParams": {
+                "model_params": "-f ${workspaceFolder}/SimpleTrustZone/model_config.txt"
+            }
+        },
+        {
+            "name": "SimpleTZ (GCC/Clang)",
+            "type": "arm-debugger",
+            "request": "launch",
+            "programs": [
+                "${workspaceFolder}/SimpleTrustZone/out/CM33_ns/CS300/Debug/CM33_ns.elf",
+                "${workspaceFolder}/SimpleTrustZone/out/CM33_s/CS300/Debug/CM33_s.elf"
+            ],
+            "programMode": "ram",
+            "cdbEntry": "Arm FVP::MPS2_Cortex_M33::Bare Metal Debug::Bare Metal Debug::Cortex-M33_0",
+            "cdbEntryParams": {
+                "model_params": "-f ${workspaceFolder}/SimpleTrustZone/model_config.txt"
+            }
+        },
+        {
+            "name": "STLink@pyOCD (launch)",
+            "type": "gdbtarget",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/CubeMX",
+            "program": "out\\CubeMX\\MyBoard_ROM\\Debug\\CubeMX.axf",
+            "gdb": "arm-none-eabi-gdb",
+            "preLaunchTask": "CMSIS Load",
+            "initCommands": [
+                "monitor reset halt",
+                "tbreak main"
+            ],
+            "customResetCommands": [
+                "monitor reset halt",
+                "tbreak main",
+                "continue"
+            ],
+            "target": {
+                "server": "pyocd",
+                "serverParameters": [
+                    "gdbserver",
+                    "--probe",
+                    "stlink:",
+                    "--connect",
+                    "attach",
+                    "--cbuild-run",
+                    "${command:cmsis-csolution.getCbuildRunFile}",
+                    "--quiet",
+                    "--log",
+                    "*.cbuild_run,*server=info"
+                ],
+                "port": "3333"
+            },
+            "cmsis": {
+                "cbuildRunFile": "${command:cmsis-csolution.getCbuildRunFile}",
+                "updateConfiguration": "auto"
+            }
+        },
+        {
+            "name": "STLink@pyOCD (attach)",
+            "type": "gdbtarget",
+            "request": "attach",
+            "cwd": "${workspaceFolder}/CubeMX",
+            "program": "out\\CubeMX\\MyBoard_ROM\\Debug\\CubeMX.axf",
+            "gdb": "arm-none-eabi-gdb",
+            "initCommands": [
+                ""
+            ],
+            "customResetCommands": [
+                "monitor reset halt",
+                "tbreak main",
+                "continue"
+            ],
+            "target": {
+                "port": "3333"
+            },
+            "cmsis": {
+                "cbuildRunFile": "${command:cmsis-csolution.getCbuildRunFile}",
+                "updateConfiguration": "auto"
+            }
+        }
+    ]
+}
