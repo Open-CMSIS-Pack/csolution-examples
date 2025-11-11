@@ -19,38 +19,24 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       build_status: ${{ steps.build_step.outcome }}
-      build_timestamp: ${{ steps.set_timestamp.outputs.timestamp }}
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set timestamp
-        id: set_timestamp
-        run: echo "timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_OUTPUT
-
       - name: Install tools
-        id: install_tools
         uses: ARM-software/cmsis-actions/vcpkg@v1
         with:
           config: ".ci/vcpkg-configuration.json"
         continue-on-error: false
 
-      - name: Save tool installation logs
+      - name: Capture vcpkg activation output
         if: always()
         run: |
           mkdir -p logs
-          echo "=== Tool Installation Information ===" > logs/install_tools.log
-          echo "Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S")" >> logs/install_tools.log
-          echo "" >> logs/install_tools.log
-          
-          # Check if cbuild is available and get its version
-          if command -v cbuild &> /dev/null; then
-            echo "=== CMSIS Toolbox Version ===" >> logs/install_tools.log
-            cbuild --version 2>&1 >> logs/install_tools.log || echo "Version unavailable" >> logs/install_tools.log
-          else
-            echo "cbuild command not found" >> logs/install_tools.log
-          fi
+          echo "=== vcpkg Artifacts Activation ===" > logs/vcpkg_artifacts.log
+          cd $(dirname ".ci/vcpkg-configuration.json")
+          vcpkg activate 2>&1 | tee -a $GITHUB_WORKSPACE/logs/vcpkg_artifacts.log || echo "vcpkg activate failed" >> $GITHUB_WORKSPACE/logs/vcpkg_artifacts.log
 
       - name: Upload tool logs
         if: always()
@@ -80,12 +66,12 @@ jobs:
 
       - name: Parse and collect data
         run: |
-          # Parse tool installation log
-          if [ -f logs/install_tools.log ]; then
-            echo "Parsing tool installation log..."
-            cat logs/install_tools.log
+          # Parse vcpkg artifacts log
+          if [ -f logs/vcpkg_artifacts.log ]; then
+            echo "Parsing vcpkg artifacts log..."
+            cat logs/vcpkg_artifacts.log
           else
-            echo "No tool installation log found"
+            echo "No vcpkg artifacts log found"
           fi
 
       - name: Generate JSON report
@@ -95,45 +81,38 @@ jobs:
           import re
           from datetime import datetime
 
-          def parse_tool_log(log_path):
-              cmsis_toolbox_info = None
+          def parse_vcpkg_artifacts_log(log_path):
+              cmsis_toolbox_version = None
               try:
                   with open(log_path, 'r') as f:
                       content = f.read()
 
-                  # Parse cbuild --version output
-                  # Looking for version number like "2.12.0" or similar
-                  match = re.search(r'=== CMSIS Toolbox Version ===\s*(.+?)(?:\n|$)', content)
+                  # Parse the vcpkg artifacts table for cmsis-toolbox
+                  # Looking for line like: "arm:tools/open-cmsis-pack/cmsis-toolbox 2.12.0   will install"
+                  match = re.search(r'arm:tools/open-cmsis-pack/cmsis-toolbox\s+(\S+)\s+', content)
                   if match:
-                      version = match.group(1).strip()
-                      cmsis_toolbox_info = {
-                          "version": version,
-                          "tool": "cmsis-toolbox"
-                      }
+                      cmsis_toolbox_version = match.group(1)
 
               except FileNotFoundError:
-                  print("Tool log file not found")
+                  print("vcpkg artifacts log file not found")
               except Exception as e:
-                  print(f"Error parsing tool log: {e}")
+                  print(f"Error parsing vcpkg artifacts log: {e}")
 
-              return cmsis_toolbox_info
+              return cmsis_toolbox_version
 
           # Collect data
           data = {
               "workflow": "CubeMX: Test Build",
-              "build_job": {
-                  "last_run": "${{ needs.Build.outputs.build_timestamp }}",
+              "repo": "${{ github.repository }}",
+              "run_id": "${{ github.run_id }}",
+              "run_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+              "job": {
+                  "last_run": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
                   "status": "${{ needs.Build.outputs.build_status }}",
                   "passed": "${{ needs.Build.outputs.build_status }}" == "success"
               },
-              "cmsis_toolbox": parse_tool_log("logs/install_tools.log"),
-              "metadata": {
-                  "run_id": "${{ github.run_id }}",
-                  "run_number": "${{ github.run_number }}",
-                  "workflow_ref": "${{ github.workflow_ref }}",
-                  "event": "${{ github.event_name }}",
-                  "branch": "${{ github.ref_name }}",
-                  "commit": "${{ github.sha }}"
+              "tools": {
+                  "cmsis_toolbox": parse_vcpkg_artifacts_log("logs/vcpkg_artifacts.log")
               }
           }
 
@@ -148,7 +127,9 @@ jobs:
           python3 collect_data.py
 
       - name: Display collected data
+        id: collected_data
         run: |
+          echo "json=$(jq -c '.' workflow_data.json)" >> "$GITHUB_OUTPUT"
           echo "=== Workflow Data Collection ==="
           cat workflow_data.json
 
@@ -157,3 +138,16 @@ jobs:
         with:
           name: workflow-data
           path: workflow_data.json
+
+      - name: Emit to central repo
+        uses: peter-evans/repository-dispatch@v4
+        with:
+          token: ${{ secrets.METRICS_PAT }}       # PAT or GitHub App token
+          repository: soumeh01/test_ts_app        # <-- your central repo
+          event-type: ci_metrics
+          client-payload: |
+            {
+              "source": "${{ github.repository }}",
+              "workflow": "CubeMX: Test Build",
+              "metrics": ${{ steps.collected_data.outputs.json }}
+            }
