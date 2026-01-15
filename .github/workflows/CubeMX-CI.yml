@@ -19,7 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       build_status: ${{ steps.build_step.outcome }}
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -150,4 +149,5 @@ jobs:
               "source": "${{ github.repository }}",
               "workflow": "CubeMX: Test Build",
               "metrics": ${{ steps.collected_data.outputs.json }}
+
             }
