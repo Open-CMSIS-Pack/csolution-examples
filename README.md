@@ -1,5 +1,5 @@
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-green?label)](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/main/LICENSE-Apache-2.0)
-[![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-green?label)](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/main/LICENSE-BSD-3-Clause)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-green?label=License)](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/main/LICENSE-Apache-2.0)
+[![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-green?label=License)](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/main/LICENSE-BSD-3-Clause)
 [![Hello: Test Build and Execution test](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/Hello-CI.yml?logo=arm&logoColor=0091bd&label=Hello:%20Test%20Build%20and%20Execution)](/.github/workflows/Hello-CI.yml)
 [![DualCore: Test Build](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/DualCore-CI.yml?logo=arm&logoColor=0091bd&label=DualCore:%20Test%20Build)](/.github/workflows/DualCore-CI.yml)
 [![CubeMX: Test Build](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/CubeMX-CI.yml?logo=arm&logoColor=0091bd&label=CubeMX:%20Test%20and%20Build)](/.github/workflows/CubeMX-CI.yml)
@@ -11,7 +11,7 @@ This is a collection of [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-
 
 ## Tool Requirements
 
-The examples use **CMSIS-Toolbox 2.6.0** or higher and require additional tools such as CMake, Ninja, Arm Compiler 6, GCC Compiler, and Arm Fixed Virtual Platforms (AVH-FVP).
+The examples use **CMSIS-Toolbox 2.13.0** or higher and require additional tools such as CMake, Ninja, Arm Compiler 6, GCC Compiler, and Arm Fixed Virtual Platforms (AVH-FVP).
 
 Refer to [**Installation of the CMSIS-Toolbox**](https://open-cmsis-pack.github.io/cmsis-toolbox/installation) for information on the setup of a development environment with these tools.
 
