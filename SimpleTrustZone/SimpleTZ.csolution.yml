@@ -1,5 +1,5 @@
 solution:
-  created-for: CMSIS-Toolbox@2.6.0
+  created-for: CMSIS-Toolbox@2.12.0
   cdefault:
   select-compiler:
     - compiler: AC6
@@ -15,6 +15,16 @@ solution:
   target-types:
     - type: AVH
       device: ARM::ARMCM33
+      target-set:
+        - set:
+          images:
+            - project-context: CM33_ns.Debug
+            - project-context: CM33_s.Debug
+          debugger:
+            name: Arm-FVP
+            model: FVP_MPS2_Cortex-M33
+            config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
+            args: --stat
 
   build-types:
     - type: Debug
