@@ -30,26 +30,21 @@ jobs:
         build_type: [Debug, Release]
 
     steps:
-      - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@e3f713f2d8f53843e71c69a996d56f51aa9adfb9 # v2.14.1
-        with:
-          egress-policy: audit
-
       - name: Checkout repo
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        uses: actions/checkout@v7
 
       - name: Install tools
-        uses: ARM-software/cmsis-actions/vcpkg@75fd924d583d17eacdbfaf77f21ca09e335c3c79 # v1
+        uses: ARM-software/cmsis-actions/vcpkg@v1
         with:
           config: ".ci/vcpkg-configuration.json"
 
       - name: Activate Arm tool license
-        uses: ARM-software/cmsis-actions/armlm@75fd924d583d17eacdbfaf77f21ca09e335c3c79 # v1
+        uses: ARM-software/cmsis-actions/armlm@v1
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
-          python-version: '3.13'
+          python-version: '3.14'
 
       - name: Build Hello with ${{ matrix.toolchain }}
         working-directory: ./Hello/
