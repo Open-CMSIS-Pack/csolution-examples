@@ -3,7 +3,20 @@ solution:
 
   created-for: CMSIS-Toolbox@2.6.0
   cdefault:                     # use cdefault.yml for default toolchain settings
-# compiler: AC6                 # select a compiler (AC6, GCC, IAR, LLVM)
+  # Compilers that can be selected
+  select-compiler:
+    - compiler: AC6
+    - compiler: GCC
+    - compiler: IAR
+    - compiler: CLANG
+
+  # List of miscellaneous tool-specific controls
+  misc:
+    - for-compiler: AC6      # GDB requires DWARF 5, remove when using uVision Debugger
+      C-CPP:
+        - -gdwarf-5
+      ASM:
+        - -gdwarf-5
 
 # List the packs that define the device and/or board, optional with minimum version
   packs:
