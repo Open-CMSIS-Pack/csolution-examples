@@ -1,5 +1,5 @@
 solution:
-  created-for: CMSIS-Toolbox@2.6.0
+  created-for: CMSIS-Toolbox@2.12.0
   cdefault:
 
   # List of tested compilers that can be selected
@@ -19,6 +19,16 @@ solution:
     - type: FRDM-K32L3A6
       board: FRDM-K32L3A6
       device: K32L3A60VPJ1A
+      target-set:
+        - set:
+          images:
+            - project-context: HelloWorld_cm4.Debug
+            - project-context: HelloWorld_cm0plus.Debug
+          debugger:
+            name: MCU-Link@pyOCD
+            clock: 10000000
+            protocol: swd
+            start-pname: cm4
 
   build-types:
     - type: Debug
