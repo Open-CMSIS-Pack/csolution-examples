@@ -1,8 +1,8 @@
 # Simple TrustZone Application
 
-- This [**ARM Cortex-M33**](https://developer.arm.com/Processors/Cortex-M33) secure/non-secure example project shows how to setup the [**TrustZone**](https://www.arm.com/technologies/trustzone-for-cortex-m) for running on [**ARMv8-M**](https://www.arm.com/architecture/cpu/m-profile) profile.
+- This [**Arm Cortex-M33**](https://developer.arm.com/Processors/Cortex-M33) secure/non-secure example project shows how to set up [**TrustZone**](https://www.arm.com/technologies/trustzone-for-cortex-m) on the [**Armv8-M**](https://www.arm.com/architecture/cpu/m-profile) profile.
 - The application uses [**CMSIS**](https://www.arm.com/technologies/cmsis) and can be executed on an [**Arm Virtual Hardware (AVH)**](https://developer.arm.com/Tools%20and%20Software/Arm%20Virtual%20Hardware).
-- The application demonstrates function calls between [**secure and non-secure**](https://developer.arm.com/documentation/100235/0004/the-cortex-m33-processor/security-state-switches) state.
+- The application demonstrates function calls between the [**secure and non-secure**](https://developer.arm.com/documentation/100235/0004/the-cortex-m33-processor/security-state-switches) states.
 
 ## Prerequisites
 
@@ -10,6 +10,7 @@
 
 - [CMSIS-Toolbox 2.14.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher
 - Arm Compiler 6.22 or higher
+- GCC Compiler 13.2.1 or higher
 - Arm Virtual Hardware for FVP_MPS2_Cortex-M33 v11.26.11
 
 ### Packs
@@ -20,26 +21,24 @@
 
 The project is generated using the [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview) and is defined in [`csolution`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format) format:
 
-
-- [`SimpleTZ.csolution.yml`](./SimpleTZ.csolution.yml) lists the required packs, defines, hardware targets, and the build-types (along with the compiler).
+- [`SimpleTZ.csolution.yml`](./SimpleTZ.csolution.yml) lists the required packs and defines the hardware target, build types, supported compilers, and target sets.
 - [`CM33_s.cproject.yml`](./CM33_s/CM33_s.cproject.yml) defines the source files and the software components used for the secure part.
 - [`CM33_ns.cproject.yml`](./CM33_ns/CM33_ns.cproject.yml) defines the source files and the software components used for the non-secure part.
 
 ## Theory of operation
 
-### Secure application:
-- Setup code and start for the non-secure application.
+### Secure application
 
-### Non-secure application:
-- Calls a secure function from non-secure state.
-- Calls a secure function that call back to a non-secure function.
+- Sets up and starts the non-secure application.
 
-### Output:
-- Message  : 
-   - Switch from the secure execution to the non-secure execution.
-- Messages :
-   - Start program execution in the non-secure state
-   - Show function calls and results of the program execution in the non-secure state
+### Non-secure application
+
+- Calls a secure function from the non-secure state.
+- Calls a secure function that calls back to a non-secure function.
+
+### Output
+
+The output shows the transition from secure to non-secure execution followed by the function calls and their results in the non-secure application.
 
 ## Generate the project binaries
 
@@ -50,7 +49,9 @@ The solution provides `Debug` and `Release` target sets. Select the required set
 > cbuild SimpleTZ.csolution.yml --packs --active AVH@Release --toolchain AC6
 ```
 
-## Execute the project on ARM Virtual Hardware
+Replace `AC6` with `GCC` to build a target set with the GCC compiler.
+
+## Execute the project on Arm Virtual Hardware
 
 ```txt
 > FVP_MPS2_Cortex-M33 -a ./out/CM33_ns/AVH/Debug/CM33_ns.axf -a ./out/CM33_s/AVH/Debug/CM33_s.axf -f ./../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt --stat

@@ -1,6 +1,6 @@
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-green?label=License)](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/main/LICENSE-Apache-2.0)
 [![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-green?label=License)](https://github.com/Open-CMSIS-Pack/csolution-examples/blob/main/LICENSE-BSD-3-Clause)
-[![Hello: Test Build and Execution test](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/Hello-CI.yml?logo=arm&logoColor=0091bd&label=Hello:%20Test%20Build%20and%20Execution)](/.github/workflows/Hello-CI.yml)
+[![Hello: Test Build and Execution](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/Hello-CI.yml?logo=arm&logoColor=0091bd&label=Hello:%20Test%20Build%20and%20Execution)](/.github/workflows/Hello-CI.yml)
 [![DualCore: Test Build](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/DualCore-CI.yml?logo=arm&logoColor=0091bd&label=DualCore:%20Test%20Build)](/.github/workflows/DualCore-CI.yml)
 [![CubeMX: Test Build](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/CubeMX-CI.yml?logo=arm&logoColor=0091bd&label=CubeMX:%20Test%20and%20Build)](/.github/workflows/CubeMX-CI.yml)
 [![SimpleTZ: Test Build and Execution](https://img.shields.io/github/actions/workflow/status/Open-CMSIS-Pack/csolution-examples/SimpleTZ-CI.yml?logo=arm&logoColor=0091bd&label=SimpleTZ:%20Test%20Build%20and%20Execution)](/.github/workflows/SimpleTZ-CI.yml)
@@ -11,7 +11,7 @@ This is a collection of [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-
 
 ## Tool Requirements
 
-The examples use **CMSIS-Toolbox 2.14.0** or higher and require additional tools such as CMake, Ninja, Arm Compiler 6, GCC Compiler, and Arm Fixed Virtual Platforms (AVH-FVP).
+The examples use **CMSIS-Toolbox 2.14.0** or higher. Depending on the example, additional tools include CMake, Ninja, Arm Compiler 6, GCC, CLANG, Arm Virtual Hardware Fixed Virtual Platforms (AVH FVP), and STM32CubeMX. Refer to the README of each example for its specific requirements.
 
 Refer to [**Installation of the CMSIS-Toolbox**](https://open-cmsis-pack.github.io/cmsis-toolbox/installation) for information on the setup of a development environment with these tools.
 
@@ -26,19 +26,13 @@ Examples in this repository:
 [Hello](./Hello)                     | A simple project to get started. Requires no hardware as it runs on [AVH-FVP](https://github.com/ARM-software/AVH) simulation models.
 [DualCore](./DualCore)               | Application with multiple processors that runs on the [NXP FRDM-K32L3A6](https://www.keil.arm.com/boards/nxp-frdm-k32l3a6-989d2e5/projects/) board.
 [SimpleTrustZone](./SimpleTrustZone) | Simple TrustZone example that shows the concept of secure and non-secure projects. Runs on [AVH-FVP](https://github.com/ARM-software/AVH) simulation models.
-[CubeMX](./CubeMX)                   | Project that uses [STM32Cube](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs/CubeMX.md) for device configuration and contains a RAM and ROM target.
+[CubeMX](./CubeMX)                   | Project that uses [STM32CubeMX](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs/CubeMX.md) for device configuration and contains a RAM and ROM target.
 
 Each *csolution project* example shows different aspects of the CMSIS-Toolbox. For example, the [CubeMX](./CubeMX) *csolution project* contains two targets that show RAM and ROM execution.
 
 ## Build Projects
 
-Before you build projects, ensure that the pack index on your local computer is up-to-date with the command.
-
-```txt
-> cpackget update-index
-```
-
-The project files  contain a list of software packs that are used. When using the `cbuild` tool option `--packs` these packs are downloaded during the build process as shown in the following example command line:
+The project files contain a list of software packs that are used. When using the `cbuild` tool option `--packs` these packs are downloaded during the build process as shown in the following example command line:
 
 ```txt
 > cbuild Hello/Hello.csolution.yml --packs --toolchain AC6 --rebuild
@@ -46,11 +40,11 @@ The project files  contain a list of software packs that are used. When using th
 
 ## Template Projects
 
-The directory [Templates](./Templates) may be used as starting point for different types of embedded applications: simple single core, multi-core, TrustZone, and unit test.
+The directory [Templates](./Templates) contains structural templates for simple single-core, multi-core, TrustZone, and unit-test projects. They are not ready-to-build examples, but may be used as a starting point for an application.
 
 ## GitHub Action Workflows
 
-The directory [.ci](./.ci) contains the required setup for the Continuous Integration (CI) test of these examples with [GitHub action](./.github) workflows. The tools are downloaded from the [Arm Tools Artifactory](https://artifacts.tools.arm.com/). The test results are available in the [*Actions*](/../../actions) view.
+The directory [.ci](./.ci) contains the required setup for testing these examples with [GitHub Actions](./.github) workflows. The tools are downloaded from the [Arm Tools Artifactory](https://artifacts.tools.arm.com/). The test results are available in the [*Actions*](/../../actions) view.
 
 ## Examples in Other Repositories
 

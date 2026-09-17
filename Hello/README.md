@@ -9,6 +9,7 @@ This project prints "Hello World" and a counter value via the UART output. It is
 - [CMSIS-Toolbox 2.14.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher
 - Arm Compiler 6.22 or higher
 - GCC Compiler 13.2.1 or higher
+- CLANG 22.1 or higher
 - Arm Virtual Hardware for Corstone-300 v11.26.11 or higher
 
 ### Packs
@@ -19,11 +20,11 @@ This project prints "Hello World" and a counter value via the UART output. It is
 
 The project is generated using the [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview) and is defined in [`csolution`](https://open-cmsis-pack.github.io/cmsis-toolbox/YML-Input-Format) format:
 
-- [`Hello.csolution.yml`](./Hello.csolution.yml) lists the required packs, defines,hardware targets, and thebuild-types (along with the compiler).
+- [`Hello.csolution.yml`](./Hello.csolution.yml) lists the required packs and defines the hardware targets, build types, and supported compilers.
 - [`Hello.cproject.yml`](./Hello.cproject.yml) defines the source files and the software components.
 
 > [!NOTE]
-> The project also builds with the GCC and CLANG compilers.
+> The project supports the AC6, GCC, and CLANG compilers.
 
 ## Generate project binaries
 
@@ -32,9 +33,9 @@ The project is generated using the [CMSIS-Toolbox](https://open-cmsis-pack.githu
 ```
 
 > [!NOTE]
-> During the build process required packs may be downloaded.
+> During the build process, required packs may be downloaded.
 
-## Execute the project on ARM Virtual Hardware
+## Execute the project on Arm Virtual Hardware
 
 The project is configured for execution on [**Arm Virtual Hardware**](https://developer.arm.com/Tools%20and%20Software/Arm%20Virtual%20Hardware) which removes the requirement for a physical hardware board.  
 
@@ -52,10 +53,6 @@ The project is configured for execution on [**Arm Virtual Hardware**](https://de
 > FVP_Corstone_SSE-300 -f ../FVP/FVP_Corstone_SSE-300/fvp_config.txt -a ./out/Hello/CS300/Release/Hello.axf
 ```
 
-### Execute this project in [**Keil Studio Cloud**](https://studio.keil.arm.com/)
+### Use this project with Keil Studio
 
-- Keil Studio Cloud integrates also the Arm Virtual Hardware for FVP_Corstone_SSE-300/_Ethos-U55/_Ethos-U65 models. The steps to use the example are:
-    - Start [Keil Studio Cloud](https://studio.keil.arm.com/) and login to the system using your account.
-    - Use **File - Clone** and enter the URL: (https://github.com/Open-CMSIS-Pack/csolution-examples).
-    - Select from the drop-down *Target hardware*: **Corstone SSE-300 (Cortex-M55, Ethos-U55, Ethos-U65)**
-    - Click **Run project** which executes the project build step and then starts running on Arm Virtual Hardware.
+Install [Keil Studio](https://marketplace.visualstudio.com/items?itemName=Arm.keil-studio-pack) from the Visual Studio Marketplace, clone this repository, and open `Hello.csolution.yml` in VS Code. Keil Studio provides the CMSIS solution, build, and debug tooling required to work with the project.
