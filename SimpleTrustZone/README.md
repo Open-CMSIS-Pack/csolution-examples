@@ -8,7 +8,7 @@
 
 ### Tools
 
-- [CMSIS-Toolbox 2.6.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher
+- [CMSIS-Toolbox 2.14.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher
 - Arm Compiler 6.22 or higher
 - Arm Virtual Hardware for FVP_MPS2_Cortex-M33 v11.26.11
 
@@ -43,11 +43,11 @@ The project is generated using the [CMSIS-Toolbox](https://open-cmsis-pack.githu
 
 ## Generate the project binaries
 
-Note that the file [SimpleTZ.cbuild-set.yml](./SimpleTZ.cbuild-set.yml) contains the selected [context set](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview#working-with-context-set) for the application.
-
+The solution provides `Debug` and `Release` target sets. Select the required set with the `--active` option:
 
 ```txt
-> cbuild SimpleTZ.csolution.yml --packs .Debug+AVH --toolchain AC6 --context-set
+> cbuild SimpleTZ.csolution.yml --packs --active AVH@Debug --toolchain AC6
+> cbuild SimpleTZ.csolution.yml --packs --active AVH@Release --toolchain AC6
 ```
 
 ## Execute the project on ARM Virtual Hardware

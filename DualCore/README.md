@@ -6,9 +6,8 @@ This example generates **HelloWorld** executables for the **FRDM-K32L3A6** evalu
 
 ### Tools
 
-- [CMSIS-Toolbox 2.6.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher
+- [CMSIS-Toolbox 2.14.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher
 - Arm Compiler 6.22 or higher
-- GCC Compiler 13.2.1 or higher
 
 ### Packs
 

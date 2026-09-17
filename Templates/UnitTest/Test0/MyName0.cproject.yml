@@ -1,10 +1,9 @@
 project:
-# A project translates into one executable or library
+# A test project translates into an independent test executable
 
-# List the packs used in the layer, optional with minimum version
-  packs:
-    - pack: ARM::CMSIS@^6.1.0  # The CMSIS base software pack
-#   - pack: MyVendor:MyPack    # List additional software packs
+# List packs required only by this test project; layer packs are specified in the layer
+# packs:
+#   - pack: MyVendor::MyTestPack
 
   groups:
     - group: Source Files
@@ -16,12 +15,17 @@ project:
 #     files: 
 #       - file: MyFile2.cpp
 
-# A software component is a re-usable unit that may be configurable
-  components:                  # List components to use for your application
-    - component: CMSIS:CORE    # The CMSIS-Core component used in most projects
-#   - component: Device:Startup&Baremetal
+# List components required only by this test project; shared components are in the layer
+# components:
 #   - component: Cclass:Cgroup:Csub&Cvariant
 
-# A software layer is a collection of pre-configured source files or components
-  layers:                      # List software layers to use for your application
+# Import the reusable layer containing support shared by the test projects
+  layers:
     - layer: ../Layer/MyName.clayer.yml
+
+# Generate an ELF file for symbols, a HEX file for loading, and a linker map file
+  output:
+    type:
+      - elf
+      - hex
+      - map

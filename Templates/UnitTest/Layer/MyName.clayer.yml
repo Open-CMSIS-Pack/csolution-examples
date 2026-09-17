@@ -1,10 +1,10 @@
 layer:
-# A layer is a collection of pre-configured source files or components
+# This reusable layer contains source files and components shared by the test projects
 
-# List the packs used in the layer, optional with minimum version
+# List packs required by this reusable layer
   packs:
-    - pack: ARM::CMSIS@^6.1.0  # The CMSIS base software pack
-#   - pack: MyVendor:MyPack    # List additional software packs
+    - pack: ARM::CMSIS@^6.1.0  # provides the CMSIS:CORE component used by this layer
+#   - pack: MyVendor::MyHALPack
 
   groups:
     - group: Source Files
@@ -16,8 +16,8 @@ layer:
 #     files: 
 #       - file: MyFile2.cpp
 
-# A software component is a re-usable unit that may be configurable
-  components:                  # List components to use in the layer
+# A software component is a reusable unit that may be configurable
+  components:                  # List components provided by the layer
     - component: CMSIS:CORE    # The CMSIS-Core component used in most projects
 #   - component: Device:Startup&Baremetal
 #   - component: Cclass:Cgroup:Csub&Cvariant

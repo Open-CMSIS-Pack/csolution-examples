@@ -1,5 +1,5 @@
 solution:
-  created-for: CMSIS-Toolbox@2.6.0
+  created-for: CMSIS-Toolbox@2.14.0
   description: Simple CubeMX example
   cdefault:
   compiler: AC6                               # currently required for components Compiler:I/O
@@ -15,6 +15,13 @@ solution:
       board: B-U585I-IOT02A                   # Board name as defined by the pack
       variables:
         - regions_header: RTE/Device/STM32U585AIIx/regions_B-U585I-IOT02A_ROM.h
+      target-set:
+        - set: Debug
+          images:
+            - project-context: CubeMX.Debug
+        - set: Release
+          images:
+            - project-context: CubeMX.Release
 
     - type: MyBoard_RAM                       # My evaluation kit (Execution from RAM)
       board: B-U585I-IOT02A                   # Board name as defined by the pack
@@ -22,6 +29,13 @@ solution:
         - regions_header: RTE/Device/STM32U585AIIx/regions_B-U585I-IOT02A_RAM.h
       define:
         - VECT_TAB_SRAM
+      target-set:
+        - set: Debug
+          images:
+            - project-context: CubeMX.Debug
+        - set: Release
+          images:
+            - project-context: CubeMX.Release
 
   build-types:                                # defines toolchain options for 'debug' and 'release'
     - type: Debug

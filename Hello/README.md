@@ -6,7 +6,7 @@ This project prints "Hello World" and a counter value via the UART output. It is
 
 ### Tools
 
-- [CMSIS-Toolbox 2.6.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher
+- [CMSIS-Toolbox 2.14.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher
 - Arm Compiler 6.22 or higher
 - GCC Compiler 13.2.1 or higher
 - Arm Virtual Hardware for Corstone-300 v11.26.11 or higher
@@ -22,9 +22,8 @@ The project is generated using the [CMSIS-Toolbox](https://open-cmsis-pack.githu
 - [`Hello.csolution.yml`](./Hello.csolution.yml) lists the required packs, defines,hardware targets, and thebuild-types (along with the compiler).
 - [`Hello.cproject.yml`](./Hello.cproject.yml) defines the source files and the software components.
 
-> **Note:**
->
-> The project also builds with the GCC compiler.
+> [!NOTE]
+> The project also builds with the GCC and CLANG compilers.
 
 ## Generate project binaries
 
@@ -32,7 +31,8 @@ The project is generated using the [CMSIS-Toolbox](https://open-cmsis-pack.githu
 > cbuild Hello.csolution.yml --packs --toolchain AC6
 ```
 
->**Note:** During the build process required packs may be downloaded.
+> [!NOTE]
+> During the build process required packs may be downloaded.
 
 ## Execute the project on ARM Virtual Hardware
 
@@ -43,13 +43,13 @@ The project is configured for execution on [**Arm Virtual Hardware**](https://de
 #### For debug type
 
 ```bash
-> FVP_Corstone_SSE-300 -f FVP/FVP_Corstone_SSE-300/fvp-config.txt -a ./out/Debug/Hello.axf
+> FVP_Corstone_SSE-300 -f ../FVP/FVP_Corstone_SSE-300/fvp_config.txt -a ./out/Hello/CS300/Debug/Hello.axf
 ```
 
 #### For release type
 
 ```bash
-> FVP_Corstone_SSE-300 -f FVP/FVP_Corstone_SSE-300/fvp-config.txt -a ./out/Release/Hello.axf
+> FVP_Corstone_SSE-300 -f ../FVP/FVP_Corstone_SSE-300/fvp_config.txt -a ./out/Hello/CS300/Release/Hello.axf
 ```
 
 ### Execute this project in [**Keil Studio Cloud**](https://studio.keil.arm.com/)

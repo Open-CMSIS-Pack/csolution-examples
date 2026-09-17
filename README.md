@@ -11,7 +11,7 @@ This is a collection of [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-
 
 ## Tool Requirements
 
-The examples use **CMSIS-Toolbox 2.13.0** or higher and require additional tools such as CMake, Ninja, Arm Compiler 6, GCC Compiler, and Arm Fixed Virtual Platforms (AVH-FVP).
+The examples use **CMSIS-Toolbox 2.14.0** or higher and require additional tools such as CMake, Ninja, Arm Compiler 6, GCC Compiler, and Arm Fixed Virtual Platforms (AVH-FVP).
 
 Refer to [**Installation of the CMSIS-Toolbox**](https://open-cmsis-pack.github.io/cmsis-toolbox/installation) for information on the setup of a development environment with these tools.
 
@@ -41,7 +41,7 @@ Before you build projects, ensure that the pack index on your local computer is 
 The project files  contain a list of software packs that are used. When using the `cbuild` tool option `--packs` these packs are downloaded during the build process as shown in the following example command line:
 
 ```txt
-> cbuild Hello.csolution.yml --packs --context-set --toolchain AC6 --rebuild 
+> cbuild Hello/Hello.csolution.yml --packs --toolchain AC6 --rebuild
 ```
 
 ## Template Projects
@@ -54,8 +54,4 @@ The directory [.ci](./.ci) contains the required setup for the Continuous Integr
 
 ## Examples in Other Repositories
 
-Source            | Description
-:-----------------|:----------------------------------
-[github.com/Arm-Examples](https://github.com/Arm-Examples)  | A collection of several example projects
-[AWS_MQTT_MutualAuth_Demo](https://github.com/Open-CMSIS-Pack/AWS_MQTT_MutualAuth_SW_Framework)  | MQTT demo that uses layers for re-targeting to different physical boards
-[AVH_CI_Template](https://github.com/Arm-Examples/AVH_CI_Template) |  CI Template for unit test automation that uses [GitHub Actions](https://github.com/features/actions)
+See [github.com/Arm-Examples](https://github.com/Arm-Examples) for a collection of embedded software example projects.
