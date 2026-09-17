@@ -6,13 +6,12 @@ Content of `.ci` Directory   | Description
 
 ## GitHub Action Workflows
 
-The [**`GitHub Actions`**](https://docs.github.com/en/actions) in the directory `.github/workflows` are the scripts for the CI tests. These scripts contain detailed comments about each step that is executed.
-Projects in the Arm csolution-examples uses the **`ARM compiler (AC6)`** as well as the **`GCC`** toolchains. Not all workflows are using both compilers.
+The [**GitHub Actions**](https://docs.github.com/en/actions) workflows in the directory `.github/workflows` run the CI tests. The examples use the **Arm Compiler (AC6)**, **GCC**, and **CLANG** toolchains. The toolchains tested depend on the example.
 
-- **`Hello-CI.yml`** implements a build and execution test. The build steps are using **`AC6`** and **`GCC`** toolchains. The execution tests runs on [**`Arm Virtual Hardware - Fixed Virtual Platforms (AVH FVP)`**](https://arm-software.github.io/AVH/main/simulation/html/index.html) simulation models. The directory **`FVP`** contains configuration files for the **`FVP simulation models`**.
+- **`Hello-CI.yml`** builds and executes the Debug and Release variants with **AC6**, **GCC**, and **CLANG**. The execution tests run on an [Arm Virtual Hardware Fixed Virtual Platform (AVH FVP)](https://arm-software.github.io/AVH/main/simulation/html/index.html). The directory `FVP` contains the simulation model configuration.
 
-- **`DualCore-CI.yml`** implements a build test for a DualCore  (**`cm0plus, cm4`**) project by using the **`AC6`** toolchain. The output of this build test is stored as artifact and can be downloaded.
+- **`DualCore-CI.yml`** builds the dual-core Cortex-M0+ and Cortex-M4 project with **AC6**. The build output is stored as a downloadable artifact.
 
-- **`SimpleTZ-CI.yml`** implements build tests for a **`TrustZone`** based project by using the **`AC6`** and **`GCC`** toolchains. The execution tests runs on [**`Arm Virtual Hardware - Fixed Virtual Platforms (AVH FVP)`**](https://arm-software.github.io/AVH/main/simulation/html/index.html) simulation models. The directory **`FVP`** contains configuration files for the **`FVP simulation models`**.
+- **`SimpleTZ-CI.yml`** builds and executes the Debug and Release target sets of the TrustZone project with **AC6**. The execution tests run on an [Arm Virtual Hardware Fixed Virtual Platform (AVH FVP)](https://arm-software.github.io/AVH/main/simulation/html/index.html) using the configuration in the `FVP` directory.
 
-- **`CubeMX-CI.yml`**  implements a build test for a **`CubeMX`** generated project by using only the **`AC6`** toolchain.
+- **`CubeMX-CI.yml`** builds the CubeMX-generated project with **AC6**.
