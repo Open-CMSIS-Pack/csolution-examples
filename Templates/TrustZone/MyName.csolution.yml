@@ -1,32 +1,46 @@
 solution:
-# A solution is a collection of related projects that share same base configuration
+# A solution is a collection of related projects that share the same base configuration
 
-  created-for: CMSIS-Toolbox@2.6.0
-  cdefault:                     # use cdefault.yml for default toolchain settings
-# compiler: AC6                 # select a compiler (AC6, GCC, IAR, LLVM)
+  created-for: CMSIS-Toolbox@2.14.0
+  cdefault:                     # use settings from cdefault.yml
+  compiler: AC6                 # select the compiler for this solution
 
 # List the packs that define the device and/or board, optional with minimum version
   packs:
-    - pack: MyDevice_DFP        # replace with matching device family pack (DFP) for the device
-#   - pack: MyBoard_BSP@^1.2.0  # add a board support pack (BSP) when using a board
+    - pack: MyVendor::MyDevice_DFP        # replace with matching device family pack (DFP) for the device
+#   - pack: MyVendor::MyBoard_BSP@^1.2.0  # add a board support pack (BSP) when using a board
+    - pack: ARM::CMSIS@^6.1.0             # pack shared by all projects in this solution
 
 # List different hardware targets that are used to deploy the solution
   target-types:
     - type: MyTargetName        # choose a brief name for your target hardware
       device: MyDeviceName      # replace with your device or comment out to use a board
-#     board:  MyBoardName       # optional specify you board (device selected by a board)
+#     board: MyBoardName        # optionally specify your board (the board selects the device)
+      target-set:               # group the secure and non-secure application images
+        - set: Debug
+          images:
+            - project-context: MyNameS.Debug    # secure image
+            - project-context: MyNameNS.Debug   # non-secure image
+        - set: Release
+          images:
+            - project-context: MyNameS.Release  # secure image
+            - project-context: MyNameNS.Release # non-secure image
 
 # List different build types
   build-types:
-    - type: Debug
+    - type: Debug                              # toolchain options for 'debug'
       debug: on
       optimize: debug
+      misc:
+        - for-compiler: AC6
+          C:
+            - -funwind-tables  # ensure reliable stack unwinding with GDB
 
-    - type: Release
+    - type: Release                            # toolchain options for 'release'
       debug: off
       optimize: balanced
 
 # List related projects
   projects:
-    - project: Secure/MyNameS.cproject.yml     # secure project comes first to be built first
-    - project: NonSecure/MyNameNS.cproject.yml # non-secure project(s) come after
+    - project: Secure/MyNameS.cproject.yml     # generates the CMSE library used by the non-secure project
+    - project: NonSecure/MyNameNS.cproject.yml # consumes the secure project's CMSE library

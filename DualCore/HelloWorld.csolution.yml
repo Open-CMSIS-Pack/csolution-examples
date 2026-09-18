@@ -1,5 +1,5 @@
 solution:
-  created-for: CMSIS-Toolbox@2.12.0
+  created-for: CMSIS-Toolbox@2.14.0
   cdefault:
 
   # List of tested compilers that can be selected
@@ -31,11 +31,15 @@ solution:
             start-pname: cm4
 
   build-types:
-    - type: Debug
+    - type: Debug                              # toolchain options for 'debug'
       debug: on
       optimize: debug
+      misc:
+        - for-compiler: AC6
+          C:
+            - -funwind-tables  # ensure reliable stack unwinding with GDB
 
-    - type: Release
+    - type: Release                            # toolchain options for 'release'
       debug: off
       optimize: balanced
 
