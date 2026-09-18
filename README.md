@@ -17,6 +17,9 @@ Refer to [**Installation of the CMSIS-Toolbox**](https://open-cmsis-pack.github.
 
 When using VS Code with the [Arm Environment Manager](https://marketplace.visualstudio.com/items?itemName=Arm.environment-manager) the required tools are installed based on the settings in the file [`vcpkg-configuration.json`](./vcpkg-configuration.json) using the [Arm Tools Artifactory](https://artifacts.tools.arm.com/).
 
+!!! Note
+    The Debug build type includes workarounds for known debugger issues. Refer to [CMSIS-Toolbox Troubleshooting](https://open-cmsis-pack.github.io/cmsis-toolbox/Troubleshooting/#stack-unwinding-fails-or-hangs) for details.
+
 ## Project Examples
 
 Examples in this repository:

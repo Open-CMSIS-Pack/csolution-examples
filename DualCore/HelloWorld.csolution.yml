@@ -34,6 +34,10 @@ solution:
     - type: Debug
       debug: on
       optimize: debug
+      misc:
+        - for-compiler: [AC6, CLANG]
+          C:
+            - -funwind-tables  # ensure reliable stack unwinding with GDB
 
     - type: Release
       debug: off
