@@ -35,7 +35,7 @@ solution:
       debug: on
       optimize: debug
       misc:
-        - for-compiler: [AC6, CLANG]
+        - for-compiler: AC6
           C:
             - -funwind-tables  # ensure reliable stack unwinding with GDB
 
