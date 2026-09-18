@@ -18,7 +18,7 @@ solution:
 
 # List different build types
   build-types:
-    - type: Debug
+    - type: Debug                              # toolchain options for 'debug'
       debug: on
       optimize: debug
       misc:
@@ -26,7 +26,7 @@ solution:
           C:
             - -funwind-tables  # ensure reliable stack unwinding with GDB
 
-    - type: Release
+    - type: Release                            # toolchain options for 'release'
       debug: off
       optimize: balanced
 

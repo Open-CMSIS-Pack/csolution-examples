@@ -23,8 +23,8 @@ solution:
       device: ARM::SSE-300-MPS3
 
                                                # add more hardware targets (don't forget to add the required packs)
-  build-types:                                 # defines toolchain options for 'debug' and 'release'
-    - type: Debug
+  build-types:
+    - type: Debug                              # toolchain options for 'debug'
       debug: on
       optimize: debug
       misc:
@@ -32,7 +32,7 @@ solution:
           C:
             - -funwind-tables  # ensure reliable stack unwinding with GDB
 
-    - type: Release
+    - type: Release                            # toolchain options for 'release'
       debug: off
       optimize: balanced
 
