@@ -14,3 +14,9 @@ project:
     - component: CMSIS:CORE
     - component: Device:Startup&C Startup
     - component: CMSIS-View:Event Recorder&DAP
+
+  output:
+    type:
+      - elf
+      - hex
+    

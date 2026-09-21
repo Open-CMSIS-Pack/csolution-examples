@@ -12,6 +12,9 @@ project:
     - group: CMSE Library
       files:
         - file: $cmse-lib(CM33_s)$
+          for-context: +AVH
+        - file: ../out/CM33_s/AVH/$BuildType$/CM33_s_CMSE_Lib.o
+          for-context: +AVH-NS-only
 
   components:
     - component: CMSIS:CORE

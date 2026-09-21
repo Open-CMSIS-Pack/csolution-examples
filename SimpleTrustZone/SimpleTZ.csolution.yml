@@ -6,7 +6,7 @@ solution:
     - compiler: GCC
 
   compiler: AC6
-  
+
   packs:
     - pack: ARM::CMSIS
     - pack: ARM::Cortex_DFP
@@ -35,15 +35,37 @@ solution:
             config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
             args: --stat
 
+    - type: AVH-NS-only
+      device: ARM::ARMCM33
+      target-set:
+        - set: Debug
+          images:
+            - image: out/CM33_s/AVH/Debug/CM33_s.hex
+              load: image
+            - project-context: CM33_ns.Debug
+          debugger:
+            name: Arm-FVP
+            model: FVP_MPS2_Cortex-M33
+            config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
+            args: --stat
+        - set: Release
+          images:
+            - project-context: CM33_ns.Release
+          debugger:
+            name: Arm-FVP
+            model: FVP_MPS2_Cortex-M33
+            config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
+            args: --stat
+
   build-types:
-    - type: Debug                              # toolchain options for 'debug'
+    - type: Debug # toolchain options for 'debug'
       debug: on
       optimize: debug
       misc:
         - for-compiler: AC6
           C:
-            - -funwind-tables  # ensure reliable stack unwinding with GDB
-    - type: Release                            # toolchain options for 'release'
+            - -funwind-tables # ensure reliable stack unwinding with GDB
+    - type: Release # toolchain options for 'release'
       debug: off
       optimize: balanced
 
