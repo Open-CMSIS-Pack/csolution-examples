@@ -52,6 +52,7 @@ int main(void) {
   printf("func2(func3, 2) = %d\n", val2);
  
   printf("\x04");  // EOT (0x04) stops simulation
+  fflush(stdout);
 
   while (1);
 }

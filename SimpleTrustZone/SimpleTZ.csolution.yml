@@ -9,6 +9,7 @@ solution:
 
   packs:
     - pack: ARM::CMSIS
+    - pack: ARM::CMSIS-Compiler
     - pack: ARM::Cortex_DFP
     - pack: ARM::CMSIS-View
 
