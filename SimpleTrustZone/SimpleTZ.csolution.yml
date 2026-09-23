@@ -24,7 +24,7 @@ solution:
             name: Arm-FVP
             model: FVP_MPS2_Cortex-M33
             config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
-            args: --stat
+            args: --simlimit 10 --stat
         - set: Release
           images:
             - project-context: CM33_ns.Release
@@ -33,7 +33,7 @@ solution:
             name: Arm-FVP
             model: FVP_MPS2_Cortex-M33
             config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
-            args: --stat
+            args: --simlimit 10 --stat
 
     - type: AVH-NS-only
       device: ARM::ARMCM33
@@ -47,7 +47,7 @@ solution:
             name: Arm-FVP
             model: FVP_MPS2_Cortex-M33
             config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
-            args: --stat
+            args: --simlimit 10 --stat
         - set: Release
           images:
             - image: out/CM33_s/AVH/Release/CM33_s.hex
@@ -57,7 +57,7 @@ solution:
             name: Arm-FVP
             model: FVP_MPS2_Cortex-M33
             config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
-            args: --stat
+            args: --simlimit 10 --stat
 
   build-types:
     - type: Debug # toolchain options for 'debug'

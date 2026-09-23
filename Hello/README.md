@@ -44,13 +44,13 @@ The project is configured for execution on [**Arm Virtual Hardware**](https://de
 #### For debug type
 
 ```bash
-> FVP_Corstone_SSE-300 -f ../FVP/FVP_Corstone_SSE-300/fvp_config.txt -a ./out/Hello/CS300/Debug/Hello.axf
+> FVP_Corstone_SSE-300 -f ../FVP/FVP_Corstone_SSE-300/fvp_config.txt -a ./out/Hello/CS300/Debug/Hello.axf --simlimit 10
 ```
 
 #### For release type
 
 ```bash
-> FVP_Corstone_SSE-300 -f ../FVP/FVP_Corstone_SSE-300/fvp_config.txt -a ./out/Hello/CS300/Release/Hello.axf
+> FVP_Corstone_SSE-300 -f ../FVP/FVP_Corstone_SSE-300/fvp_config.txt -a ./out/Hello/CS300/Release/Hello.axf --simlimit 10
 ```
 
 ### Use this project with Keil Studio

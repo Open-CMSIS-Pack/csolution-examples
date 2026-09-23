@@ -59,7 +59,7 @@ jobs:
             -a ./out/CM33_ns/AVH/${{ matrix.build.type }}/CM33_ns.${{ matrix.compiler.ext }} \
             -a ./out/CM33_s/AVH/${{ matrix.build.type }}/CM33_s.${{ matrix.compiler.ext }} \
             -f ./../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt \
-            --stat
+            --simlimit 10 --stat
 
   NonSecureOnly:
     name: Non-secure only (${{ matrix.build.type }}, ${{ matrix.compiler.name }})
@@ -108,4 +108,4 @@ jobs:
             -a ./out/CM33_s/AVH/${{ matrix.build.type }}/CM33_s.hex \
             -a ./out/CM33_ns/AVH-NS-only/${{ matrix.build.type }}/CM33_ns.${{ matrix.compiler.ext }} \
             -f ./../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt \
-            --stat
+            --simlimit 10 --stat

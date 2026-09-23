@@ -66,7 +66,7 @@ jobs:
             -a $EXEC \
             -f ./../FVP/FVP_Corstone_SSE-300/fvp_config.txt \
             -C mps3_board.uart0.out_file=$LOG \
-            --simlimit 60 --stat
+            --simlimit 10 --stat
 
           echo "Show simulation UART output for ${{ matrix.toolchain }} ${{ matrix.build_type }}"
           cat $LOG
