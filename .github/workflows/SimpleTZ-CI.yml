@@ -105,7 +105,7 @@ jobs:
         working-directory: ./SimpleTrustZone/
         run: |
             FVP_MPS2_Cortex-M33 \
-            -a ./out/CM33_s/AVH/${{ matrix.build.type }}/CM33_s.hex \
             -a ./out/CM33_ns/AVH-NS-only/${{ matrix.build.type }}/CM33_ns.${{ matrix.compiler.ext }} \
+            -a ./out/CM33_s/AVH/${{ matrix.build.type }}/CM33_s.hex \
             -f ./../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt \
             --simlimit 10 --stat
