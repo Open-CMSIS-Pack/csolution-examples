@@ -21,7 +21,8 @@ jobs:
       matrix:
 
         compiler: [
-          {name: AC6, ext: axf}
+          {name: AC6, ext: axf},
+          {name: GCC, ext: elf}
         ]
         build: [ 
           {type: Release},
@@ -65,7 +66,8 @@ jobs:
     strategy:
       matrix:
         compiler: [
-          {name: AC6, ext: axf}
+          {name: AC6, ext: axf},
+          {name: GCC, ext: elf}
         ]
         build: [
           {type: Release},

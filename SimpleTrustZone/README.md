@@ -51,6 +51,22 @@ The solution provides `Debug` and `Release` target sets. Select the required set
 
 Replace `AC6` with `GCC` to build a target set with the GCC compiler.
 
+## Use an Existing Secure Image
+
+The `AVH-NS-only` target demonstrates how to build a non-secure application against an existing secure application. It builds only `CM33_ns` and reuses two outputs previously generated for the `AVH` target:
+
+- `CM33_s.hex`, which is loaded together with the non-secure application.
+- `CM33_s_CMSE_Lib.o`, which provides the secure callable interface used to link the non-secure application.
+
+The existing secure outputs must match the selected build type and compiler. Build the `AVH` target before building the corresponding `AVH-NS-only` target:
+
+```txt
+> cbuild SimpleTZ.csolution.yml --packs --active AVH@Debug --toolchain AC6
+> cbuild SimpleTZ.csolution.yml --active AVH-NS-only@Debug --toolchain AC6
+```
+
+When using VS Code, first select and build `AVH@Debug` or `AVH@Release` in the Manage Solution view. Then select the matching `AVH-NS-only` target set and build or run it. Building `AVH-NS-only` first in a clean workspace fails because the secure HEX file and CMSE library do not yet exist.
+
 ## Execute the project on Arm Virtual Hardware
 
 ```txt
