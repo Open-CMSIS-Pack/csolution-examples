@@ -40,9 +40,10 @@ solution:
       target-set:
         - set: Debug
           images:
+            - project-context: CM33_ns.Debug
+            # loading secure image as hex file into FVP Model
             - image: out/CM33_s/AVH/Debug/CM33_s.hex
               load: image
-            - project-context: CM33_ns.Debug
           debugger:
             name: Arm-FVP
             model: FVP_MPS2_Cortex-M33
@@ -51,6 +52,9 @@ solution:
         - set: Release
           images:
             - project-context: CM33_ns.Release
+            # loading secure image as hex file into FVP Model
+            - image: out/CM33_s/AVH/Release/CM33_s.hex
+              load: image
           debugger:
             name: Arm-FVP
             model: FVP_MPS2_Cortex-M33
@@ -70,5 +74,5 @@ solution:
       optimize: balanced
 
   projects:
-    - project: ./CM33_ns/CM33_ns.cproject.yml
     - project: ./CM33_s/CM33_s.cproject.yml
+    - project: ./CM33_ns/CM33_ns.cproject.yml
