@@ -55,11 +55,19 @@ jobs:
       - name: Execute secure and non-secure projects on FVP
         working-directory: ./SimpleTrustZone/
         run: |
-            FVP_MPS2_Cortex-M33 \
+          output="$(FVP_MPS2_Cortex-M33 \
             -a ./out/CM33_ns/AVH/${{ matrix.build.type }}/CM33_ns.${{ matrix.compiler.ext }} \
             -a ./out/CM33_s/AVH/${{ matrix.build.type }}/CM33_s.${{ matrix.compiler.ext }} \
             -f ./../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt \
-            --simlimit 10 --stat
+            --simlimit 10 --stat 2>&1)"
+          printf '%s\n' "$output"
+
+          actual="$(printf '%s\n' "$output" | grep -E '^Jump to non-secure application at 0x[[:xdigit:]]{8}$|^Non-secure application\.\.\.$|^func1\(1\) = 4$|^func2\(func3, 2\) = 9$' | sed -E 's/^(Jump to non-secure application at )0x[[:xdigit:]]{8}$/\1<address>/')"
+          expected=$'Jump to non-secure application at <address>\nNon-secure application...\nfunc1(1) = 4\nfunc2(func3, 2) = 9'
+          if [[ "$actual" != "$expected" ]]; then
+            printf 'Unexpected application output.\nExpected:\n%s\nActual:\n%s\n' "$expected" "$actual"
+            exit 1
+          fi
 
   NonSecureOnly:
     name: Non-secure only (${{ matrix.build.type }}, ${{ matrix.compiler.name }})
@@ -104,8 +112,16 @@ jobs:
       - name: Execute non-secure-only target on FVP
         working-directory: ./SimpleTrustZone/
         run: |
-            FVP_MPS2_Cortex-M33 \
+          output="$(FVP_MPS2_Cortex-M33 \
             -a ./out/CM33_ns/AVH-NS-only/${{ matrix.build.type }}/CM33_ns.${{ matrix.compiler.ext }} \
             -a ./out/CM33_s/AVH/${{ matrix.build.type }}/CM33_s.hex \
             -f ./../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt \
-            --simlimit 10 --stat
+            --simlimit 10 --stat 2>&1)"
+          printf '%s\n' "$output"
+
+          actual="$(printf '%s\n' "$output" | grep -E '^Jump to non-secure application at 0x[[:xdigit:]]{8}$|^Non-secure application\.\.\.$|^func1\(1\) = 4$|^func2\(func3, 2\) = 9$' | sed -E 's/^(Jump to non-secure application at )0x[[:xdigit:]]{8}$/\1<address>/')"
+          expected=$'Jump to non-secure application at <address>\nNon-secure application...\nfunc1(1) = 4\nfunc2(func3, 2) = 9'
+          if [[ "$actual" != "$expected" ]]; then
+            printf 'Unexpected application output.\nExpected:\n%s\nActual:\n%s\n' "$expected" "$actual"
+            exit 1
+          fi
