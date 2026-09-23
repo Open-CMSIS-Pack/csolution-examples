@@ -28,7 +28,7 @@ Examples in this repository:
 :------------------------------------|:----------------------------------
 [Hello](./Hello)                     | A simple project to get started. Requires no hardware as it runs on [AVH-FVP](https://github.com/ARM-software/AVH) simulation models.
 [DualCore](./DualCore)               | Application with multiple processors that runs on the [NXP FRDM-K32L3A6](https://www.keil.arm.com/boards/nxp-frdm-k32l3a6-989d2e5/projects/) board.
-[SimpleTrustZone](./SimpleTrustZone) | Simple TrustZone example that shows the concept of secure and non-secure projects. Runs on [AVH-FVP](https://github.com/ARM-software/AVH) simulation models.
+[SimpleTrustZone](./SimpleTrustZone) | Simple TrustZone example that shows secure and non-secure projects, including how to use a prebuilt secure image. Runs on [AVH-FVP](https://github.com/ARM-software/AVH) simulation models.
 [CubeMX](./CubeMX)                   | Project that uses [STM32CubeMX](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/tree/main/docs/CubeMX.md) for device configuration and contains a RAM and ROM target.
 
 Each *csolution project* example shows different aspects of the CMSIS-Toolbox. For example, the [CubeMX](./CubeMX) *csolution project* contains two targets that show RAM and ROM execution.
