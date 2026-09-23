@@ -7,8 +7,9 @@ project:
 
   groups:
     - group: Source Files
-      files: 
-        - file: main.c
+      # Add at least one source file
+#     files: 
+#       - file: main.c
 #       - file: MyFile1.c
 
 #   - group: MyGroup

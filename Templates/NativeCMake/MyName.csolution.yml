@@ -1,0 +1,40 @@
+solution:
+# Integrate an existing native CMake project
+
+  created-for: CMSIS-Toolbox@2.15.0
+  compiler: GCC
+
+# List the packs that define the device and board
+  packs:
+    - pack: MyVendor::MyDevice_DFP
+#   - pack: MyVendor::MyBoard_BSP
+
+  target-types:
+    - type: MyTargetName
+      device: MyDeviceName
+#     board: MyBoardName
+      target-set:
+        - set: Debug
+          images:
+            - project-context: MyNativeProject.Debug
+        - set: Release
+          images:
+            - project-context: MyNativeProject.Release
+
+  build-types:
+    - type: Debug
+    - type: Release
+
+# Reference an existing native CMake project
+  projects:
+    - cmake:
+        source: ./MyNativeProject
+        project-id: MyNativeProject
+        generator: Ninja
+        configure:
+          - -DCMAKE_BUILD_TYPE=$BuildType$
+          - -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        target: MyNativeProject
+        images:
+          - image: MyNativeProject.elf
+            type: elf

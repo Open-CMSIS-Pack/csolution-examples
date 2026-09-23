@@ -50,6 +50,8 @@ solution:
             args: --stat
         - set: Release
           images:
+            - image: out/CM33_s/AVH/Release/CM33_s.hex
+              load: image
             - project-context: CM33_ns.Release
           debugger:
             name: Arm-FVP

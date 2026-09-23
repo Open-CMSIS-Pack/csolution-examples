@@ -11,7 +11,7 @@ This is a collection of [CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-
 
 ## Tool Requirements
 
-The examples use **CMSIS-Toolbox 2.14.0** or higher. Depending on the example, additional tools include CMake, Ninja, Arm Compiler 6, GCC, CLANG, Arm Virtual Hardware Fixed Virtual Platforms (AVH FVP), and STM32CubeMX. Refer to the README of each example for its specific requirements.
+The examples use **CMSIS-Toolbox 2.14.0** or higher; the Native CMake integration template requires version 2.15.0 or higher. Depending on the example, additional tools include CMake, Ninja, Arm Compiler 6, GCC, CLANG, Arm Virtual Hardware Fixed Virtual Platforms (AVH FVP), STM32CubeMX, and West with a Zephyr workspace. Refer to the README of each example or template for its specific requirements.
 
 Refer to [**Installation of the CMSIS-Toolbox**](https://open-cmsis-pack.github.io/cmsis-toolbox/installation) for information on the setup of a development environment with these tools.
 
@@ -43,7 +43,7 @@ The project files contain a list of software packs that are used. When using the
 
 ## Template Projects
 
-The directory [Templates](./Templates) contains structural templates for simple single-core, multi-core, TrustZone, and unit-test projects. They are not ready-to-build examples, but may be used as a starting point for an application.
+The directory [Templates](./Templates) contains structural templates for simple single-core, multi-core, TrustZone, and unit-test projects. It also contains integration templates for existing [Zephyr applications built with West](./Templates/ZephyrWest) and [native CMake projects](./Templates/NativeCMake). They are not ready-to-build examples, but may be used as a starting point for an application.
 
 ## GitHub Action Workflows
 

@@ -13,6 +13,7 @@ project:
 
   groups:
     - group: Source Files
+      # Add at least one source file
 #     files: 
 #       - file: main_ns.c
 #       - file: MyFile1.c

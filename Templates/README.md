@@ -1,6 +1,6 @@
 # CMSIS-Toolbox Templates
 
-These generic templates show the file structure for different types of `csolution` projects. They are not ready-to-build example projects; use them as a starting point for your own application.
+These generic templates show the file structure for different types of `csolution` projects and for integrating external build systems. They are not ready-to-build example projects; use them as a starting point for your own application.
 
 To use a template, copy the content of its folder to your application folder. Then adapt the names, replace the placeholders, and add the required application content.
 
@@ -23,6 +23,14 @@ The [TrustZone](./TrustZone) template separates the secure and non-secure parts 
 ### UnitTest
 
 The [UnitTest](./UnitTest) template contains independent test projects that share common support through a reusable layer. It does not use target sets because the projects are separate test executables, typically used in CI. Use `--context .Debug` or `--context .Release` to select all matching test projects.
+
+### ZephyrWest
+
+The [ZephyrWest](./ZephyrWest) template integrates an existing Zephyr application using the West build system. The Zephyr workspace and application remain responsible for their sources and configuration.
+
+### NativeCMake
+
+The [NativeCMake](./NativeCMake) template integrates an existing native CMake project using CMSIS-Toolbox 2.15.0 or higher. The native project remains responsible for its `CMakeLists.txt`, toolchain setup, build targets, and output images.
 
 ## Pack Ownership
 
