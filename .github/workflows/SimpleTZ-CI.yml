@@ -99,7 +99,7 @@ jobs:
 
       - name: Build non-secure-only target
         working-directory: ./SimpleTrustZone/
-        run: cbuild SimpleTZ.csolution.yml --active AVH-NS-only@${{ matrix.build.type }} --toolchain ${{ matrix.compiler.name }}
+        run: cbuild SimpleTZ.csolution.yml --context CM33_ns.${{ matrix.build.type }}+AVH-NS-only --toolchain ${{ matrix.compiler.name }}
 
       - name: Execute non-secure-only target on FVP
         working-directory: ./SimpleTrustZone/

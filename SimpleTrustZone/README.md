@@ -62,7 +62,7 @@ The existing secure outputs must match the selected build type and compiler. Bui
 
 ```txt
 > cbuild SimpleTZ.csolution.yml --packs --active AVH@Debug --toolchain AC6
-> cbuild SimpleTZ.csolution.yml --active AVH-NS-only@Debug --toolchain AC6
+> cbuild SimpleTZ.csolution.yml --context CM33_ns.Debug+AVH-NS-only --toolchain AC6
 ```
 
 When using VS Code, first select and build `AVH@Debug` or `AVH@Release` in the Manage Solution view. Then select the matching `AVH-NS-only` target set and build or run it. Building `AVH-NS-only` first in a clean workspace fails because the secure HEX file and CMSE library do not yet exist.

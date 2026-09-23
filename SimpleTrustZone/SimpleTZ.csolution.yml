@@ -42,7 +42,7 @@ solution:
           images:
             - image: out/CM33_s/AVH/Debug/CM33_s.hex
               load: image
-            - project-context: CM33_ns.Release
+            - project-context: CM33_ns.Debug
           debugger:
             name: Arm-FVP
             model: FVP_MPS2_Cortex-M33
