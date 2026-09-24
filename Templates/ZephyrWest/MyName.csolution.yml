@@ -1,0 +1,40 @@
+solution:
+# Integrate an existing Zephyr application using the West build system
+
+  created-for: CMSIS-Toolbox@2.14.0
+  compiler: GCC
+
+# List the packs that define the device and board
+  packs:
+    - pack: MyVendor::MyDevice_DFP
+#   - pack: MyVendor::MyBoard_BSP
+
+# Map the CMSIS target to a Zephyr board
+  target-types:
+    - type: MyTargetName
+      device: MyDeviceName
+#     board: MyBoardName
+      variables:
+        - west-board: my_zephyr_board
+      target-set:
+        - set: Debug
+          images:
+            - project-context: MyZephyrApp.Debug
+        - set: Release
+          images:
+            - project-context: MyZephyrApp.Release
+
+  build-types:
+    - type: Debug
+      west-defs:
+        - CONFIG_DEBUG: y
+
+    - type: Release
+      west-defs:
+        - CONFIG_SIZE_OPTIMIZATIONS: y
+
+# Reference an existing application in the West workspace
+  projects:
+    - west:
+        app-path: ./MyZephyrApp
+        project-id: MyZephyrApp

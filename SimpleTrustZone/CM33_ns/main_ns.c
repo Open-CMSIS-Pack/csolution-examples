@@ -24,7 +24,6 @@
  *---------------------------------------------------------------------------*/
 
 #include <stdio.h>
-#include <stdlib.h>
 
 #include "interface.h"        // Interface API
 
@@ -52,7 +51,8 @@ int main(void) {
   val2 = func2(func3, 2);
   printf("func2(func3, 2) = %d\n", val2);
  
-  exit(0);
+  printf("\x04");  // EOT (0x04) stops simulation
+  fflush(stdout);
 
   while (1);
 }

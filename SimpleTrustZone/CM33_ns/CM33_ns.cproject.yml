@@ -9,6 +9,7 @@ project:
     - group: Non-secure Code
       files:
         - file: main_ns.c
+        - file: ../retarget_stdio.c
     - group: CMSE Library
       files:
         - file: $cmse-lib(CM33_s)$
@@ -18,4 +19,6 @@ project:
 
   components:
     - component: CMSIS:CORE
+    - component: CMSIS-Compiler:CORE
+    - component: CMSIS-Compiler:STDOUT:Custom
     - component: Device:Startup&C Startup

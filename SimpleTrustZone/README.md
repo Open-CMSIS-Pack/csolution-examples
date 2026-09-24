@@ -51,10 +51,28 @@ The solution provides `Debug` and `Release` target sets. Select the required set
 
 Replace `AC6` with `GCC` to build a target set with the GCC compiler.
 
+## Use an Existing Secure Image
+
+The `AVH-NS-only` target demonstrates the CMSIS-Toolbox concept [Use a Prebuilt Secure Image](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#use-a-prebuilt-secure-image). It builds only `CM33_ns` and reuses two outputs previously generated for the `AVH` target:
+
+- `CM33_s.hex`, which is loaded together with the non-secure application.
+- `CM33_s_CMSE_Lib.o`, which provides the secure callable interface used to link the non-secure application.
+
+The existing secure outputs must match the selected build type and compiler. Build the `AVH` target before building the corresponding `AVH-NS-only` target:
+
+```txt
+> cbuild SimpleTZ.csolution.yml --packs --active AVH@Debug --toolchain AC6
+> cbuild SimpleTZ.csolution.yml --context CM33_ns.Debug+AVH-NS-only --toolchain AC6
+```
+
+When using VS Code, first select and build `AVH@Debug` or `AVH@Release` in the Manage Solution view. Then select the matching `AVH-NS-only` target set and build or run it. Building `AVH-NS-only` first in a clean workspace fails because the secure HEX file and CMSE library do not yet exist.
+
+The non-secure executable is listed before the secure HEX file in the target set and FVP invocation. This load order lets the executable configure the debug session before the prebuilt secure image is overlaid.
+
 ## Execute the project on Arm Virtual Hardware
 
 ```txt
-> FVP_MPS2_Cortex-M33 -a ./out/CM33_ns/AVH/Debug/CM33_ns.axf -a ./out/CM33_s/AVH/Debug/CM33_s.axf -f ./../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt --stat
+> FVP_MPS2_Cortex-M33 -a ./out/CM33_ns/AVH/Debug/CM33_ns.axf -a ./out/CM33_s/AVH/Debug/CM33_s.axf -f ./../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt --simlimit 10 --stat
 
 telnetterminal0: Listening for serial connection on port 5000
 telnetterminal1: Listening for serial connection on port 5001

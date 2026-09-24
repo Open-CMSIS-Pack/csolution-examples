@@ -9,6 +9,7 @@ solution:
 
   packs:
     - pack: ARM::CMSIS
+    - pack: ARM::CMSIS-Compiler
     - pack: ARM::Cortex_DFP
     - pack: ARM::CMSIS-View
 
@@ -24,7 +25,7 @@ solution:
             name: Arm-FVP
             model: FVP_MPS2_Cortex-M33
             config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
-            args: --stat
+            args: --simlimit 10 --stat
         - set: Release
           images:
             - project-context: CM33_ns.Release
@@ -33,29 +34,31 @@ solution:
             name: Arm-FVP
             model: FVP_MPS2_Cortex-M33
             config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
-            args: --stat
+            args: --simlimit 10 --stat
 
     - type: AVH-NS-only
       device: ARM::ARMCM33
       target-set:
         - set: Debug
           images:
+            - project-context: CM33_ns.Debug
             - image: out/CM33_s/AVH/Debug/CM33_s.hex
               load: image
-            - project-context: CM33_ns.Debug
           debugger:
             name: Arm-FVP
             model: FVP_MPS2_Cortex-M33
             config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
-            args: --stat
+            args: --simlimit 10 --stat
         - set: Release
           images:
             - project-context: CM33_ns.Release
+            - image: out/CM33_s/AVH/Release/CM33_s.hex
+              load: image
           debugger:
             name: Arm-FVP
             model: FVP_MPS2_Cortex-M33
             config-file: ../FVP/FVP_MPS2_Cortex-M33/fvp_config.txt
-            args: --stat
+            args: --simlimit 10 --stat
 
   build-types:
     - type: Debug # toolchain options for 'debug'
