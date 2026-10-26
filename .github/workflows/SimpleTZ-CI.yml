@@ -44,7 +44,7 @@ jobs:
         uses: ARM-software/cmsis-actions/armlm@v1.3
 
       - name: Set up Python
-        uses: actions/setup-python@v7.0.0
+        uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.14'
 
@@ -97,7 +97,7 @@ jobs:
         uses: ARM-software/cmsis-actions/armlm@v1.3
 
       - name: Set up Python
-        uses: actions/setup-python@v7.0.0
+        uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.14'
 
